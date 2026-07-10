@@ -1,0 +1,25 @@
+# Experiment Configuration
+# ========================
+# Adjust these parameters for your specific experiment.
+# Use Hydra (https://hydra.cc/) for advanced config management.
+
+experiment:
+  name: "014_rhiots_hierarchical"
+  paper: "RHiOTS: Evaluating Hierarchical TS Forecasting Algorithms"
+  seed: 42
+
+data:
+  source: ""           # Path or URL to dataset
+  train_split: 0.8
+  val_split: 0.1
+  test_split: 0.1
+
+model:
+  type: ""             # Model class/type
+  params: {}           # Model-specific hyperparameters
+
+evaluation:
+  metrics:
+    - rmse
+    - mae
+  n_repeats: 10        # Number of repetitions for statistical significance

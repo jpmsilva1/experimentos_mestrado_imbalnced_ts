@@ -1,0 +1,69 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_metadata/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Data files (large datasets should not be committed)
+*.csv
+*.parquet
+*.h5
+*.hdf5
+*.pkl
+*.pickle
+!experiments/_template/**/.gitkeep
+
+# Model checkpoints
+*.pt
+*.pth
+*.ckpt
+*.h5
+*.keras
+*.joblib
+
+# R
+.Rhistory
+.Rdata
+.RData
+.Rproj.user/
+
+# Logs
+*.log
+wandb/
+mlruns/
+
+# Secrets
+.env
+*.key
+
+# Temporary
+tmp/
+temp/
+
+# Excel lock files
+~$*
