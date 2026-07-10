@@ -1,3 +1,6 @@
+# Personal MkDocs documentation (never commit)
+site/
+
 # Python
 __pycache__/
 *.py[cod]

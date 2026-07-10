@@ -1,0 +1,77 @@
+site_name: "Imbalanced TS Experiments"
+site_author: "João P. M. Silva"
+site_description: "Repository Guide for Imbalanced Time Series Replication Experiments"
+
+theme:
+  name: material
+  font:
+    text: Inter
+    code: Fira Code
+  palette:
+    # Palette toggle for automatic mode
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/brightness-auto
+        name: Switch to light mode
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: teal
+      accent: teal
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: teal
+      accent: teal
+      toggle:
+        icon: material/brightness-4
+        name: Switch to system preference
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - navigation.tracking
+    - search.suggest
+    - search.highlight
+    - search.share
+    - content.code.copy
+    - content.tabs.link
+
+markdown_extensions:
+  - admonition
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+
+nav:
+  - Home: index.md
+  - Guide:
+    - 'Overview & Big Picture': guide/01-big-picture.md
+    - 'Directory Structure': guide/02-directory-structure.md
+    - 'Experiment Lifecycle': guide/03-lifecycle.md
+    - 'Core Workflow': guide/04-workflow.md
+    - 'Automation Scripts': guide/05-automation.md
+    - 'File Reference': guide/06-file-reference.md
+    - 'Environment Management': guide/07-environments.md
+    - 'Git Workflow': guide/08-git-workflow.md
+    - 'Adding New Experiments': guide/09-new-experiments.md
+    - 'Rules & Conventions': guide/10-rules.md
+    - 'Troubleshooting': guide/11-troubleshooting.md
+  - References:
+    - 'Paper Registry': paper_registry.md
+    - 'Replication Methodology': methodology.md
