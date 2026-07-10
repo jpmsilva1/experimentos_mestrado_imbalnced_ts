@@ -1,0 +1,46 @@
+/* Claude Brand Color Palette Integration */
+
+:root > * {
+  /* Primary Accent: Rust-Orange */
+  --md-primary-fg-color:        #C15F3C;
+  --md-primary-fg-color--light: #E67D22;
+  --md-primary-fg-color--dark:  #a64a2b;
+  
+  /* Accent Color */
+  --md-accent-fg-color:         #C15F3C;
+  --md-accent-fg-color--transparent: rgba(193, 95, 60, 0.1);
+}
+
+/* Light Mode Customizations */
+[data-md-color-scheme="default"] {
+  /* Warm cream background */
+  --md-default-bg-color: #faf9f5;
+  --md-default-bg-color--light: #F4F3EE;
+  
+  /* Charcoal text */
+  --md-default-fg-color: #2c2c2c;
+  --md-default-fg-color--light: #505050;
+  
+  /* Code blocks and cards background */
+  --md-code-bg-color: #f0eee6;
+  --md-typeset-color: #2c2c2c;
+}
+
+/* Dark Mode Customizations */
+[data-md-color-scheme="slate"] {
+  /* Deep warm charcoal background */
+  --md-default-bg-color: #1a1815;
+  --md-default-bg-color--light: #201d18;
+  
+  /* Off-white text */
+  --md-default-fg-color: #e8e6e3;
+  --md-default-fg-color--light: #B1ADA1;
+  
+  /* Accents in dark mode (Muted orange) */
+  --md-primary-fg-color: #FFB38A;
+  --md-accent-fg-color: #FFB38A;
+  
+  /* Code blocks and cards background */
+  --md-code-bg-color: #25221d;
+  --md-typeset-color: #e8e6e3;
+}
