@@ -9,6 +9,21 @@
   /* Accent Color */
   --md-accent-fg-color:         #C15F3C;
   --md-accent-fg-color--transparent: rgba(193, 95, 60, 0.1);
+
+  /* Colorful Syntax Highlighting (Light Mode - GitHub-inspired) */
+  --md-code-hl-color:                  #2c2c2c;
+  --md-code-hl-number-color:           #b0292e;
+  --md-code-hl-special-color:          #c15f3c;
+  --md-code-hl-function-color:         #005cc5;
+  --md-code-hl-constant-color:         #005cc5;
+  --md-code-hl-keyword-color:          #d73a49;
+  --md-code-hl-string-color:           #032f62;
+  --md-code-hl-name-color:             #6f42c1;
+  --md-code-hl-operator-color:         #d73a49;
+  --md-code-hl-punctuation-color:      #2c2c2c;
+  --md-code-hl-comment-color:          #6a737d;
+  --md-code-hl-generic-color:          #2c2c2c;
+  --md-code-hl-variable-color:         #e36209;
 }
 
 /* Light Mode Customizations */
@@ -43,4 +58,19 @@
   /* Code blocks and cards background */
   --md-code-bg-color: #25221d;
   --md-typeset-color: #e8e6e3;
+
+  /* Colorful Syntax Highlighting (Dark Mode - Material/Palenight-inspired) */
+  --md-code-hl-color:                  #e8e6e3;
+  --md-code-hl-number-color:           #f78c6c;
+  --md-code-hl-special-color:          #ffb38a;
+  --md-code-hl-function-color:         #82aaff;
+  --md-code-hl-constant-color:         #82aaff;
+  --md-code-hl-keyword-color:          #c792ea;
+  --md-code-hl-string-color:           #c3e88d;
+  --md-code-hl-name-color:             #ffcb6b;
+  --md-code-hl-operator-color:         #89ddff;
+  --md-code-hl-punctuation-color:      #89ddff;
+  --md-code-hl-comment-color:          #546e7a;
+  --md-code-hl-generic-color:          #e8e6e3;
+  --md-code-hl-variable-color:         #f07178;
 }
