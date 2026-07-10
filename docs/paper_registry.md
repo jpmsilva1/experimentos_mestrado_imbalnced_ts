@@ -1,4 +1,3 @@
----
 # Paper Registry
 
 > Auto-generated from `Fichamento_Artigos.xlsx` on 2026-07-10.

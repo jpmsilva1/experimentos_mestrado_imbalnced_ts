@@ -53,7 +53,6 @@ def main():
 
     # Build markdown
     lines = [
-        "---",
         f"# Paper Registry",
         "",
         f"> Auto-generated from `Fichamento_Artigos.xlsx` on {date.today().isoformat()}.",
