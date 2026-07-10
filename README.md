@@ -1,11 +1,5 @@
 # 📊 Imbalanced Time Series — Experiment Replication Repository
 
-> Private repository for tracking and executing code replication experiments for the Master's thesis on **resampling strategies for imbalanced time series forecasting/regression**.
->
-> **Author**: João P. M. Silva  
-> **Program**: Mestrado — CIn/UFPE  
-> **Research Topic**: Resampling strategies for imbalanced domains in time series forecasting and regression
-
 ---
 
 ## 📈 Progress Summary
