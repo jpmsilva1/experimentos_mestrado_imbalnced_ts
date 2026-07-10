@@ -86,3 +86,7 @@ Experiments are numbered by priority. Work on them in order:
 - **P1 (006–011)**: Methodology papers — performance estimation, model selection, and anomaly detection from the Cerqueira/Torgo group
 - **P2 (012–015)**: Extended scope — frameworks, augmentation, hierarchical forecasting
 - **P3 (016–017)**: Reference implementations — meta-learning and pipeline recommendation
+
+---
+
+Guide Site: https://jpmsilva1.github.io/experimentos_mestrado_imbalnced_ts/
