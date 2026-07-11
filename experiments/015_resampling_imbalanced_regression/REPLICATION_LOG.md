@@ -12,14 +12,17 @@ This log tracks day-by-day progress of the replication effort.
 
 ### What was done
 - Scaffolded experiment folder from template
+- Cloned `JusciAvelino/imbalancedRegression` into `src/original/`
+- Set up Miniconda installation for Python/R isolated environment
 
 ### What worked
-- N/A
+- Repo successfully cloned
+- Implementation plan finalized focusing on Appendix B and C validation on a data subset
 
 ### Issues encountered
-- None
+- No local R environment initially, pivoted to Miniconda
 
 ### Next steps
-- Clone original code
-- Set up environment
-- Identify target results to replicate
+- Complete Miniconda installation
+- Create `exp015_imbalanced` conda environment with `python=3.10 r-base rpy2 jupyter`
+- Modify `none.ipynb` and `resampling.ipynb` to test a subset of data
