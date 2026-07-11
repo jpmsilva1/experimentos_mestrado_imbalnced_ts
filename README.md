@@ -6,10 +6,10 @@
 
 | Status | Count |
 |--------|-------|
-| 🟢 Done | 0 |
+| 🟢 Done | 1 |
 | 🟡 In Progress | 0 |
 | 🔵 Setup | 0 |
-| ⚪ Pending | 17 |
+| ⚪ Pending | 16 |
 | 🔴 Blocked | 0 |
 | **Total** | **17** |
 
@@ -35,7 +35,7 @@
 | 012 | A Framework for Imbalanced Time-Series Forecasting | 2023 | Silvestrin, Pantiskas, Brunton | ⚪ Pending | [GitLab](https://gitlab.com/lpsilvestrin/imbalanced-time-series-forecast) | [→](experiments/012_framework_imbalanced_ts/) |
 | 013 | Time Series Data Augmentation as an Imbalanced Learning Problem | 2024 | Cerqueira, Torgo | ⚪ Pending | [GitHub](https://github.com/vcerqueira/experiments-tser) | [→](experiments/013_ts_augmentation_imbalanced/) |
 | 014 | RHiOTS: Evaluating Hierarchical TS Forecasting Algorithms | 2024 | Roque, Soares, Torgo | ⚪ Pending | [GitHub](https://github.com/luisroque/robustness_hierarchical_time_series_forecasting_algorithms) | [→](experiments/014_rhiots_hierarchical/) |
-| 015 | Resampling Strategies for Imbalanced Regression: Survey & Empirical Analysis | 2024 | Avelino et al. | ⚪ Pending | [GitHub](https://github.com/JusciAvelino/imbalancedRegression) | [→](experiments/015_resampling_imbalanced_regression/) |
+| 015 | Resampling Strategies for Imbalanced Regression: Survey & Empirical Analysis | 2024 | Avelino et al. | 🟢 Done | [GitHub](https://github.com/JusciAvelino/imbalancedRegression) | [→](experiments/015_resampling_imbalanced_regression/) |
 | 016 | Instance-Based Meta-Learning for Selecting Forecasting Models | 2024 | Cerqueira, Torgo, Bontempi | ⚪ Pending | [GitHub](https://github.com/vcerqueira/metaforecast) | [→](experiments/016_metaforecast_instance_based/) |
 | 017 | Imbalanced Regression Pipeline Recommendation (PhD Thesis) | 2024 | Avelino, Juscimara | ⚪ Pending | — | [→](experiments/017_imbalanced_regression_pipeline/) |
 

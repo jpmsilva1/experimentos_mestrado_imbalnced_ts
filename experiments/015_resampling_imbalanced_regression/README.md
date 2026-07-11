@@ -13,7 +13,7 @@
 | **ARA Reference** | TBD |
 | **Excel Row** | 015 |
 
-## Replication Status: 🟡 In Progress
+## Replication Status: 🟢 Done
 
 ---
 
