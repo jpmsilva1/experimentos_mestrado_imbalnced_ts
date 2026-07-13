@@ -13,7 +13,7 @@
 | **ARA Reference** | [Link to ARA in Obsidian Vault, if exists] |
 | **Excel Row** | [Row number in Fichamento_Artigos.xlsx] |
 
-## Replication Status: ⚪ Pending
+## Replication Status: 🔵 Setup
 
 <!-- Update this to: 🔵 Setup | 🟡 In Progress | 🟢 Done | 🔴 Blocked -->
 
