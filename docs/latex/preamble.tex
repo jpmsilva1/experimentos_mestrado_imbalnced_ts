@@ -1,0 +1,85 @@
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+
+\usepackage{xcolor}
+% Claude Color Palette (Light Mode)
+\definecolor{ClaudeOrange}{HTML}{C15F3C}
+\definecolor{ClaudeCream}{HTML}{FAF9F5}
+\definecolor{ClaudeDark}{HTML}{2C2C2C}
+\definecolor{ClaudeCodeBg}{HTML}{F0EEE6}
+\definecolor{ClaudeMuted}{HTML}{505050}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=ClaudeOrange,
+    filecolor=ClaudeOrange,      
+    urlcolor=ClaudeOrange,
+    pdftitle={Documentation},
+}
+
+\usepackage{minted}
+\usepackage{listings}
+\setminted{
+    style=tango,
+    bgcolor=ClaudeCodeBg,
+    fontsize=\small,
+    breaklines=true,
+    frame=single,
+    rulecolor=ClaudeCodeBg,
+    framesep=2mm
+}
+
+\usepackage{tcolorbox}
+\tcbuselibrary{skins, breakable}
+\newtcolorbox{noteblock}{
+    colback=ClaudeCream,
+    colframe=ClaudeDark!20,
+    coltitle=ClaudeDark,
+    title=\textbf{Note},
+    fonttitle=\bfseries,
+    breakable,
+    boxrule=0.5mm,
+    leftrule=2mm
+}
+\newtcolorbox{warningblock}{
+    colback=ClaudeCream,
+    colframe=ClaudeOrange,
+    coltitle=ClaudeOrange,
+    title=\textbf{Warning},
+    fonttitle=\bfseries,
+    breakable,
+    boxrule=0.5mm,
+    leftrule=2mm
+}
+
+\usepackage{titlesec}
+\titleformat{\section}
+  {\normalfont\Large\bfseries\color{ClaudeDark}}
+  {\thesection}{1em}{}
+\titleformat{\subsection}
+  {\normalfont\large\bfseries\color{ClaudeDark}}
+  {\thesubsection}{1em}{}
+
+\usepackage{fontspec}
+% Using system fonts available natively on macOS
+\setmainfont{Helvetica Neue}
+\setmonofont[Scale=0.9]{Menlo}
+
+% Fix for pandoc's tightlist command
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+% Graphics path
+\usepackage{graphicx}
+\graphicspath{{../../docs/}}
+
+% Tables
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{calc}
+\usepackage{array}
+\newcounter{none}
+
+% Pandoc inline code
+\newcommand{\passthrough}[1]{#1}
