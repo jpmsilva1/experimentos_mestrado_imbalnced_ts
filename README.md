@@ -7,13 +7,13 @@
 | Status | Count |
 |--------|-------|
 | 🟢 Done | 2 |
-| 🟡 In Progress | 0 |
+| 🟡 In Progress | 1 |
 | 🔵 Setup | 0 |
-| ⚪ Pending | 15 |
+| ⚪ Pending | 14 |
 | 🔴 Blocked | 0 |
 | **Total** | **17** |
 
-**Last updated**: 2026-07-13
+**Last updated**: 2026-07-16
 
 ---
 
@@ -33,7 +33,7 @@
 | 010 | Model Selection for TS Forecasting: Empirical Analysis | 2023 | Cerqueira, Torgo, Soares | ⚪ Pending | [GitHub](https://github.com/vcerqueira/experiments-cv_selection) | [→](experiments/010_model_selection_ts/) |
 | 011 | Early Anomaly Detection: Hierarchical Approach for Critical Health Episodes | 2023 | Cerqueira, Torgo, Soares | ⚪ Pending | [GitHub](https://github.com/vcerqueira/experiments-layered_learning) | [→](experiments/011_early_anomaly_hierarchical/) |
 | 012 | A Framework for Imbalanced Time-Series Forecasting | 2023 | Silvestrin, Pantiskas, Brunton | ⚪ Pending | [GitLab](https://gitlab.com/lpsilvestrin/imbalanced-time-series-forecast) | [→](experiments/012_framework_imbalanced_ts/) |
-| 013 | Time Series Data Augmentation as an Imbalanced Learning Problem | 2024 | Cerqueira, Torgo | ⚪ Pending | [GitHub](https://github.com/vcerqueira/experiments-tser) | [→](experiments/013_ts_augmentation_imbalanced/) |
+| 013 | Time Series Data Augmentation as an Imbalanced Learning Problem | 2024 | Cerqueira, Torgo | 🟡 In Progress | [GitHub](https://github.com/vcerqueira/experiments-tser) | [→](experiments/013_ts_augmentation_imbalanced/) |
 | 014 | RHiOTS: Evaluating Hierarchical TS Forecasting Algorithms | 2024 | Roque, Soares, Torgo | ⚪ Pending | [GitHub](https://github.com/luisroque/robustness_hierarchical_time_series_forecasting_algorithms) | [→](experiments/014_rhiots_hierarchical/) |
 | 015 | Resampling Strategies for Imbalanced Regression: Survey & Empirical Analysis | 2024 | Avelino et al. | 🟢 Done | [GitHub](https://github.com/JusciAvelino/imbalancedRegression) | [→](experiments/015_resampling_imbalanced_regression/) |
 | 016 | Instance-Based Meta-Learning for Selecting Forecasting Models | 2024 | Cerqueira, Torgo, Bontempi | ⚪ Pending | [GitHub](https://github.com/vcerqueira/metaforecast) | [→](experiments/016_metaforecast_instance_based/) |
