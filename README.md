@@ -7,9 +7,9 @@
 | Status | Count |
 |--------|-------|
 | 🟢 Done | 3 |
-| 🟡 In Progress | 1 |
+| 🟡 In Progress | 2 |
 | 🔵 Setup | 0 |
-| ⚪ Pending | 13 |
+| ⚪ Pending | 12 |
 | 🔴 Blocked | 0 |
 | **Total** | **17** |
 
@@ -23,7 +23,7 @@
 |---|-------|------|---------|--------|---------------|--------|
 | 001 | Utility-based Regression | 2007 | Ribeiro, Torgo | ⚪ Pending | [GitHub](https://github.com/rpribeiro/uba) | [→](experiments/001_uba_utility_regression/) |
 | 002 | Resampling Strategies for Imbalanced Time Series Forecasting | 2017 | Moniz, Branco, Torgo | 🟢 Done | [GitHub](https://github.com/nunompmoniz/TSResampStrat_JDSA2017) | [→](experiments/002_ts_resampling_strategies/) |
-| 003 | Biased Resampling Strategies for Imbalanced Spatio-Temporal Forecasting | 2019 | Oliveira, Torgo, Santos Costa | ⚪ Pending | [GitHub](https://github.com/mrfoliveira/STResampling-DSAA2019) | [→](experiments/003_biased_resampling_spatiotemporal/) |
+| 003 | Biased Resampling Strategies for Imbalanced Spatio-Temporal Forecasting | 2019 | Oliveira, Torgo, Santos Costa | 🟡 In Progress | [GitHub](https://github.com/mrfoliveira/STResampling-DSAA2019) | [→](experiments/003_biased_resampling_spatiotemporal/) |
 | 004 | Pre-processing Approaches for Imbalanced Distributions in Regression | 2019 | Branco, Torgo, Ribeiro | ⚪ Pending | [GitHub](https://github.com/paobranco/Pre-processingApproachesImbalanceRegression) | [→](experiments/004_preprocessing_imbalanced_regression/) |
 | 005 | Imbalanced Regression and Extreme Value Prediction (IRon/SERA) | 2020 | Moniz, Ribeiro, Cerqueira, Chawla | ⚪ Pending | [GitHub](https://github.com/nunompmoniz/IRon/tree/master) | [→](experiments/005_iron_sera_extreme_value/) |
 | 006 | Evaluating Time Series Forecasting Models: Performance Estimation | 2020 | Cerqueira, Torgo, Mozetič | ⚪ Pending | [GitHub](https://github.com/vcerqueira/experiments-performance_estimation) | [→](experiments/006_performance_estimation_ts/) |
