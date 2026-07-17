@@ -2,19 +2,37 @@
 
 \input{preamble.tex}
 
-\title{\Huge \textbf{Project Documentation} \\ \Large Experimentos Mestrado Imbalanced TS}
-\author{João P. M. Silva}
-\date{\today}
-
 \begin{document}
 
-\maketitle
+% ── Title Page ────────────────────────────────────────────────────────────────
+\begin{titlepage}
+    \centering
+    \vspace*{3cm}
+    {\color{ClaudeOrange}\rule{\linewidth}{1.5pt}}\par
+    \vspace{1.5cm}
+    {\Huge\bfseries\color{ClaudeDark} Repository Guide\par}
+    \vspace{0.5cm}
+    {\large\color{ClaudeMuted} Experimentos Mestrado — Imbalanced Time Series\par}
+    \vspace{1.5cm}
+    {\color{ClaudeOrange}\rule{\linewidth}{0.5pt}}\par
+    \vspace{2cm}
+    {\large Jo\~{a}o P. M. Silva\par}
+    \vspace{0.3cm}
+    {\color{ClaudeMuted} CIn -- UFPE\par}
+    \vspace{3cm}
+    \vfill
+    {\color{ClaudeMuted}\today\par}
+    \vspace{0.5cm}
+    {\color{ClaudeOrange}\rule{\linewidth}{0.5pt}}\par
+\end{titlepage}
+
 \newpage
 
+% ── Table of Contents ────────────────────────────────────────────────────────
 \tableofcontents
 \newpage
 
-% Chapters will be injected here
+% ── Chapters ─────────────────────────────────────────────────────────────────
 \include{chapters/01-big-picture}
 \include{chapters/02-directory-structure}
 \include{chapters/03-lifecycle}
@@ -26,6 +44,9 @@
 \include{chapters/09-new-experiments}
 \include{chapters/10-rules}
 \include{chapters/11-troubleshooting}
+
+% ── Appendix ─────────────────────────────────────────────────────────────────
+\appendix
 \include{chapters/methodology}
 
 \end{document}

@@ -1,85 +1,182 @@
-\usepackage{geometry}
-\geometry{a4paper, margin=2.5cm}
+% ==============================================================================
+% PREAMBLE — Experimentos Mestrado: Repository Guide
+% Article-style, Claude Light Palette, best-practice LaTeX
+% ==============================================================================
 
+% ── Page Layout ───────────────────────────────────────────────────────────────
+\usepackage{geometry}
+\geometry{
+    a4paper,
+    top=2.5cm, bottom=2.5cm,
+    left=2.5cm, right=2.5cm,
+    headheight=14pt
+}
+
+% ── Micro-typography (eliminates 90% of Overfull \hbox warnings) ──────────────
+\usepackage{microtype}
+
+% ── Colors ────────────────────────────────────────────────────────────────────
 \usepackage{xcolor}
-% Claude Color Palette (Light Mode)
 \definecolor{ClaudeOrange}{HTML}{C15F3C}
 \definecolor{ClaudeCream}{HTML}{FAF9F5}
 \definecolor{ClaudeDark}{HTML}{2C2C2C}
 \definecolor{ClaudeCodeBg}{HTML}{F0EEE6}
 \definecolor{ClaudeMuted}{HTML}{505050}
+\definecolor{ClaudeRule}{HTML}{D0CEC8}
 
+% ── Fonts ─────────────────────────────────────────────────────────────────────
+\usepackage{fontspec}
+\setmainfont{Helvetica Neue}[
+    BoldFont = Helvetica Neue Bold,
+    ItalicFont = Helvetica Neue Italic
+]
+\setmonofont{Menlo}[Scale=0.85]
+
+% ── Line Spacing ──────────────────────────────────────────────────────────────
+\usepackage{setspace}
+\setstretch{1.15}
+
+% ── Hyperlinks ────────────────────────────────────────────────────────────────
 \usepackage{hyperref}
 \hypersetup{
-    colorlinks=true,
-    linkcolor=ClaudeOrange,
-    filecolor=ClaudeOrange,      
-    urlcolor=ClaudeOrange,
-    pdftitle={Documentation},
+    colorlinks  = true,
+    linkcolor   = ClaudeOrange,
+    urlcolor    = ClaudeOrange,
+    citecolor   = ClaudeOrange,
+    pdftitle    = {Repository Guide — Experimentos Mestrado},
+    pdfauthor   = {Jo\~{a}o P. M. Silva},
+    pdfsubject  = {Imbalanced Time Series Research Repository},
 }
 
+% Breakable URLs in the bibliography/body
+\usepackage{xurl}
+
+% ── Code Blocks (minted — Pygments-backed, full syntax highlighting) ──────────
 \usepackage{minted}
-\usepackage{listings}
 \setminted{
-    style=tango,
-    bgcolor=ClaudeCodeBg,
-    fontsize=\small,
-    breaklines=true,
-    frame=single,
-    rulecolor=ClaudeCodeBg,
-    framesep=2mm
+    style        = tango,
+    bgcolor      = ClaudeCodeBg,
+    fontsize     = \small,
+    breaklines   = true,
+    breakanywhere= true,
+    frame        = leftline,
+    framerule    = 2pt,
+    rulecolor    = ClaudeOrange,
+    framesep     = 3mm,
+    linenos      = false,
+    xleftmargin  = 10pt,
 }
 
+% Inline code style: \code{...} — breaks at boundaries, no overflow
+\usepackage{listings}
+\lstset{
+    basicstyle   = \small\ttfamily,
+    breaklines   = true,
+    breakatwhitespace = false,
+}
+% Override passthrough: make inline code use a breakable \texttt
+\newcommand{\passthrough}[1]{\mbox{\small\ttfamily #1}}
+
+% ── Admonition Boxes (Note / Warning / Tip) ───────────────────────────────────
 \usepackage{tcolorbox}
 \tcbuselibrary{skins, breakable}
+
 \newtcolorbox{noteblock}{
-    colback=ClaudeCream,
-    colframe=ClaudeDark!20,
-    coltitle=ClaudeDark,
-    title=\textbf{Note},
-    fonttitle=\bfseries,
-    breakable,
-    boxrule=0.5mm,
-    leftrule=2mm
+    enhanced, breakable,
+    colback   = ClaudeCream,
+    colframe  = ClaudeRule,
+    leftrule  = 3pt, toprule=0pt, bottomrule=0pt, rightrule=0pt,
+    left      = 8pt, top=4pt, bottom=4pt,
+    sharp corners,
+    fontupper = \small,
+    before upper = {\textbf{\color{ClaudeDark}Note\quad}},
 }
 \newtcolorbox{warningblock}{
-    colback=ClaudeCream,
-    colframe=ClaudeOrange,
-    coltitle=ClaudeOrange,
-    title=\textbf{Warning},
-    fonttitle=\bfseries,
-    breakable,
-    boxrule=0.5mm,
-    leftrule=2mm
+    enhanced, breakable,
+    colback   = ClaudeCream,
+    colframe  = ClaudeOrange,
+    leftrule  = 3pt, toprule=0pt, bottomrule=0pt, rightrule=0pt,
+    left      = 8pt, top=4pt, bottom=4pt,
+    sharp corners,
+    fontupper = \small,
+    before upper = {\textbf{\color{ClaudeOrange}Warning\quad}},
+}
+\newtcolorbox{tipblock}{
+    enhanced, breakable,
+    colback   = ClaudeCream,
+    colframe  = ClaudeRule,
+    leftrule  = 3pt, toprule=0pt, bottomrule=0pt, rightrule=0pt,
+    left      = 8pt, top=4pt, bottom=4pt,
+    sharp corners,
+    fontupper = \small,
+    before upper = {\textbf{\color{ClaudeMuted}Tip\quad}},
 }
 
+% ── Section Formatting ────────────────────────────────────────────────────────
 \usepackage{titlesec}
+
+% Section: large, orange number, dark title (= was "chapter" / h1 from md)
 \titleformat{\section}
-  {\normalfont\Large\bfseries\color{ClaudeDark}}
-  {\thesection}{1em}{}
+  {\normalfont\LARGE\bfseries\color{ClaudeDark}}
+  {\textcolor{ClaudeOrange}{\thesection}}{0.8em}{}
+  [\vspace{2pt}\textcolor{ClaudeRule}{\titlerule[0.5pt]}]
+
 \titleformat{\subsection}
   {\normalfont\large\bfseries\color{ClaudeDark}}
-  {\thesubsection}{1em}{}
+  {\textcolor{ClaudeOrange}{\thesubsection}}{0.8em}{}
 
-\usepackage{fontspec}
-% Using system fonts available natively on macOS
-\setmainfont{Helvetica Neue}
-\setmonofont[Scale=0.9]{Menlo}
+\titleformat{\subsubsection}
+  {\normalfont\normalsize\bfseries\color{ClaudeMuted}}
+  {\thesubsubsection}{0.8em}{}
 
-% Fix for pandoc's tightlist command
-\providecommand{\tightlist}{%
-  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\titleformat{\paragraph}[runin]
+  {\normalfont\normalsize\bfseries\color{ClaudeDark}}
+  {}{0em}{}[---\enspace]
 
-% Graphics path
-\usepackage{graphicx}
-\graphicspath{{../../docs/}}
+\titlespacing*{\section}{0pt}{2ex plus 0.5ex}{1ex plus 0.2ex}
+\titlespacing*{\subsection}{0pt}{1.5ex plus 0.3ex}{0.5ex}
+\titlespacing*{\subsubsection}{0pt}{1ex}{0.3ex}
 
-% Tables
+% ── Headers and Footers ───────────────────────────────────────────────────────
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\textcolor{ClaudeMuted}{Repository Guide}}
+\fancyhead[R]{\small\textcolor{ClaudeMuted}{\leftmark}}
+\fancyfoot[C]{\small\textcolor{ClaudeMuted}{\thepage}}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{ClaudeRule}\leaders\hrule height \headrulewidth\hfill}}
+\renewcommand{\footrulewidth}{0pt}
+\setlength{\headheight}{15pt}
+
+% ── Tables ────────────────────────────────────────────────────────────────────
 \usepackage{longtable}
 \usepackage{booktabs}
 \usepackage{calc}
 \usepackage{array}
 \newcounter{none}
+% Stretch table rows slightly for readability
+\renewcommand{\arraystretch}{1.3}
 
-% Pandoc inline code
-\newcommand{\passthrough}[1]{#1}
+% ── Paragraph Spacing ─────────────────────────────────────────────────────────
+\setlength{\parskip}{0.5em}
+\setlength{\parindent}{0pt}
+
+% ── Lists ─────────────────────────────────────────────────────────────────────
+\usepackage{enumitem}
+\setlist{noitemsep, topsep=4pt, parsep=2pt}
+
+% Pandoc fix
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+% ── Graphics ──────────────────────────────────────────────────────────────────
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\makeatother
+
+% Allow TeX to be more lenient with line breaking globally
+% (prevents most remaining Overfull \hbox in tables and inline code)
+\setlength{\emergencystretch}{3em}
+\sloppy
