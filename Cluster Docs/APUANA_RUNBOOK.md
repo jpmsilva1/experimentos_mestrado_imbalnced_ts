@@ -594,3 +594,9 @@ Common causes:
 
 - **Root Cause:** Default CRAN mirror unreachable from cluster nodes.
 - **Fix:** Set explicitly: `options(repos = c(CRAN = "https://cloud.r-project.org/"))`
+
+### R-6: Vector Memory Limit Reached
+
+- **Symptom:** Script crashes on large datasets (>150k rows) with: `Error: vector memory limit of 16.0 Gb reached`.
+- **Root Cause:** Sifting/applying operations row-by-row and storing them in a list creates hundreds of thousands of individual data frames in memory before they can be bound together.
+- **Fix:** Implement **row chunking**. Process data in chunks of 5,000 rows, bind the chunk, and free it. This bounds memory to < 500MB instead of > 16GB.

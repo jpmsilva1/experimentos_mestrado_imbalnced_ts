@@ -6,6 +6,56 @@ This log tracks day-by-day progress of the replication effort.
 
 <!-- Add new entries at the TOP of this file (most recent first) -->
 
+## 2026-07-24 Cluster Migration & High-Performance Compute Setup
+
+**Time spent**: 2h 45m
+
+### Executive Summary
+The replication effort transitioned from local laptop execution (which was projected to require ~72 hours of max-CPU utilization and faced OOM risks) to the `apuana` university compute cluster. This transition surfaced multiple deep-seated environment, compilation, and dependency issues. By engineering a robust SLURM orchestrator, downgrading modern C compilers to support legacy R dependencies, and fixing cross-platform binary contamination, the Spatio-Temporal resampling phase successfully commenced parallel execution across 24 threads.
+
+### 1. Environment & Architecture Shift
+- **Bottleneck:** Local compute was entirely insufficient for the 600+ parameter grid evaluations on the 151,000-row Beijing datasets.
+- **Solution (Cluster Migration):** Migrated the codebase to the `apuana` cluster. We provisioned a local Micromamba environment within the user's home directory.
+- **Solution (NFS Locking):** Encountered Conda environment corruption due to Network File System (NFS) locks on the cluster. Fixed by exporting `MAMBA_CACHE_DIR=/tmp/$USER/mamba_cache` to force Conda to use local node storage for caching.
+- **Solution (Resource Allocation):** Initially attempted to request 64 CPUs, but hit the `QOSMaxCpuPerUserLimit`. Scaled the SLURM request down to 24 CPUs, which still provides a massive speedup over sequential local execution.
+
+### 2. The Silent Killer: Data Sync Failure
+- **Bottleneck:** The SLURM job appeared to execute instantly without errors, but no models were trained and no new logs were generated.
+- **Root Cause:** The `patch_external.R` script relies on `inds_df.Rdata` located in `src/results/`. However, the `results/` directory was blocked by the repository's `.gitignore`. The R script's `try()` blocks caught the missing data errors silently, causing the script to exit successfully without actually doing any work.
+- **Solution:** Manually zipped the local `results/` folder, transferred it via `scp`, and unzipped it directly into the cluster workspace, bypassing git entirely for the data binaries.
+
+### 3. Dependency Versioning Mismatch
+- **Bottleneck:** The custom `STResamplingDSAA` package failed to install on the cluster, citing `package 'uba' >= 0.7.8 is required`.
+- **Root Cause:** The stable version of `uba` provided in the author's GitHub fork (and previously installed locally) is `0.7.7`. 
+- **Solution:** Manually patched the `DESCRIPTION` file of the `STResamplingDSAA` source code, lowering the `uba` dependency requirement to `>= 0.7.7`.
+
+### 4. SLURM Fail-Fast Engineering
+- **Bottleneck:** Bash scripts for SLURM jobs often swallow R installation errors, moving on to the next command even if a crucial dependency failed to compile.
+- **Solution:** Architected a robust SLURM script by injecting `set -e` to mandate fail-fast execution. Additionally, injected explicit validation gates (e.g., `Rscript -e "library(STResamplingDSAA)"`) after every installation step to force the job to crash visibly if a package failed to load.
+
+### 5. Cross-Platform Compilation Contamination
+- **Bottleneck:** The `uba` package failed to compile on the cluster with the error: `file not recognized: File format not recognized`.
+- **Root Cause:** The local repository was synced via git, which included compiled C object files (`*.o`, `*.so`) in `scratch/uba/src`. These files were compiled on an Apple Silicon Mac (ARM64 architecture). When the Linux cluster (x86_64 architecture) attempted to link them during `R CMD INSTALL`, the linker threw a fatal error due to the architecture mismatch.
+- **Solution:** Added a pre-installation step in the SLURM script to aggressively sanitize the source tree: `find scratch/uba/src -name "*.o" -delete` and `find scratch/uba/src -name "*.so" -delete`. This forced the Linux cluster to build fresh x86_64 binaries from the raw C source code.
+
+### 6. Modern C vs Legacy R Dependencies (GCC 15 / C23)
+- **Bottleneck:** After wiping the old binaries, the `uba` package threw fatal C compilation errors:
+  1. `error: assignment to 'phi_out (*)(void)' from incompatible pointer type`
+  2. `error: too many arguments to function; expected 0, have 2`
+- **Root Cause:** The cluster runs GCC 15.2.0, which enforces the modern C23 standard (`-std=gnu23`) by default.
+  - In legacy C (C89/C99), an empty parameter list `()` meant "an unspecified number of arguments." In C23, it strictly means "zero arguments" (equivalent to `(void)`).
+  - Furthermore, GCC 14+ elevated "incompatible pointer types" from a compilation warning to a fatal error.
+  - The 2017 `uba` codebase extensively utilized legacy C syntax, causing it to shatter against the modern C23 compiler. (This succeeded locally because Apple Clang relies on older standards by default).
+- **Solution:** Created a custom `Makevars` file within `scratch/uba/src/` with the following configuration:
+  `PKG_CFLAGS = -std=gnu17 -Wno-incompatible-pointer-types -Wno-implicit-function-declaration`
+  This explicitly forces the cluster's C compiler to downgrade to the C17 standard and treat pointer incompatibilities as warnings, successfully compiling the legacy code.
+
+### Execution Status
+- The environment is fully operational and the C binaries are natively compiled for the cluster.
+- `patch_external.R` is actively running.
+- **Progress Tracking:** To monitor the exact progress out of the 600 total parameter combinations without interrupting the job, the following live-calc script can be executed on the cluster:
+  `echo "Scale=2; Progress = $(grep -c 'Patching' logs/paper003-st-resampling_*.out) / 600 * 100; print Progress; print \"% Complete\n\"" | bc`
+
 ## 2026-07-18 Execution Abort & Cluster Recommendation
 
 **Time spent**: 0h 15m

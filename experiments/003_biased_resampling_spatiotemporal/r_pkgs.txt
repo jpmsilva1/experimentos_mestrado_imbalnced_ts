@@ -2,5 +2,5 @@ operators
 github:cran/DMwR
 github:cran/DMwR2
 github:cran/UBL
-github:paolocavagnolo/uba
+github:rpribeiro/uba
 github:mrfoliveira/STResampling-DSAA2019
