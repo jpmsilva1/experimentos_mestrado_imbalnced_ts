@@ -435,9 +435,15 @@ scancel -u jpms5      # Cancel ALL your jobs
 
 ### Option A — scp (direct copy)
 
+**Copying a whole folder:**
 ```bash
 # From your local machine:
 scp -r jpms5@slurm-client1.cin.ufpe.br:~/path/to/results/ ./local_results/
+```
+
+**Copying a specific merged results file (example):**
+```bash
+scp jpms5@slurm-client1.cin.ufpe.br:~/Projeto_AM_Leandro_TabICL/cluster_apuana/final_run_results_v2.csv cluster_apuana/
 ```
 
 ### Option B — git push (preferred for reproducibility)
