@@ -62,6 +62,11 @@ if micromamba env list | grep -q "^${PROJECT_NAME} "; then
 else
     echo "Creating conda env '$PROJECT_NAME' with R 4.3 + compilers..."
 
+    # PREVENT NFS LOCKING: Force mamba to cache in local node storage (/tmp)
+    # instead of the networked home directory, avoiding database lock crashes.
+    export MAMBA_CACHE_DIR="/tmp/$USER/mamba_cache"
+    mkdir -p "$MAMBA_CACHE_DIR"
+
     # Base packages always installed: r-base + compilers (mandatory for C packages)
     BASE_PKGS="r-base=4.3 compilers"
 

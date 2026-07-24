@@ -431,7 +431,11 @@ scancel -u jpms5      # Cancel ALL your jobs
 
 ---
 
-## 12. Retrieving Results
+## 12. Retrieving Results / Data Sync
+
+### The Git Data Sync Trap (Silent Failure)
+> **WARNING:** If you sync your project to the cluster using `git clone`, beware of `.gitignore`. Usually, `results/` or `data/` folders are gitignored. If your scripts expect pre-processed `.Rdata` or `.csv` files in those folders, they will silently fail or exit on the cluster if the folders are missing.
+> **Fix:** Always transfer binary/data folders manually using `scp` or `rsync` outside of git.
 
 ### Option A — scp (direct copy)
 
@@ -514,6 +518,7 @@ Common reasons in the `%R` column:
 | Reason | Meaning | Fix |
 |---|---|---|
 | `Resources` | Waiting for enough free CPUs/GPUs | Wait, or reduce `--cpus-per-task` |
+| `QOSMaxCpuPerUserLimit` | Requested more CPUs than your quota allows | Reduce `--cpus-per-task` (e.g., from 64 to 24) |
 | `QOSMaxJobsPerUser` | Hit your personal job limit | Cancel old jobs with `scancel` |
 | `QOSMaxGRESPerUser` | Hit GPU quota | Reduce `--gpus` or cancel other GPU jobs |
 | `Priority` | Other jobs have higher priority | Wait |
@@ -600,3 +605,15 @@ Common causes:
 - **Symptom:** Script crashes on large datasets (>150k rows) with: `Error: vector memory limit of 16.0 Gb reached`.
 - **Root Cause:** Sifting/applying operations row-by-row and storing them in a list creates hundreds of thousands of individual data frames in memory before they can be bound together.
 - **Fix:** Implement **row chunking**. Process data in chunks of 5,000 rows, bind the chunk, and free it. This bounds memory to < 500MB instead of > 16GB.
+
+### R-7: Cross-Platform Compilation Contamination
+
+- **Symptom:** `file format not recognized` when installing R packages from source on the cluster.
+- **Root Cause:** You synced your project from an Apple Silicon (ARM64) machine, uploading pre-compiled `*.o`/`*.so` files. The Linux cluster (x86_64) chokes on them.
+- **Fix:** Run `find src -name "*.o" -delete` and `find src -name "*.so" -delete` in the package directory before running `R CMD INSTALL`.
+
+### R-8: Modern C vs Legacy R Dependencies (GCC 15 / C23)
+
+- **Symptom:** Legacy packages (`uba`) fail to compile with `incompatible pointer type` or `too many arguments to function`.
+- **Root Cause:** Modern clusters use GCC 15 (C23 standard), which drops support for legacy C89 empty parameter lists `()`.
+- **Fix:** Create a `src/Makevars` file in the package with: `PKG_CFLAGS = -std=gnu17 -Wno-incompatible-pointer-types -Wno-implicit-function-declaration`.
