@@ -1,0 +1,7 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYGZsh{}\PYGZsh{} Objective
+
+**Target results to replicate**:
+\PYGZhy{} [ ] Table 3: RMSE comparison across resampling strategies on 5 datasets
+\PYGZhy{} [ ] Figure 2: Performance vs. imbalance ratio curve
+\end{MintedVerbatim}

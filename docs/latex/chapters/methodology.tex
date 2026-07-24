@@ -1,0 +1,136 @@
+\section{Replication Methodology}\label{replication-methodology}
+
+This document describes the systematic methodology used for replicating
+experiments from the literature.
+
+\subsection{Definition of
+``Replication''}\label{definition-of-replication}
+
+In this repository, \textbf{replication} means:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Obtaining} the original source code from the paper's public
+  repository (\textbf{done manually by the user} --- copied into
+  \texttt{src/original/})
+\item
+  \textbf{Setting up} the environment (dependencies, data,
+  configuration)
+\item
+  \textbf{Running} the original code with the original parameters
+\item
+  \textbf{Comparing} our output with the results reported in the paper
+\item
+  \textbf{Documenting} any deviations, issues, or insights
+\end{enumerate}
+
+We are \textbf{NOT} reimplementing from scratch. We are verifying that
+the original code produces the claimed results.
+
+\begin{quote}
+\small \textbf{Note}: All code, dataset, and file insertion is a \textbf{manual
+process} performed by the researcher. The repository scaffolding
+provides the structure and conventions; the user populates each
+experiment folder at their own pace.
+\end{quote}
+
+\subsection{Replication Criteria}\label{replication-criteria}
+
+An experiment is considered \textbf{successfully replicated} when:
+
+\begin{itemize}
+\tightlist
+\item
+  The original code runs without errors in our environment
+\item
+  Key metrics (RMSE, MAE, F1, SERA, etc.) match the paper within a
+  \textbf{reasonable tolerance} (±5\% for stochastic methods, exact
+  match for deterministic)
+\item
+  Any deviations are explained (different random seeds, library
+  versions, data splits)
+\end{itemize}
+
+\subsection{Standard Workflow per
+Experiment}\label{standard-workflow-per-experiment}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Read the paper} --- understand the claims, methodology, and
+  target results
+\item
+  \textbf{Read the ARA} (if exists) --- review compiled knowledge in the
+  Obsidian Vault
+\item
+  \textbf{Insert the code} --- manually copy/clone the original code
+  into \texttt{src/original/} (user-owned step)
+\item
+  \textbf{Insert datasets} --- manually place required data files
+  locally (user-owned step)
+\item
+  \textbf{Set up environment} --- create isolated
+  \texttt{venv} or \texttt{conda} env
+\item
+  \textbf{Run original code} --- with original parameters, document the
+  process
+\item
+  \textbf{Record results} --- save outputs to
+  \texttt{results/}, fill comparison table
+\item
+  \textbf{Document} --- complete README and REPLICATION\_LOG
+\item
+  \textbf{Update dashboard} --- run
+  \texttt{scripts/update\textbackslash\{\}\_readme.py}
+\end{enumerate}
+
+\subsection{Evaluation Metrics
+Reference}\label{evaluation-metrics-reference}
+
+{\def\LTcaptype{none} % do not increment counter
+\small
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2759}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2759}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.4483}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Metric
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Domain
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Description
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+RMSE & Regression & Root Mean Squared Error \\
+MAE & Regression & Mean Absolute Error \\
+SERA & Imbalanced Regression & Squared Error-Relevance Area (from
+IRon) \\
+F1 & Classification & Harmonic mean of precision and recall \\
+AUC-ROC & Classification & Area under ROC curve \\
+TSS & Classification & True Skill Statistic (used in solar flare
+prediction) \\
+\end{longtable}
+}
+
+\subsection{Tools \& Infrastructure}\label{tools-infrastructure}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Python}: Primary language (most experiments)
+\item
+  \textbf{R}: Secondary language (UBA, IRon, some Torgo group papers)
+\item
+  \textbf{Git}: Version control for all code and results
+\item
+  \textbf{Obsidian Vault}: Cross-referenced knowledge base (ARAs)
+\item
+  \textbf{W\&B / MLflow}: Optional experiment tracking for complex runs
+\end{itemize}

@@ -1,0 +1,11 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+[DIR] Creating experiment: 018\PYGZus{}smogn\PYGZus{}regression
+[OK] Experiment scaffolded at: /Users/joaopms/Documents/Projeto\PYGZus{}Mestrado/experiments/018\PYGZus{}smogn\PYGZus{}regression
+
+Next steps:
+  1. Edit README.md — fill in metadata fields
+  2. Clone original code into src/original/
+  3. Set up environment and update requirements.txt
+  4. Run: python3 scripts/update\PYGZus{}readme.py
+  5. Commit: git add experiments/018\PYGZus{}smogn\PYGZus{}regression/ ...
+\end{MintedVerbatim}

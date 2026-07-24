@@ -1,0 +1,41 @@
+\subsection{9. Adding a Brand New Experiment (Beyond the
+17)}\label{adding-a-brand-new-experiment-beyond-the-17}
+
+If you find a new paper you want to replicate that is not in the current
+index:
+
+\paragraph{Step 1 --- Run the scaffolding
+script}\label{step-1-run-the-scaffolding-script}
+
+\begin{minted}{bash}
+./scripts/new_experiment.sh 018 "new_paper_name" "Full Paper Title" "https://github.com/author/repo"
+\end{minted}
+
+\paragraph{Step 2 --- Add a row to the Experiment Index in
+README.md}\label{step-2-add-a-row-to-the-experiment-index-in-readme.md}
+
+Open \texttt{README.md} and add a new row to the
+\texttt{\textbackslash\{\}\#\textbackslash\{\}\# [INDEX] Experiment Index} table:
+
+\begin{minted}{text}
+| 018 | Full Paper Title | 2025 | Author Names | [WAITING] Pending | [GitHub](https://github.com/...) | [->](experiments/018_new_paper_name/) |
+\end{minted}
+
+\paragraph{\texorpdfstring{Step 3 --- Update
+\texttt{docs/paper\_registry.md}}{Step 3 --- Update docs/paper\_registry.md}}\label{step-3-update-docspaper_registry.md}
+
+If the paper is in the Excel file, run:
+
+\begin{minted}{bash}
+python3 scripts/sync_from_excel.py
+\end{minted}
+
+If it's not, add it to the Excel file first, then run the sync script.
+
+\paragraph{Step 4 --- Commit}\label{step-4-commit}
+
+\begin{minted}{bash}
+git add experiments/018_new_paper_name/ README.md docs/paper_registry.md
+git commit -m "[REPO] feat: scaffold experiment 018 for Full Paper Title"
+git push origin main
+\end{minted}

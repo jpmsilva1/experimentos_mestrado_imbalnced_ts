@@ -1,0 +1,3 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+python3\PYG{+w}{ }scripts/sync\PYGZus{}from\PYGZus{}excel.py
+\end{MintedVerbatim}

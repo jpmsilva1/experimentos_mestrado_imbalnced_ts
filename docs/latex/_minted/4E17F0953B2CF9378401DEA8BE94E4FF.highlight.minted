@@ -1,0 +1,11 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{n+nb}{cd}\PYG{+w}{ }experiments/NNN\PYGZus{}folder\PYGZus{}name/
+
+\PYG{c+c1}{\PYGZsh{} Open R and install the needed packages}
+Rscript\PYG{+w}{ }\PYGZhy{}e\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}install.packages(c(\PYGZsq{}uba\PYGZsq{}, \PYGZsq{}performanceEstimation\PYGZsq{}, \PYGZsq{}randomForest\PYGZsq{}))\PYGZdq{}}
+
+\PYG{c+c1}{\PYGZsh{} Create an install script for reproducibility}
+cat\PYG{+w}{ }\PYGZgt{}\PYG{+w}{ }install\PYGZus{}packages.R\PYG{+w}{ }\PYG{l+s}{\PYGZlt{}\PYGZlt{} \PYGZsq{}EOF\PYGZsq{}}
+\PYG{l+s}{install.packages(c(\PYGZdq{}uba\PYGZdq{}, \PYGZdq{}performanceEstimation\PYGZdq{}))}
+\PYG{l+s}{EOF}
+\end{MintedVerbatim}

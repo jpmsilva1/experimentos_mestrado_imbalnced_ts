@@ -1,0 +1,7 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{} Dry run — shows what WOULD change, but writes nothing}
+python3\PYG{+w}{ }scripts/update\PYGZus{}readme.py\PYG{+w}{ }\PYGZhy{}\PYGZhy{}check
+
+\PYG{c+c1}{\PYGZsh{} Live run — actually updates README.md}
+python3\PYG{+w}{ }scripts/update\PYGZus{}readme.py
+\end{MintedVerbatim}

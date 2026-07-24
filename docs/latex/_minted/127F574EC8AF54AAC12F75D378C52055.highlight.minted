@@ -1,0 +1,4 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{n+nb}{cd}\PYG{+w}{ }experiments/NNN\PYGZus{}folder\PYGZus{}name/src/
+git\PYG{+w}{ }clone\PYG{+w}{ }https://github.com/author/repo\PYG{+w}{ }original
+\end{MintedVerbatim}

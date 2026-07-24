@@ -1,0 +1,21 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYGZsh{}\PYGZsh{} [2026\PYGZhy{}07\PYGZhy{}15] First successful run attempt
+
+**Time spent**: 2h 30m
+
+\PYGZsh{}\PYGZsh{}\PYGZsh{} What was done
+\PYGZhy{} Activated .venv and ran src/original/main.py
+\PYGZhy{} Got a FileNotFoundError for the AEMO dataset
+
+\PYGZsh{}\PYGZsh{}\PYGZsh{} What worked
+\PYGZhy{} All imports resolved correctly
+\PYGZhy{} Configuration loading worked
+
+\PYGZsh{}\PYGZsh{}\PYGZsh{} Issues encountered
+\PYGZhy{} The paper\PYGZsq{}s data is not publicly available. Authors reference \PYGZdq{}private AEMO dataset\PYGZdq{}.
+\PYGZhy{} Contacted authors via email.
+
+\PYGZsh{}\PYGZsh{}\PYGZsh{} Next steps
+\PYGZhy{} Try with the public NASDAQ dataset as a proxy
+\PYGZhy{} Wait for author response
+\end{MintedVerbatim}

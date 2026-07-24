@@ -1,0 +1,5 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+git\PYG{+w}{ }add\PYG{+w}{ }experiments/018\PYGZus{}new\PYGZus{}paper\PYGZus{}name/\PYG{+w}{ }README.md\PYG{+w}{ }docs/paper\PYGZus{}registry.md
+git\PYG{+w}{ }commit\PYG{+w}{ }\PYGZhy{}m\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}[REPO] feat: scaffold experiment 018 for Full Paper Title\PYGZdq{}}
+git\PYG{+w}{ }push\PYG{+w}{ }origin\PYG{+w}{ }main
+\end{MintedVerbatim}

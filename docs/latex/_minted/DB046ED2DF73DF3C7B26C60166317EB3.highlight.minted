@@ -1,0 +1,15 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{n+nb}{cd}\PYG{+w}{ }experiments/NNN\PYGZus{}folder\PYGZus{}name/
+
+\PYG{c+c1}{\PYGZsh{} Create the isolated environment}
+python3\PYG{+w}{ }\PYGZhy{}m\PYG{+w}{ }venv\PYG{+w}{ }.venv
+
+\PYG{c+c1}{\PYGZsh{} Activate (macOS/Linux)}
+\PYG{n+nb}{source}\PYG{+w}{ }.venv/bin/activate
+
+\PYG{c+c1}{\PYGZsh{} Install dependencies}
+pip\PYG{+w}{ }install\PYG{+w}{ }\PYGZhy{}r\PYG{+w}{ }requirements.txt
+
+\PYG{c+c1}{\PYGZsh{} When done working, deactivate}
+deactivate
+\end{MintedVerbatim}

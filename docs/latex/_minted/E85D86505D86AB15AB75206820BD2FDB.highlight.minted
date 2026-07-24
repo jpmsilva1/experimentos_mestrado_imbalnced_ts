@@ -1,0 +1,53 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+experimentos\PYGZus{}mestrado\PYGZus{}imbalnced\PYGZus{}ts/
+│
+├── README.md                     \PYGZlt{}\PYGZhy{} Master dashboard (auto\PYGZhy{}updated, never edit by hand)
+├── CONTRIBUTING.md               \PYGZlt{}\PYGZhy{} The rules: how to add / maintain experiments
+├── .gitignore                    \PYGZlt{}\PYGZhy{} What Git ignores: venvs, datasets, build artifacts
+│
+├── experiments/                  \PYGZlt{}\PYGZhy{} One subfolder per paper replication
+│   │
+│   ├── \PYGZus{}template/                \PYGZlt{}\PYGZhy{} Blueprint. NEVER edit directly.
+│   │   ├── README.md             \PYGZlt{}\PYGZhy{} Structured experiment report (fill this in)
+│   │   ├── REPLICATION\PYGZus{}LOG.md    \PYGZlt{}\PYGZhy{} Daily work diary (prepend new entries)
+│   │   ├── requirements.txt      \PYGZlt{}\PYGZhy{} Python dependencies for this experiment
+│   │   ├── config/
+│   │   │   └── default.yaml      \PYGZlt{}\PYGZhy{} Key parameters: seeds, paths, hyperparams
+│   │   ├── src/
+│   │   │   ├── original/         \PYGZlt{}\PYGZhy{} AUTHORS\PYGZsq{} code goes here (manual, never scripted)
+│   │   │   └── adapted/          \PYGZlt{}\PYGZhy{} YOUR changes and wrappers go here
+│   │   ├── notebooks/            \PYGZlt{}\PYGZhy{} Exploratory Jupyter notebooks
+│   │   └── results/
+│   │       ├── tables/           \PYGZlt{}\PYGZhy{} CSV / XLSX output tables
+│   │       └── figures/          \PYGZlt{}\PYGZhy{} Generated plots and visualizations
+│   │
+│   ├── 001\PYGZus{}uba\PYGZus{}utility\PYGZus{}regression/
+│   ├── 002\PYGZus{}ts\PYGZus{}resampling\PYGZus{}strategies/
+│   ├── ... (17 experiment folders in total)
+│   └── 017\PYGZus{}imbalanced\PYGZus{}regression\PYGZus{}pipeline/
+│
+├── scripts/                      \PYGZlt{}\PYGZhy{} Automation tools (bookkeeping only)
+│   ├── new\PYGZus{}experiment.sh         \PYGZlt{}\PYGZhy{} Scaffolds a new experiment from \PYGZus{}template
+│   ├── update\PYGZus{}readme.py          \PYGZlt{}\PYGZhy{} Rebuilds the progress dashboard in README.md
+│   └── sync\PYGZus{}from\PYGZus{}excel.py        \PYGZlt{}\PYGZhy{} Syncs paper metadata from Google Drive Excel
+│
+├── shared/                       \PYGZlt{}\PYGZhy{} Code reused across multiple experiments
+│   ├── datasets/
+│   │   └── README.md             \PYGZlt{}\PYGZhy{} Registry of shared datasets and download instructions
+│   ├── metrics/
+│   │   ├── regression.py         \PYGZlt{}\PYGZhy{} RMSE, MAE, SMAPE — fallback only; prefer paper\PYGZsq{}s own
+│   │   └── classification.py     \PYGZlt{}\PYGZhy{} F1, Precision, Recall — fallback only
+│   ├── visualization/
+│   │   └── plot\PYGZus{}utils.py         \PYGZlt{}\PYGZhy{} Publication\PYGZhy{}quality matplotlib helpers
+│   └── utils/
+│       └── data\PYGZus{}loading.py       \PYGZlt{}\PYGZhy{} Path helpers for navigating the repo structure
+│
+├── docs/                         \PYGZlt{}\PYGZhy{} Reference documents and this guide
+│   ├── guide/                    \PYGZlt{}\PYGZhy{} Source for this PDF
+│   ├── paper\PYGZus{}registry.md         \PYGZlt{}\PYGZhy{} Auto\PYGZhy{}generated registry of all 43 papers
+│   └── methodology.md            \PYGZlt{}\PYGZhy{} Scientific replication methodology
+│
+└── .github/
+    └── ISSUE\PYGZus{}TEMPLATE/
+        └── new\PYGZhy{}experiment.md     \PYGZlt{}\PYGZhy{} GitHub issue template for proposing new experiments
+\end{MintedVerbatim}

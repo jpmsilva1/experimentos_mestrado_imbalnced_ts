@@ -1,0 +1,13 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{n+nb}{cd}\PYG{+w}{ }experiments/NNN\PYGZus{}folder\PYGZus{}name/
+
+\PYG{c+c1}{\PYGZsh{} Create the virtual environment}
+python3\PYG{+w}{ }\PYGZhy{}m\PYG{+w}{ }venv\PYG{+w}{ }.venv
+
+\PYG{c+c1}{\PYGZsh{} Activate it}
+\PYG{n+nb}{source}\PYG{+w}{ }.venv/bin/activate
+
+\PYG{c+c1}{\PYGZsh{} Confirm you\PYGZsq{}re in the right environment}
+which\PYG{+w}{ }python3
+\PYG{c+c1}{\PYGZsh{} Should show: .../experiments/NNN\PYGZus{}folder\PYGZus{}name/.venv/bin/python3}
+\end{MintedVerbatim}

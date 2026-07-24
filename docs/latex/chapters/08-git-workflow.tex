@@ -1,0 +1,85 @@
+\subsection{8. Git Workflow: How and When to
+Commit}\label{git-workflow-how-and-when-to-commit}
+
+\subsubsection{The Commit Message
+Convention}\label{the-commit-message-convention}
+
+\textbf{Format:} \texttt{[EXP-NNN] action: description}
+
+{\def\LTcaptype{none} % do not increment counter
+\small
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3478}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2609}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3913}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Action
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+When
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Example
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{setup} & First scaffolding, cloning code &
+\texttt{[EXP-001] setup: clone UBA code and create venv} \\
+\texttt{run} & Running experiments, generating results
+&
+\texttt{[EXP-001] run: reproduce Table 3 with original params} \\
+\texttt{fix} & Fixing bugs or dependency issues &
+\texttt{[EXP-003] fix: adjust data path for local AEMO dataset} \\
+\texttt{results} & Adding result tables or figures &
+\texttt{[EXP-001] results: add comparison table for RMSE metrics} \\
+\texttt{docs} & Updating README or REPLICATION\_LOG &
+\texttt{[EXP-001] docs: complete REPLICATION\textbackslash\{\}\_LOG for session} \\
+\texttt{refactor} & Restructuring code &
+\texttt{[EXP-001] refactor: move helper functions to adapted/} \\
+\end{longtable}
+}
+
+\textbf{For repo-wide changes:}
+
+\begin{minted}{text}
+[REPO] docs: update README progress summary
+[REPO] feat: add shared SERA metric implementation
+\end{minted}
+
+\subsubsection{When to Commit}\label{when-to-commit}
+
+Commit after each of these milestones: 1. After scaffolding environment
+(status -\textgreater{} {[}RUNNING{]}) 2. After first successful run
+(status -\textgreater{} {[}REVIEW{]}) 3. After generating each set of
+results 4. After completing the experiment (status -\textgreater{}
+{[}DONE{]}) 5. After any significant REPLICATION\_LOG update
+
+\subsubsection{The Standard Commit
+Sequence}\label{the-standard-commit-sequence}
+
+\begin{minted}{bash}
+# 1. Check what changed
+git status
+
+# 2. Stage only what's relevant
+git add experiments/NNN_folder_name/
+git add README.md  # If you ran update_readme.py
+
+# 3. Verify what's staged
+git diff --staged --stat
+
+# 4. Commit
+git commit -m "[EXP-NNN] action: short description"
+
+# 5. Push to GitHub
+git push origin main
+\end{minted}
+
+\begin{quote}
+\small {[}WARN{]} \textbf{Never commit:} \texttt{*.csv} data
+files, \texttt{*.h5} model files,
+\texttt{.venv/} directories, or
+\texttt{\textbackslash\{\}\_\textbackslash\{\}\_pycache\textbackslash\{\}\_\textbackslash\{\}\_/}. These are all in
+\texttt{.gitignore}.
+\end{quote}

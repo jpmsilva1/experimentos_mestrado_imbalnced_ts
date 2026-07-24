@@ -1,0 +1,76 @@
+\contentsline {section}{\numberline {1}1. The Big Picture: What Is This Repository?}{3}{section.1}%
+\contentsline {subsection}{\numberline {1.1}1.1 What ``Replication'' Means Here}{3}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}1.2 The Automation Boundary}{3}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}1.3 Repository Goals}{3}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}1.4 Reading This Guide}{4}{subsection.1.4}%
+\contentsline {section}{\numberline {2}2. Directory Structure}{5}{section.2}%
+\contentsline {subsection}{\numberline {2.1}2.1 Full Layout}{5}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}2.2 Folder Reference}{6}{subsection.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.1}\texttt {experiments/} --- The Core of the Repository}{6}{subsubsection.2.2.1}%
+\contentsline {subsubsection}{\numberline {2.2.2}\texttt {experiments/\_template/} --- The Blueprint}{6}{subsubsection.2.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.3}\texttt {scripts/} --- Automation Tools}{7}{subsubsection.2.2.3}%
+\contentsline {subsubsection}{\numberline {2.2.4}\texttt {shared/} --- Cross-Experiment Code}{7}{subsubsection.2.2.4}%
+\contentsline {subsubsection}{\numberline {2.2.5}\texttt {docs/} --- Documentation}{7}{subsubsection.2.2.5}%
+\contentsline {subsection}{\numberline {2.3}2.3 The Two Critical Boundaries}{8}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}3. The Experiment Lifecycle: From Pending to Done}{9}{subsection.2.4}%
+\contentsline {subsubsection}{\numberline {2.4.1}Stage Definitions}{9}{subsubsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.5}4. The Core Workflow: Step-by-Step Instructions}{10}{subsection.2.5}%
+\contentsline {subsubsection}{\numberline {2.5.1}Phase 0: Starting a New Session}{10}{subsubsection.2.5.1}%
+\contentsline {subsubsection}{\numberline {2.5.2}Phase 1: Picking an Experiment}{10}{subsubsection.2.5.2}%
+\contentsline {subsubsection}{\numberline {2.5.3}Phase 2: Setting Up the Experiment Environment}{10}{subsubsection.2.5.3}%
+\contentsline {paragraph}{Step 2.1 --- Read the paper and the ARA}{10}{subsubsection.2.5.3}%
+\contentsline {paragraph}{Step 2.2 --- Copy the original code into \texttt {src/original/}}{10}{subsubsection.2.5.3}%
+\contentsline {paragraph}{Step 2.3 --- Create an isolated Python environment}{11}{subsubsection.2.5.3}%
+\contentsline {paragraph}{Step 2.4 --- Install dependencies}{11}{subsubsection.2.5.3}%
+\contentsline {paragraph}{Step 2.5 --- Test that everything imports without error}{11}{subsubsection.2.5.3}%
+\contentsline {paragraph}{Step 2.6 --- Change status to {[}RUNNING{]} Setup and commit}{11}{subsubsection.2.5.3}%
+\contentsline {subsubsection}{\numberline {2.5.4}Phase 3: Running the Replication}{12}{subsubsection.2.5.4}%
+\contentsline {paragraph}{Step 3.1 --- Identify the exact target results}{12}{subsubsection.2.5.4}%
+\contentsline {paragraph}{Step 3.2 --- Run the original code with the original parameters}{12}{subsubsection.2.5.4}%
+\contentsline {paragraph}{Step 3.3 --- Update the REPLICATION\_LOG immediately}{12}{subsubsection.2.5.4}%
+\contentsline {paragraph}{Step 3.4 --- Change status to {[}REVIEW{]} In Progress}{13}{subsubsection.2.5.4}%
+\contentsline {subsubsection}{\numberline {2.5.5}Phase 4: Recording Results}{13}{subsubsection.2.5.5}%
+\contentsline {paragraph}{Step 4.1 --- Save results to the right location}{13}{subsubsection.2.5.5}%
+\contentsline {paragraph}{Step 4.2 --- Fill the comparison table in README.md}{13}{subsubsection.2.5.5}%
+\contentsline {paragraph}{Step 4.3 --- Document deviations honestly}{13}{subsubsection.2.5.5}%
+\contentsline {subsubsection}{\numberline {2.5.6}Phase 5: Marking Complete and Committing}{13}{subsubsection.2.5.6}%
+\contentsline {paragraph}{Step 5.1 --- Mark checkboxes done in README}{13}{subsubsection.2.5.6}%
+\contentsline {paragraph}{Step 5.2 --- Change status to {[}DONE{]} Done}{14}{subsubsection.2.5.6}%
+\contentsline {paragraph}{Step 5.3 --- Run the update script and commit}{14}{subsubsection.2.5.6}%
+\contentsline {subsection}{\numberline {2.6}5. The Automation Scripts: What They Do and When to Use Them}{15}{subsection.2.6}%
+\contentsline {subsubsection}{\numberline {2.6.1}\texttt {new\_experiment.sh} --- Scaffolding New Experiments}{15}{subsubsection.2.6.1}%
+\contentsline {subsubsection}{\numberline {2.6.2}\texttt {update\_readme.py} --- Refreshing the Dashboard}{15}{subsubsection.2.6.2}%
+\contentsline {subsubsection}{\numberline {2.6.3}\texttt {sync\_from\_excel.py} --- Syncing Paper Metadata}{16}{subsubsection.2.6.3}%
+\contentsline {subsection}{\numberline {2.7}6. File-by-File Reference: What to Write Where}{17}{subsection.2.7}%
+\contentsline {subsubsection}{\numberline {2.7.1}\texttt {experiments/NNN\_folder\_name/README.md}}{17}{subsubsection.2.7.1}%
+\contentsline {subsubsection}{\numberline {2.7.2}\texttt {experiments/NNN\_folder\_name/REPLICATION\_LOG.md}}{17}{subsubsection.2.7.2}%
+\contentsline {subsubsection}{\numberline {2.7.3}\texttt {experiments/NNN\_folder\_name/requirements.txt}}{17}{subsubsection.2.7.3}%
+\contentsline {subsubsection}{\numberline {2.7.4}\texttt {experiments/NNN\_folder\_name/config/default.yaml}}{18}{subsubsection.2.7.4}%
+\contentsline {subsubsection}{\numberline {2.7.5}\texttt {shared/metrics/regression.py} and \texttt {shared/metrics/classification.py}}{18}{subsubsection.2.7.5}%
+\contentsline {subsection}{\numberline {2.8}7. Environment Management: Python, R, and Conda}{19}{subsection.2.8}%
+\contentsline {subsubsection}{\numberline {2.8.1}Python Experiments (most common)}{19}{subsubsection.2.8.1}%
+\contentsline {subsubsection}{\numberline {2.8.2}R Experiments}{19}{subsubsection.2.8.2}%
+\contentsline {subsubsection}{\numberline {2.8.3}Conda Experiments}{19}{subsubsection.2.8.3}%
+\contentsline {subsection}{\numberline {2.9}8. Git Workflow: How and When to Commit}{20}{subsection.2.9}%
+\contentsline {subsubsection}{\numberline {2.9.1}The Commit Message Convention}{20}{subsubsection.2.9.1}%
+\contentsline {subsubsection}{\numberline {2.9.2}When to Commit}{20}{subsubsection.2.9.2}%
+\contentsline {subsubsection}{\numberline {2.9.3}The Standard Commit Sequence}{20}{subsubsection.2.9.3}%
+\contentsline {subsection}{\numberline {2.10}9. Adding a Brand New Experiment (Beyond the 17)}{22}{subsection.2.10}%
+\contentsline {paragraph}{Step 1 --- Run the scaffolding script}{22}{subsection.2.10}%
+\contentsline {paragraph}{Step 2 --- Add a row to the Experiment Index in README.md}{22}{subsection.2.10}%
+\contentsline {paragraph}{Step 3 --- Update \texttt {docs/paper\_registry.md}}{22}{subsection.2.10}%
+\contentsline {paragraph}{Step 4 --- Commit}{22}{subsection.2.10}%
+\contentsline {subsection}{\numberline {2.11}10. Rules and Conventions You Must Never Break}{23}{subsection.2.11}%
+\contentsline {subsection}{\numberline {2.12}11. Troubleshooting Common Problems}{24}{subsection.2.12}%
+\contentsline {subsubsection}{\numberline {2.12.1}``I ran \texttt {update\_readme.py} but the status didn't change''}{24}{subsubsection.2.12.1}%
+\contentsline {subsubsection}{\numberline {2.12.2}``I get a permission denied error running \texttt {new\_experiment.sh}''}{24}{subsubsection.2.12.2}%
+\contentsline {subsubsection}{\numberline {2.12.3}``The \texttt {sync\_from\_excel.py} script says the Excel file is not found''}{24}{subsubsection.2.12.3}%
+\contentsline {subsubsection}{\numberline {2.12.4}``I accidentally committed a large data file''}{24}{subsubsection.2.12.4}%
+\contentsline {subsubsection}{\numberline {2.12.5}``I'm not sure which experiment to work on next''}{24}{subsubsection.2.12.5}%
+\contentsline {subsubsection}{\numberline {2.12.6}``The original code doesn't run at all --- different Python version, broken deps''}{25}{subsubsection.2.12.6}%
+\contentsline {section}{\numberline {A}Replication Methodology}{26}{appendix.A}%
+\contentsline {subsection}{\numberline {A.1}Definition of ``Replication''}{26}{subsection.A.1}%
+\contentsline {subsection}{\numberline {A.2}Replication Criteria}{26}{subsection.A.2}%
+\contentsline {subsection}{\numberline {A.3}Standard Workflow per Experiment}{26}{subsection.A.3}%
+\contentsline {subsection}{\numberline {A.4}Evaluation Metrics Reference}{27}{subsection.A.4}%
+\contentsline {subsection}{\numberline {A.5}Tools \& Infrastructure}{27}{subsection.A.5}%

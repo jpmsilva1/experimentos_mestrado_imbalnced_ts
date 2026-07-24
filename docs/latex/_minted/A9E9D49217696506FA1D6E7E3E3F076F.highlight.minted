@@ -1,0 +1,3 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+./scripts/new\PYGZus{}experiment.sh\PYG{+w}{ }\PYG{l+m}{018}\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}new\PYGZus{}paper\PYGZus{}name\PYGZdq{}}\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}Full Paper Title\PYGZdq{}}\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}https://github.com/author/repo\PYGZdq{}}
+\end{MintedVerbatim}

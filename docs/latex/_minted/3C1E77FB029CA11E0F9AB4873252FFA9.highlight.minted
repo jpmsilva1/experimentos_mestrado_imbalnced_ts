@@ -1,0 +1,13 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{} Update the main dashboard}
+python3\PYG{+w}{ }scripts/update\PYGZus{}readme.py
+
+\PYG{c+c1}{\PYGZsh{} Stage all changes}
+git\PYG{+w}{ }add\PYG{+w}{ }experiments/NNN\PYGZus{}folder\PYGZus{}name/\PYG{+w}{ }README.md
+
+\PYG{c+c1}{\PYGZsh{} Commit with a descriptive message}
+git\PYG{+w}{ }commit\PYG{+w}{ }\PYGZhy{}m\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}[EXP\PYGZhy{}NNN] results: reproduce Table 3 and Figure 2\PYGZdq{}}
+
+\PYG{c+c1}{\PYGZsh{} Push}
+git\PYG{+w}{ }push\PYG{+w}{ }origin\PYG{+w}{ }main
+\end{MintedVerbatim}

@@ -1,0 +1,12 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{} Remove the file from Git tracking but keep it locally}
+git\PYG{+w}{ }rm\PYG{+w}{ }\PYGZhy{}\PYGZhy{}cached\PYG{+w}{ }path/to/large/file.csv
+
+\PYG{c+c1}{\PYGZsh{} Add it to .gitignore}
+\PYG{n+nb}{echo}\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}experiments/NNN\PYGZus{}folder\PYGZus{}name/data/file.csv\PYGZdq{}}\PYG{+w}{ }\PYGZgt{}\PYGZgt{}\PYG{+w}{ }.gitignore
+
+\PYG{c+c1}{\PYGZsh{} Commit the removal}
+git\PYG{+w}{ }add\PYG{+w}{ }.gitignore
+git\PYG{+w}{ }commit\PYG{+w}{ }\PYGZhy{}m\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}[REPO] fix: untrack large data file from EXP\PYGZhy{}NNN\PYGZdq{}}
+git\PYG{+w}{ }push\PYG{+w}{ }origin\PYG{+w}{ }main
+\end{MintedVerbatim}

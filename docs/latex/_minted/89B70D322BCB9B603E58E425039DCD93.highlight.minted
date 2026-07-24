@@ -1,0 +1,9 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+results/
+├── tables/
+│   ├── table3\PYGZus{}rmse\PYGZus{}comparison.csv
+│   └── table4\PYGZus{}mae\PYGZus{}by\PYGZus{}dataset.csv
+└── figures/
+    ├── figure2\PYGZus{}performance\PYGZus{}vs\PYGZus{}imbalance.png
+    └── figure5\PYGZus{}training\PYGZus{}time.png
+\end{MintedVerbatim}

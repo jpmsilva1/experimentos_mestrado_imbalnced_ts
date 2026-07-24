@@ -1,0 +1,43 @@
+\subsection{10. Rules and Conventions You Must Never
+Break}\label{rules-and-conventions-you-must-never-break}
+
+These rules exist to ensure the repository stays usable 6 months from
+now.
+
+{\def\LTcaptype{none} % do not increment counter
+\small
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.4762}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5238}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+{[}FAIL{]} Never
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+{[}OK{]} Always
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Edit \texttt{experiments/\textbackslash\{\}\_template/} for a one-off
+reason & Edit the specific experiment folder instead \\
+Commit large data files (\texttt{.csv},
+\texttt{.h5}, etc.) & Document the download source in
+the README \\
+Commit the \texttt{.venv/} directory & Use
+\texttt{requirements.txt} for reproducibility \\
+Change an experiment's status without running the update script & Run
+\texttt{python3 scripts/update\textbackslash\{\}\_readme.py} after every
+status change \\
+Write results outside \texttt{results/tables/} and
+\texttt{results/figures/} & Save tables as
+\texttt{.csv}, figures as
+\texttt{.png} \\
+Skip the REPLICATION\_LOG when things go wrong & Document failures in
+detail --- they are scientifically valuable \\
+Use generic commit messages like ``update'' & Use the
+\texttt{[EXP-NNN] action:} format \\
+Install packages in the global Python environment & Always activate the
+experiment's \texttt{.venv} first \\
+\end{longtable}
+}

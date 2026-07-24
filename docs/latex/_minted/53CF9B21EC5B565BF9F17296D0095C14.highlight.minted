@@ -1,0 +1,9 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYGZsh{}\PYGZsh{} Observations \PYGZam{} Deviations
+
+\PYGZhy{} **Library version**: Original used scikit\PYGZhy{}learn 0.24.2; we used 1.3.0.
+  The API for `RandomForestRegressor` changed in v1.0; adjusted accordingly.
+\PYGZhy{} **Dataset**: Original code references a private AEMO energy dataset.
+  We used the publicly available GEFCom2014 as a proxy. Results are directionally consistent.
+\PYGZhy{} **Seed**: Original paper does not specify a seed. We used seed=42 for reproducibility.
+\end{MintedVerbatim}

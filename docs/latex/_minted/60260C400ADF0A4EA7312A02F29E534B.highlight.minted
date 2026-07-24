@@ -1,0 +1,17 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{} 1. Check what changed}
+git\PYG{+w}{ }status
+
+\PYG{c+c1}{\PYGZsh{} 2. Stage only what\PYGZsq{}s relevant}
+git\PYG{+w}{ }add\PYG{+w}{ }experiments/NNN\PYGZus{}folder\PYGZus{}name/
+git\PYG{+w}{ }add\PYG{+w}{ }README.md\PYG{+w}{  }\PYG{c+c1}{\PYGZsh{} If you ran update\PYGZus{}readme.py}
+
+\PYG{c+c1}{\PYGZsh{} 3. Verify what\PYGZsq{}s staged}
+git\PYG{+w}{ }diff\PYG{+w}{ }\PYGZhy{}\PYGZhy{}staged\PYG{+w}{ }\PYGZhy{}\PYGZhy{}stat
+
+\PYG{c+c1}{\PYGZsh{} 4. Commit}
+git\PYG{+w}{ }commit\PYG{+w}{ }\PYGZhy{}m\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}[EXP\PYGZhy{}NNN] action: short description\PYGZdq{}}
+
+\PYG{c+c1}{\PYGZsh{} 5. Push to GitHub}
+git\PYG{+w}{ }push\PYG{+w}{ }origin\PYG{+w}{ }main
+\end{MintedVerbatim}

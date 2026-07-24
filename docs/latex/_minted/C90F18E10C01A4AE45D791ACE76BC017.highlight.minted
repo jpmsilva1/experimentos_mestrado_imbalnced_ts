@@ -1,0 +1,3 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+chmod\PYG{+w}{ }+x\PYG{+w}{ }scripts/new\PYGZus{}experiment.sh
+\end{MintedVerbatim}

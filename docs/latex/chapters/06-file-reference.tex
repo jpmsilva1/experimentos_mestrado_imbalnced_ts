@@ -1,0 +1,88 @@
+\subsection{6. File-by-File Reference: What to Write
+Where}\label{file-by-file-reference-what-to-write-where}
+
+\subsubsection{\texorpdfstring{\texttt{experiments/NNN\_folder\_name/README.md}}{experiments/NNN\_folder\_name/README.md}}\label{experimentsnnn_folder_namereadme.md}
+
+This is the most important file in each experiment. Think of it as the
+\textbf{scientific report} for that replication.
+
+{\def\LTcaptype{none} % do not increment counter
+\small
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.3913}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.6087}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Section
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+What to write
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{Paper Metadata} & Fill in Authors, Year, Venue, DOI, Code URL,
+language, ARA link, Excel row \\
+\textbf{Replication Status} & Keep this badge accurate --- it drives the
+master dashboard \\
+\textbf{Objective} & List exactly which tables/figures you plan to
+reproduce. Check them off when done. \\
+\textbf{Environment Setup} & Write the exact commands to set up the
+environment from scratch. Assume a reader starts with nothing. \\
+\textbf{How to Run} & Write the exact commands to run the experiment. \\
+\textbf{Key Results} & Fill in the comparison table. This is the
+scientific output. \\
+\textbf{Observations \& Deviations} & Be honest about differences from
+the paper. \\
+\end{longtable}
+}
+
+\subsubsection{\texorpdfstring{\texttt{experiments/NNN\_folder\_name/REPLICATION\_LOG.md}}{experiments/NNN\_folder\_name/REPLICATION\_LOG.md}}\label{experimentsnnn_folder_namereplication_log.md}
+
+This is your \textbf{daily diary}. Write in it every time you work on
+the experiment. New entries go at the \textbf{top}.
+
+Format:
+
+\begin{minted}{text}
+## [YYYY-MM-DD] What You Did
+
+**Time spent**: Xh Xm
+
+### What was done
+- ...
+
+### What worked
+- ...
+
+### Issues encountered
+- ...
+
+### Next steps
+- ...
+\end{minted}
+
+\subsubsection{\texorpdfstring{\texttt{experiments/NNN\_folder\_name/requirements.txt}}{experiments/NNN\_folder\_name/requirements.txt}}\label{experimentsnnn_folder_namerequirements.txt}
+
+Contains the \textbf{Python packages} needed to run the experiment.
+Update it after setting up the environment:
+
+\begin{minted}{bash}
+pip freeze > requirements.txt
+\end{minted}
+
+\subsubsection{\texorpdfstring{\texttt{experiments/NNN\_folder\_name/config/default.yaml}}{experiments/NNN\_folder\_name/config/default.yaml}}\label{experimentsnnn_folder_nameconfigdefault.yaml}
+
+The \textbf{experiment configuration} file. Use it to track the key
+parameters of your replication run: - Random seeds - Dataset paths -
+Model hyperparameters - Evaluation settings
+
+This gives you a single place to see what parameters produced your
+results.
+
+\subsubsection{\texorpdfstring{\texttt{shared/metrics/regression.py} and
+\texttt{shared/metrics/classification.py}}{shared/metrics/regression.py and shared/metrics/classification.py}}\label{sharedmetricsregression.py-and-sharedmetricsclassification.py}
+
+\textbf{Only use these if the original paper doesn't provide its own
+metric implementations.} These are convenience implementations. The
+paper's own metrics always take priority.

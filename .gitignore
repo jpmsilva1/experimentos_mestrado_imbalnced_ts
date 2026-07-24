@@ -68,3 +68,5 @@ temp/
 
 # Excel lock files
 ~$*
+experiments/003_biased_resampling_spatiotemporal/src/results/
+experiments/003_biased_resampling_spatiotemporal/src/results/

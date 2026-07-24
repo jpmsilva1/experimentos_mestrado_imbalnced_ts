@@ -1,0 +1,13 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{} Option A: If the paper has a requirements.txt}
+pip\PYG{+w}{ }install\PYG{+w}{ }\PYGZhy{}r\PYG{+w}{ }src/original/requirements.txt
+
+\PYG{c+c1}{\PYGZsh{} Option B: If the paper has a setup.py or pyproject.toml}
+pip\PYG{+w}{ }install\PYG{+w}{ }\PYGZhy{}e\PYG{+w}{ }src/original/
+
+\PYG{c+c1}{\PYGZsh{} Option C: Install manually (document every package you install)}
+pip\PYG{+w}{ }install\PYG{+w}{ }numpy\PYG{+w}{ }pandas\PYG{+w}{ }scikit\PYGZhy{}learn
+
+\PYG{c+c1}{\PYGZsh{} Save what you installed}
+pip\PYG{+w}{ }freeze\PYG{+w}{ }\PYGZgt{}\PYG{+w}{ }requirements.txt
+\end{MintedVerbatim}

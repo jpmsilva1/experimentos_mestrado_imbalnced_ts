@@ -1,0 +1,9 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+                  ┌──────────────────────────────────────────────────────┐
+                  │                                                      │
+    [WAITING] Pending ──\PYGZhy{}\PYGZgt{} [RUNNING] Setup ──\PYGZhy{}\PYGZgt{} [REVIEW] In Progress ──\PYGZhy{}\PYGZgt{} [DONE] Done              │
+                                      │                                  │
+                                      └──────────────────\PYGZhy{}\PYGZgt{} [ERROR] Blocked   │
+                                                                         │
+                  └──────────────────────────────────────────────────────┘
+\end{MintedVerbatim}

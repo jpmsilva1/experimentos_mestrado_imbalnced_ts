@@ -1,0 +1,59 @@
+\subsection{7. Environment Management: Python, R, and
+Conda}\label{environment-management-python-r-and-conda}
+
+\subsubsection{Python Experiments (most
+common)}\label{python-experiments-most-common}
+
+\begin{minted}{bash}
+cd experiments/NNN_folder_name/
+
+# Create the isolated environment
+python3 -m venv .venv
+
+# Activate (macOS/Linux)
+source .venv/bin/activate
+
+# Install dependencies
+pip install -r requirements.txt
+
+# When done working, deactivate
+deactivate
+\end{minted}
+
+\begin{quote}
+\small {[}IDEA{]} The \texttt{.venv/} directory is listed in
+\texttt{.gitignore} --- it will NOT be committed.
+That's correct. The \texttt{requirements.txt} is what
+gets committed.
+\end{quote}
+
+\subsubsection{R Experiments}\label{r-experiments}
+
+For papers using R (e.g., UBA, IRon):
+
+\begin{minted}{bash}
+cd experiments/NNN_folder_name/
+
+# Open R and install the needed packages
+Rscript -e "install.packages(c('uba', 'performanceEstimation', 'randomForest'))"
+
+# Create an install script for reproducibility
+cat > install_packages.R << 'EOF'
+install.packages(c("uba", "performanceEstimation"))
+EOF
+\end{minted}
+
+Document the R version in the README:
+
+\begin{minted}{bash}
+R --version | head -1
+\end{minted}
+
+\subsubsection{Conda Experiments}\label{conda-experiments}
+
+For papers that require specific CUDA or complex binary dependencies:
+
+\begin{minted}{bash}
+conda env create -f src/original/environment.yml
+conda activate experiment-name
+\end{minted}

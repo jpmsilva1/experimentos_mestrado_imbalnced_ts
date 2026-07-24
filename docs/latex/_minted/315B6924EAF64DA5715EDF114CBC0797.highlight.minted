@@ -1,0 +1,17 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYGZsh{}\PYGZsh{} [YYYY\PYGZhy{}MM\PYGZhy{}DD] What You Did
+
+**Time spent**: Xh Xm
+
+\PYGZsh{}\PYGZsh{}\PYGZsh{} What was done
+\PYGZhy{} ...
+
+\PYGZsh{}\PYGZsh{}\PYGZsh{} What worked
+\PYGZhy{} ...
+
+\PYGZsh{}\PYGZsh{}\PYGZsh{} Issues encountered
+\PYGZhy{} ...
+
+\PYGZsh{}\PYGZsh{}\PYGZsh{} Next steps
+\PYGZhy{} ...
+\end{MintedVerbatim}

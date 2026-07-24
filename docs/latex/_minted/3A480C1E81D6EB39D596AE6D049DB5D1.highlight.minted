@@ -1,0 +1,4 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{} After downloading the zip and extracting:}
+cp\PYG{+w}{ }\PYGZhy{}r\PYG{+w}{ }\PYGZti{}/Downloads/author\PYGZhy{}repo/\PYG{+w}{ }experiments/NNN\PYGZus{}folder\PYGZus{}name/src/original/
+\end{MintedVerbatim}

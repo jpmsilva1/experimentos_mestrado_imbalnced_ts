@@ -1,0 +1,4 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+conda\PYG{+w}{ }env\PYG{+w}{ }create\PYG{+w}{ }\PYGZhy{}f\PYG{+w}{ }src/original/environment.yml
+conda\PYG{+w}{ }activate\PYG{+w}{ }experiment\PYGZhy{}name
+\end{MintedVerbatim}

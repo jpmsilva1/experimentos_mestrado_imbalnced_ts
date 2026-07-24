@@ -1,0 +1,86 @@
+\subsection{11. Troubleshooting Common
+Problems}\label{troubleshooting-common-problems}
+
+\subsubsection{\texorpdfstring{``I ran \texttt{update\_readme.py} but
+the status didn't
+change''}{``I ran update\_readme.py but the status didn't change''}}\label{i-ran-update_readme.py-but-the-status-didnt-change}
+
+\textbf{Cause:} The status line in the experiment's
+\texttt{README.md} doesn't match the expected format.
+
+\textbf{Check:} The status line must look \textbf{exactly} like:
+
+\begin{minted}{text}
+## Replication Status: [WAITING] Pending
+\end{minted}
+
+Any extra spaces, different emoji, or different heading level will cause
+the script to miss it.
+
+\subsubsection{\texorpdfstring{``I get a permission denied error running
+\texttt{new\_experiment.sh}''}{``I get a permission denied error running new\_experiment.sh''}}\label{i-get-a-permission-denied-error-running-new_experiment.sh}
+
+\textbf{Solution:}
+
+\begin{minted}{bash}
+chmod +x scripts/new_experiment.sh
+\end{minted}
+
+\subsubsection{\texorpdfstring{``The \texttt{sync\_from\_excel.py}
+script says the Excel file is not
+found''}{``The sync\_from\_excel.py script says the Excel file is not found''}}\label{the-sync_from_excel.py-script-says-the-excel-file-is-not-found}
+
+\textbf{Cause:} Google Drive is not mounted or the file path has
+changed.
+
+\textbf{Check:}
+
+\begin{minted}{bash}
+ls "/Users/joaopms/Library/CloudStorage/GoogleDrive-jpms5@cin.ufpe.br/My Drive/Papers Mestrado - João/Fichamento_Artigos.xlsx"
+\end{minted}
+
+If the file doesn't exist there, make sure Google Drive is open and
+synced.
+
+\subsubsection{``I accidentally committed a large data
+file''}\label{i-accidentally-committed-a-large-data-file}
+
+\textbf{Solution:}
+
+\begin{minted}{bash}
+# Remove the file from Git tracking but keep it locally
+git rm --cached path/to/large/file.csv
+
+# Add it to .gitignore
+echo "experiments/NNN_folder_name/data/file.csv" >> .gitignore
+
+# Commit the removal
+git add .gitignore
+git commit -m "[REPO] fix: untrack large data file from EXP-NNN"
+git push origin main
+\end{minted}
+
+\subsubsection{``I'm not sure which experiment to work on
+next''}\label{im-not-sure-which-experiment-to-work-on-next}
+
+Open \texttt{README.md}. The progress summary table
+shows the count in each status. Work on the lowest-numbered experiment
+that is \texttt{[WAITING] Pending} or
+\texttt{[ERROR] Blocked} --- in that priority order.
+
+\subsubsection{``The original code doesn't run at all --- different
+Python version, broken
+deps''}\label{the-original-code-doesnt-run-at-all-different-python-version-broken-deps}
+
+This is common! Recommended approach: 1. Try installing the
+\textbf{exact versions} specified in the original
+\texttt{requirements.txt} (if it exists). 2. If that
+fails, try a \texttt{conda} environment with the
+paper's stated Python version. 3. Check GitHub Issues on the original
+repository --- others may have solved it. 4. Document the problem in
+\texttt{REPLICATION\textbackslash\{\}\_LOG.md} and set status to
+\texttt{[ERROR] Blocked}. 5. Try the next experiment
+and come back later.
+
+\emph{Last updated: 2026-07-10} \emph{Repository:
+https://github.com/jpmsilva1/experimentos\_mestrado\_imbalnced\_ts}

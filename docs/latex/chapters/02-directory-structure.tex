@@ -1,0 +1,242 @@
+\section{2. Directory Structure}\label{directory-structure}
+
+This chapter is the canonical reference for the repository layout. Every
+top-level folder has a single, well-defined purpose. Understanding this
+structure is a prerequisite for all other work.
+
+\subsection{2.1 Full Layout}\label{full-layout}
+
+\begin{minted}{text}
+experimentos_mestrado_imbalnced_ts/
+│
+├── README.md                     <- Master dashboard (auto-updated, never edit by hand)
+├── CONTRIBUTING.md               <- The rules: how to add / maintain experiments
+├── .gitignore                    <- What Git ignores: venvs, datasets, build artifacts
+│
+├── experiments/                  <- One subfolder per paper replication
+│   │
+│   ├── _template/                <- Blueprint. NEVER edit directly.
+│   │   ├── README.md             <- Structured experiment report (fill this in)
+│   │   ├── REPLICATION_LOG.md    <- Daily work diary (prepend new entries)
+│   │   ├── requirements.txt      <- Python dependencies for this experiment
+│   │   ├── config/
+│   │   │   └── default.yaml      <- Key parameters: seeds, paths, hyperparams
+│   │   ├── src/
+│   │   │   ├── original/         <- AUTHORS' code goes here (manual, never scripted)
+│   │   │   └── adapted/          <- YOUR changes and wrappers go here
+│   │   ├── notebooks/            <- Exploratory Jupyter notebooks
+│   │   └── results/
+│   │       ├── tables/           <- CSV / XLSX output tables
+│   │       └── figures/          <- Generated plots and visualizations
+│   │
+│   ├── 001_uba_utility_regression/
+│   ├── 002_ts_resampling_strategies/
+│   ├── ... (17 experiment folders in total)
+│   └── 017_imbalanced_regression_pipeline/
+│
+├── scripts/                      <- Automation tools (bookkeeping only)
+│   ├── new_experiment.sh         <- Scaffolds a new experiment from _template
+│   ├── update_readme.py          <- Rebuilds the progress dashboard in README.md
+│   └── sync_from_excel.py        <- Syncs paper metadata from Google Drive Excel
+│
+├── shared/                       <- Code reused across multiple experiments
+│   ├── datasets/
+│   │   └── README.md             <- Registry of shared datasets and download instructions
+│   ├── metrics/
+│   │   ├── regression.py         <- RMSE, MAE, SMAPE — fallback only; prefer paper's own
+│   │   └── classification.py     <- F1, Precision, Recall — fallback only
+│   ├── visualization/
+│   │   └── plot_utils.py         <- Publication-quality matplotlib helpers
+│   └── utils/
+│       └── data_loading.py       <- Path helpers for navigating the repo structure
+│
+├── docs/                         <- Reference documents and this guide
+│   ├── guide/                    <- Source for this PDF
+│   ├── paper_registry.md         <- Auto-generated registry of all 43 papers
+│   └── methodology.md            <- Scientific replication methodology
+│
+└── .github/
+    └── ISSUE_TEMPLATE/
+        └── new-experiment.md     <- GitHub issue template for proposing new experiments
+\end{minted}
+
+\subsection{2.2 Folder Reference}\label{folder-reference}
+
+\subsubsection{\texorpdfstring{\texttt{experiments/} --- The Core of the
+Repository}{experiments/ --- The Core of the Repository}}\label{experiments-the-core-of-the-repository}
+
+This is where all research lives. Each subfolder corresponds to one
+paper replication and follows a strict naming convention:
+
+\begin{minted}{text}
+NNN_descriptive_name/
+\end{minted}
+
+Where \texttt{NNN} is a zero-padded three-digit number
+that encodes the \textbf{priority order} of the experiment. Lower
+numbers are done first.
+
+\textbf{Golden rules for \texttt{experiments/}:}
+
+\begin{itemize}
+\tightlist
+\item
+  Never add a folder by hand. Always use
+  \texttt{new\textbackslash\{\}\_experiment.sh}.
+\item
+  Never rename an existing folder. The number is the experiment's
+  permanent identifier.
+\item
+  The folder structure inside each experiment must match
+  \texttt{\textbackslash\{\}\_template/} exactly.
+\end{itemize}
+
+\subsubsection{\texorpdfstring{\texttt{experiments/\_template/} --- The
+Blueprint}{experiments/\_template/ --- The Blueprint}}\label{experiments_template-the-blueprint}
+
+This folder defines the schema for every experiment in the repository.
+The automation script \texttt{new\textbackslash\{\}\_experiment.sh}
+copies it in its entirety when creating a new experiment.
+
+\begin{quote}
+\small \textbf{Critical rule:} Never edit \texttt{\textbackslash\{\}\_template/}
+to fix a single experiment. If you edit the template, you are changing
+the contract for all \emph{future} experiments. Edit the specific
+experiment folder instead.
+\end{quote}
+
+\textbf{Contents of each experiment folder:}
+
+{\def\LTcaptype{none} % do not increment counter
+\small
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+File / Folder
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Purpose
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Who fills it
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{README.md} & Structured scientific report:
+metadata, results, status & You \\
+\texttt{REPLICATION\textbackslash\{\}\_LOG.md} & Chronological work
+diary, newest entry on top & You \\
+\texttt{requirements.txt} & Exact Python package
+versions (\texttt{pip freeze}) & You \\
+\texttt{config/default.yaml} & Experiment parameters:
+seeds, paths, hyperparams & You \\
+\texttt{src/original/} & Authors' original source code,
+cloned or copied & You (manual) \\
+\texttt{src/adapted/} & Your modifications, wrappers,
+and analysis code & You \\
+\texttt{notebooks/} & Jupyter notebooks for exploration
+& You \\
+\texttt{results/tables/} & Output CSVs and comparison
+tables & Experiments \\
+\texttt{results/figures/} & Generated plots &
+Experiments \\
+\end{longtable}
+}
+
+\subsubsection{\texorpdfstring{\texttt{scripts/} --- Automation
+Tools}{scripts/ --- Automation Tools}}\label{scripts-automation-tools}
+
+These scripts handle \textbf{bookkeeping only}. They never touch your
+data or experiment results.
+
+{\def\LTcaptype{none} % do not increment counter
+\small
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Script
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+When to run
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+What it does
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{new\textbackslash\{\}\_experiment.sh} & Adding an experiment
+after \#017 & Copies \texttt{\textbackslash\{\}\_template/}, renames
+placeholders, sets date \\
+\texttt{update\textbackslash\{\}\_readme.py} & After changing any
+experiment's status & Rebuilds the status table in the root
+\texttt{README.md} \\
+\texttt{sync\textbackslash\{\}\_from\textbackslash\{\}\_excel.py} & After updating the
+Google Drive paper spreadsheet & Regenerates
+\texttt{docs/paper\textbackslash\{\}\_registry.md} \\
+\end{longtable}
+}
+
+\subsubsection{\texorpdfstring{\texttt{shared/} --- Cross-Experiment
+Code}{shared/ --- Cross-Experiment Code}}\label{shared-cross-experiment-code}
+
+Code that is genuinely reused across multiple experiments lives here
+instead of being duplicated inside each experiment folder.
+
+\textbf{Important usage rule:} The
+\texttt{shared/metrics/} implementations are
+\textbf{fallback implementations} only. If the paper provides its own
+metric code, use that. Shared metrics exist to avoid duplication when no
+reference implementation is available.
+
+\subsubsection{\texorpdfstring{\texttt{docs/} ---
+Documentation}{docs/ --- Documentation}}\label{docs-documentation}
+
+The \texttt{docs/} folder contains reference material
+about the project as a whole, not about any individual experiment.
+
+{\def\LTcaptype{none} % do not increment counter
+\small
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+File
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Description
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{guide/} & Source Markdown files for this PDF
+guide \\
+\texttt{paper\textbackslash\{\}\_registry.md} & Auto-generated list of
+all 43 papers from the Excel spreadsheet \\
+\texttt{methodology.md} & The scientific replication
+methodology (what counts as a valid replication) \\
+\end{longtable}
+}
+
+\subsection{2.3 The Two Critical
+Boundaries}\label{the-two-critical-boundaries}
+
+These two rules are the most important structural decisions in the
+repository. Violating them breaks traceability.
+
+\textbf{Boundary 1 --- \texttt{\textbackslash\{\}\_template/} is
+immutable per experiment.} The script creates your experiment folder
+from the template. After that, only \emph{you} edit the experiment
+folder. The template is never touched again for that experiment.
+
+\textbf{Boundary 2 --- \texttt{src/original/} is always
+filled manually.} No script will ever write to
+\texttt{src/original/}. You clone or copy the authors'
+code there. This makes the provenance of all code 100\% explicit and
+auditable.

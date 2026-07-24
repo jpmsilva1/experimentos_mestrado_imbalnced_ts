@@ -1,0 +1,68 @@
+\subsection{3. The Experiment Lifecycle: From Pending to
+Done}\label{the-experiment-lifecycle-from-pending-to-done}
+
+Every experiment goes through exactly these stages. The status badge in
+each experiment's \texttt{README.md} must always
+reflect the current stage.
+
+\begin{minted}{text}
+                  ┌──────────────────────────────────────────────────────┐
+                  │                                                      │
+    [WAITING] Pending ──-> [RUNNING] Setup ──-> [REVIEW] In Progress ──-> [DONE] Done              │
+                                      │                                  │
+                                      └──────────────────-> [ERROR] Blocked   │
+                                                                         │
+                  └──────────────────────────────────────────────────────┘
+\end{minted}
+
+\subsubsection{Stage Definitions}\label{stage-definitions}
+
+{\def\LTcaptype{none} % do not increment counter
+\small
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1556}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1556}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.3556}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Badge
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Stage
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+What it means
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+When to set it
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+{[}WAITING{]} & \textbf{Pending} & Folder exists, no work started &
+Default state for all 17 experiments \\
+{[}RUNNING{]} & \textbf{Setup} & Environment is working & After: code is
+in \texttt{src/original/}, dependencies are installed,
+and the code runs without import errors \\
+{[}REVIEW{]} & \textbf{In Progress} & Actively producing results &
+After: first successful end-to-end run, target results identified \\
+{[}DONE{]} & \textbf{Done} & Replication complete & After: key results
+match the paper (within tolerance), README comparison table is filled,
+REPLICATION\_LOG is complete \\
+{[}ERROR{]} & \textbf{Blocked} & Cannot proceed & When: broken deps,
+missing data, or unresolvable errors --- \textbf{always document the
+blocker} \\
+\end{longtable}
+}
+
+\begin{quote}
+\small \textbf{How to change the status:} Open the experiment's
+\texttt{README.md} and change the line that says:
+
+\begin{minted}{text}
+## Replication Status: [WAITING] Pending
+\end{minted}
+
+to the appropriate badge. Then run
+\texttt{python3 scripts/update\textbackslash\{\}\_readme.py} to propagate
+the change to the main dashboard.
+\end{quote}

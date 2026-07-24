@@ -1,0 +1,11 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{} Activate the environment first}
+\PYG{n+nb}{source}\PYG{+w}{ }experiments/NNN\PYGZus{}folder\PYGZus{}name/.venv/bin/activate
+
+\PYG{c+c1}{\PYGZsh{} Navigate to the experiment directory}
+\PYG{n+nb}{cd}\PYG{+w}{ }experiments/NNN\PYGZus{}folder\PYGZus{}name/
+
+\PYG{c+c1}{\PYGZsh{} Run the original code (the exact command varies by paper)}
+python3\PYG{+w}{ }src/original/main.py
+\PYG{c+c1}{\PYGZsh{} or: Rscript src/original/run\PYGZus{}experiments.R}
+\end{MintedVerbatim}
