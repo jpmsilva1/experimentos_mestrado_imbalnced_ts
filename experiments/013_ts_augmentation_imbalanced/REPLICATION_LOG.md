@@ -6,6 +6,29 @@ This log tracks day-by-day progress of the replication effort.
 
 <!-- Add new entries at the TOP of this file (most recent first) -->
 
+## 2026-07-24 Cluster Deployment Script Created
+
+**Time spent**: 0h 15m
+
+### What was done
+- Created a SLURM job array script (`run_apuana.slurm`) to execute all 9 datasets in parallel on the Apuana cluster.
+- Configured CPU/threading constraints (`OMP_NUM_THREADS`, etc.) dynamically based on SLURM allocation to prevent node thrashing.
+- Assumed `micromamba` for environment activation to match cluster standards from previous experiments.
+
+### What worked
+- Parallelizing the datasets using SLURM arrays will reduce runtime drastically by processing them on independent nodes/tasks.
+- Environment `exp013_tser` successfully created on the Apuana cluster via `setup_cluster_env.sh` (micromamba).
+- Successfully submitted the job array. Discovered the cluster has a hard limit of **4 running jobs per user** (`QOSMaxJobsPerUserLimit`), so 3 array tasks run in parallel while `paper003` occupies the 4th slot.
+
+### Issues encountered
+- Tmux terminal corruption occurred due to `micromamba` progress bars on cluster, fixed by setting `MAMBA_NO_PROGRESS=1`.
+- SLURM array jobs crashed instantly on first attempt because the `logs/` directory didn't exist. Fixed by running `mkdir -p logs` before `sbatch`.
+
+### Next steps
+- Sync files to Apuana cluster.
+- Run `sbatch run_apuana.slurm`.
+- Wait for completion and proceed with aggregation analysis scripts.
+
 ## 2026-07-16 Environment Setup & Local Run Deferred
 
 **Time spent**: 2h 0m

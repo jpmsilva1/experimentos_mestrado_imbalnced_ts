@@ -52,6 +52,9 @@ fi
 export PATH="$HOME/.local/bin:$PATH"
 eval "$(micromamba shell hook --shell bash)"
 
+# PREVENT TMUX CORRUPTION: Disable progress bars which can garble tmux rendering on the cluster
+export MAMBA_NO_PROGRESS=1
+
 # ==============================================================================
 # STEP 1 — Create conda env with R base + compilers (MUST be first)
 # Compilers must be installed BEFORE any R packages that need C compilation

@@ -56,6 +56,18 @@ The replication effort transitioned from local laptop execution (which was proje
 - **Progress Tracking:** To monitor the exact progress out of the 600 total parameter combinations without interrupting the job, the following live-calc script can be executed on the cluster:
   `echo "Scale=2; Progress = $(grep -c 'Patching' logs/paper003-st-resampling_*.out) / 600 * 100; print Progress; print \"% Complete\n\"" | bc`
 
+### 7. Phase 2 Architecture (Next Steps)
+- **Bottleneck Prevented:** The original `exps_internalTuning.R` script initializes a fresh `res <- list()` object. If executed on the cluster as-is, it would have permanently overwritten and deleted all local cross-validation data for the 6 smaller datasets (MESA, TCEQ, etc.).
+- **Solution (Safe Patching Mechanism):** 
+  - Engineered `patch_internal.R` to load the existing `res_internalTuning.Rdata` instead of wiping it.
+  - Hardcoded the script to filter `inds_df` exclusively to the 4 `BEIJ` datasets, preventing redundant computation.
+  - Created `run_apuana_phase2.slurm` to orchestrate this specific job on the cluster.
+- **Execution Instructions (For Tomorrow):**
+  1. Once Phase 1 is fully complete, verify the generated `res_externalPrequential.Rdata`.
+  2. Upload `patch_internal.R` and `run_apuana_phase2.slurm` to the cluster.
+  3. Upload your local `results/res_internalTuning.Rdata` to the cluster (so the script has the base data to patch).
+  4. Submit the job: `sbatch run_apuana_phase2.slurm`.
+
 ## 2026-07-18 Execution Abort & Cluster Recommendation
 
 **Time spent**: 0h 15m
