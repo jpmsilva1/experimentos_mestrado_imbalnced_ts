@@ -324,6 +324,31 @@ Two ready-to-use templates are provided in `Cluster Docs/`:
 #SBATCH --output=logs/%x_%A_%a.out  # %A = array job ID, %a = task index
 ```
 
+### Polite Cluster Code (Dynamic CPU/GPU Binding)
+
+Your scripts should dynamically respect SLURM limits rather than hardcoding threads or device IDs. 
+
+**Python / PyTorch:**
+```python
+import os, multiprocessing, torch
+
+# 1. CPU Binding (Respect SLURM's limit, fallback to local machine max)
+num_cpus = int(os.environ.get("SLURM_CPUS_PER_TASK", multiprocessing.cpu_count()))
+
+# Enforce limit on C-backend libraries to prevent thread explosion
+os.environ["OMP_NUM_THREADS"] = str(num_cpus)
+os.environ["MKL_NUM_THREADS"] = str(num_cpus)
+os.environ["OPENBLAS_NUM_THREADS"] = str(num_cpus)
+os.environ["NUMEXPR_NUM_THREADS"] = str(num_cpus)
+
+# 2. GPU Binding (SLURM isolates the GPU, PyTorch detects it)
+if torch.cuda.is_available():
+    torch.backends.cudnn.deterministic = True
+    torch.backends.cudnn.benchmark = False
+```
+
+*(For R, dynamic thread detection is covered in Section 8).*
+
 ---
 
 ## 10. Fault-Tolerant Job Arrays
