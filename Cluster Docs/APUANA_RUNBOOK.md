@@ -523,7 +523,7 @@ Common reasons in the `%R` column:
 | Reason | Meaning | Fix |
 |---|---|---|
 | `Resources` | Waiting for enough free CPUs/GPUs | Wait, or reduce `--cpus-per-task` |
-| `QOSMaxCpuPerUserLimit` | Requested more CPUs than your quota allows | Reduce `--cpus-per-task` (e.g., from 64 to 24) |
+| `QOSMaxCpuPerUserLimit` | Requested more CPUs than your quota allows (max 32 CPUs total) | Reduce `--cpus-per-task` (e.g., from 64 to 24) |
 | `QOSMaxJobsPerUser` | Hit your personal job limit (max 4 running jobs) | Cancel old jobs with `scancel` or wait |
 | `QOSMaxGRESPerUser` | Hit GPU quota | Reduce `--gpus` or cancel other GPU jobs |
 | `Priority` | Other jobs have higher priority | Wait |
