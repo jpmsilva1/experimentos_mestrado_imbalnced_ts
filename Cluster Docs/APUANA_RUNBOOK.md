@@ -391,6 +391,11 @@ echo "Merged $(ls results/data/results_task_*.csv | wc -l) result files."
 
 ### Submitting
 
+**CRITICAL WARNING:** SLURM will instantly crash your job if the output directory specified in `#SBATCH --output=logs/...` does not exist. Always create it *before* submitting:
+```bash
+mkdir -p logs
+```
+
 ```bash
 sbatch job_template.slurm
 # → Submitted batch job 123456
@@ -519,7 +524,7 @@ Common reasons in the `%R` column:
 |---|---|---|
 | `Resources` | Waiting for enough free CPUs/GPUs | Wait, or reduce `--cpus-per-task` |
 | `QOSMaxCpuPerUserLimit` | Requested more CPUs than your quota allows | Reduce `--cpus-per-task` (e.g., from 64 to 24) |
-| `QOSMaxJobsPerUser` | Hit your personal job limit | Cancel old jobs with `scancel` |
+| `QOSMaxJobsPerUser` | Hit your personal job limit (max 4 running jobs) | Cancel old jobs with `scancel` or wait |
 | `QOSMaxGRESPerUser` | Hit GPU quota | Reduce `--gpus` or cancel other GPU jobs |
 | `Priority` | Other jobs have higher priority | Wait |
 
@@ -537,6 +542,12 @@ Common causes:
 - Script has a Python/R syntax error → test locally first.
 - `virtualenv` or micromamba env not found → run setup script.
 - `mkdir -p logs` missing → add to job script pre-flight.
+
+### Tmux Garbled Output (Mamba Progress Bars)
+
+- **Symptom:** Terminal text becomes completely garbled and unreadable while installing environments inside Tmux.
+- **Root Cause:** Micromamba's dynamic download progress bars corrupt Tmux's terminal rendering on the cluster.
+- **Fix:** Run `export MAMBA_NO_PROGRESS=1` before installing. (This is now hardcoded in our `setup_env.sh` scripts).
 
 ### Job ran but produced no output file
 
