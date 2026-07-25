@@ -6,6 +6,27 @@ This log tracks day-by-day progress of the replication effort.
 
 <!-- Add new entries at the TOP of this file (most recent first) -->
 
+## 2026-07-25 SLURM Distributed Optimization & Checkpointing
+
+**Time spent**: 1h 0m
+
+### Executive Summary
+After successfully migrating to the cluster, we hit a severe QOS array bottleneck due to concurrency limits. Additionally, the fallback to strictly sequential execution (`.parallel = FALSE`) caused the `rpart` model evaluations on Beijing to take over 18 hours. We engineered a dynamic parallel patch for `patch_external.R` to optimize thread usage across 24 cores (10 parallel folds for `rpart`/`earth`, and 24 native threads for `ranger`), shrinking execution time from 9 days to 24 hours. A checkpointing mechanism was also introduced, salvaging the 18 hours of prior sequential `rpart` computation.
+
+### 1. The QOSMaxJobsPerUserLimit Array Bottleneck
+- **Bottleneck:** A single user can only have 4 SLURM jobs active simultaneously on the cluster. The 4 concurrent array jobs from Experiment 013 completely saturated this quota, blocking `paper003` from starting.
+- **Solution:** Temporarily paused the `exp013` queue via `scontrol hold`, killed the youngest running array job (`scancel 7896_5`) to free exactly 1 slot, and allowed `paper003` to initiate before releasing the hold queue.
+
+### 2. Checkpointing: Saving 18 Hours of Work
+- **Bottleneck:** The legacy script saved the massive `res` Rdata matrix *only* after evaluating all parameter combinations for a specific model. Aborting midway meant losing all progress.
+- **Solution:** Injected `if(!is.null(res[[m]][[dfnm]][[parnm]])) next` into the inner parameter loop of `patch_external.R`. This `safe resume` mechanism successfully bypassed 50 iterations of `rpart` that had previously completed, instantly skipping 18 hours of redundant calculation upon restart.
+
+### 3. Dynamic Parallelism (The 10x Speedup)
+- **Bottleneck:** `rpart` and `earth` are strictly single-threaded models. Under `.parallel = FALSE`, cross-validating 10 folds sequentially on 151,000 rows took 18 hours per dataset.
+- **Solution:** 
+  - Overrode `.parallel = TRUE` and registered `NCORES = 10` using `doParallel` specifically for `rpart` and `earth`, dropping the evaluation time from 18 hours down to < 2 hours (10x speedup).
+  - Explicitly kept `.parallel = FALSE` for `ranger`, but injected `num.threads = 24` to leverage its superior native C++ threading, maxing out the cluster node's 24 cores without memory duplication overhead.
+
 ## 2026-07-24 Cluster Migration & High-Performance Compute Setup
 
 **Time spent**: 2h 45m
