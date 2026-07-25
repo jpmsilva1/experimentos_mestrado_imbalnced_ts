@@ -7,13 +7,13 @@
 | Status | Count |
 |--------|-------|
 | 🟢 Done | 3 |
-| 🟡 In Progress | 2 |
+| 🟡 In Progress | 3 |
 | 🔵 Setup | 0 |
-| ⚪ Pending | 12 |
+| ⚪ Pending | 11 |
 | 🔴 Blocked | 0 |
 | **Total** | **17** |
 
-**Last updated**: 2026-07-17
+**Last updated**: 2026-07-24
 
 ---
 
