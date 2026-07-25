@@ -5,6 +5,29 @@ This log tracks day-by-day progress of the replication effort.
 ---
 
 <!-- Add new entries at the TOP of this file (most recent first) -->
+## Phase 4/5: Validation Plan (Pending Execution Completion)
+
+**Objective**: Convert `.Rdata` outputs into a human-readable format, compare against the paper's original tables, and evaluate reproducibility.
+
+### Step 1: Result Extraction
+- The R scripts currently output `.Rdata` files (e.g., `results/RF/.a1.randomForest.Rdata`) containing the `performanceEstimation` grid objects.
+- **Action**: Write an R script (`extract_results.R`) that loops through `results/*/*.Rdata`, extracts the `ubaF`, `ubaprec`, and `ubarec` metrics, and aggregates them into a clean `results/tables/final_metrics.csv`.
+
+### Step 2: Target Comparison
+- We need to compare our `.csv` results against the official results reported in **Branco et al. (2019)**. 
+- Specifically, we will look at the performance of the **Utility-based F-measure (ubaF)** across the 15 datasets for each algorithm (LM, RF, SVM, NNET) combined with the pre-processing strategies (None, RU, RO, GN, SMOTE, IS).
+
+### Step 3: Tolerance & Validation Criteria
+- Because Random Forest, SMOTE, and 2x10-Fold Cross Validation are **stochastic processes**, exact numeric matches are highly unlikely, even with fixed seeds (`1234`), due to cross-platform floating-point differences and package updates (R 4.2 vs older R versions).
+- **Tolerance applied**:
+  - `✅ Match`: Replicated value is within **≤ 5% relative difference** from the paper's value.
+  - `⚠️ Deviation`: Replicated value > 5% but the core ranking holds (e.g., SMOTE still beats Baseline).
+  - `❌ Mismatch`: Results completely contradict the paper or fail to generate.
+
+### Step 4: Documentation
+- Populate the **Key Results** table in `README.md` following the exact formatting required by the `academic-code-replicator` skill.
+- Document any significant deviations in the "Observations & Deviations" section.
+
 ## 2026-07-24 Phase 3: Model Execution & Bug Fixing
 - **Fixed `ImpSampRegress` error**: The original script failed because `ImpSampRegress` was renamed to `WERCSRegress` in modern versions of the `UBL` package. Updated the global `AuxsIS.R` to use `WERCSRegress`. Linear Model (LM) successfully reached 100% completion.
 - **Fixed `doParallel` error**: Installed the missing `doParallel` package into the `exp004` Conda environment to enable multi-core execution for RF, SVM, and NNET.
