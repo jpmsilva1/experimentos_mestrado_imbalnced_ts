@@ -9,11 +9,11 @@
 | **Venue** | [VENUE] |
 | **DOI/URL** | [DOI_URL] |
 | **Original Code** | https://github.com/paobranco/Pre-processingApproachesImbalanceRegression |
-| **Language** | [Python/R/Both] |
+| **Language** | R |
 | **ARA Reference** | [Link to ARA in Obsidian Vault, if exists] |
 | **Excel Row** | [Row number in Fichamento_Artigos.xlsx] |
 
-## Replication Status: ⚪ Pending
+## Replication Status: 🟡 In Progress
 
 <!-- Update this to: 🔵 Setup | 🟡 In Progress | 🟢 Done | 🔴 Blocked -->
 
