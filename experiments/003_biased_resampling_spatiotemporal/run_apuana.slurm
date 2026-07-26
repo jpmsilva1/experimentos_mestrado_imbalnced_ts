@@ -44,6 +44,8 @@ Rscript -e "library(STResamplingDSAA); cat('STResamplingDSAA OK\n')"
 
 echo "=== Running Phase 1: Patch External (Spatio-Temporal configs) ==="
 cd src/original/inst
+pwd
+ls -la extdata/dfs.Rdata
 Rscript patch_external.R
 
 cd ../../..

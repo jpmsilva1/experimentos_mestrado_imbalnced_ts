@@ -1,9 +1,10 @@
 # PARALLELIZATION
-NCORES <- 10
+# ponytail: forced sequential to avoid OOM on BEIJ datasets (151k rows)
+NCORES <- 1
 NUM_SPLITS <- 1
 NUM_THREADS <- as.integer(Sys.getenv("SLURM_CPUS_PER_TASK", unset = parallel::detectCores() - 1))
 library(doParallel)
-cat(paste("\nUsing", NCORES, "(cores for fold parallelization), with", NUM_THREADS, "threads for ranger\n\n"))
+cat(paste("\nUsing", NCORES, "(sequential outer mode), with", NUM_THREADS, "threads for ranger\n\n"))
 registerDoParallel(cores=NCORES)
 
 # LOADING LEARNING MODEL FUNCTIONS
@@ -46,12 +47,11 @@ EST_PARS <- list(nfolds = 10,
                  time="time", 
                  site_id="station",
                  .keepTrain = TRUE,
-                 .parallel = TRUE) # dynamic override in loop
+                 .parallel = FALSE) # ponytail: sequential for everything to avoid OOM
 
 THR_REL <- 0.9
 EVAL_PARS <- list(eval.function = eval_stats, 
-                  cf = 1.5, thr = THR_REL, beta = 1,
-                  .keptTrain = TRUE)
+                  cf = 1.5, thr = THR_REL, beta = 1)
 SEED <- 1234
 
 # EVALUATION - ONLY PATCHING STUNDER AND STOVER
@@ -72,12 +72,9 @@ for(dfnm in names(inds_df)){
     
     cat(paste(" and model", m, "\n"))
     
-    WF_PARS <- list(model=m, min_train=2, handleNAs="centralImput", nORp = 0.2)
+    WF_PARS <- list(model = m)
     if(m == "ranger"){
-      WF_PARS <- c(WF_PARS, list(num.threads = NUM_THREADS, num.trees = 250, verbose = FALSE))
-      EST_PARS$.parallel <- FALSE
-    } else {
-      EST_PARS$.parallel <- TRUE
+      WF_PARS <- c(WF_PARS, list(num.threads = NUM_THREADS))
     }
     
     # SPATIO-TEMPORAL BIAS RESAMPLING PATCH
@@ -90,12 +87,6 @@ for(dfnm in names(inds_df)){
             resample.pars = list(sites_sf=stations, alpha=a, thr.rel=THR_REL, C.perc=cperc, type="add"))
 
           parnm <- if(!is.list(cperc)) paste0(rsfun, "_cperc_", cperc, "_alpha_", a) else paste0(rsfun, "_cperc_", paste0(cperc, collapse="_"), "_alpha_", a)
-          
-          # CHECKPOINTING: SKIP IF ALREADY COMPUTED
-          if (!is.null(res[[m]][[dfnm]][[parnm]])) {
-            cat(paste("\nSkipping", parnm, "- already computed"))
-            next
-          }
           
           cat(paste("\nPatching", parnm))
           
