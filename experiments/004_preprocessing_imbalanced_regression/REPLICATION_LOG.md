@@ -5,6 +5,12 @@ This log tracks day-by-day progress of the replication effort.
 ---
 
 <!-- Add new entries at the TOP of this file (most recent first) -->
+
+## 2026-07-26 Phase 3: Random Forest Completion & NNET Setup
+- **Random Forest Completion**: `expsIS_RF.R` successfully finished all 13 datasets after running continuously for 23 hours and 8 minutes on 4 parallel threads. Results were fully persisted to `results/RF/*.Rdata`, yielding very large files (e.g., `cpuSm` at ~60MB). Pushed to GitHub.
+- **NNET Environment Bug**: When attempting to run `expsIS_NNET.R`, the script immediately crashed throwing `object 'WFnone_nnet_s1_d0' not found`.
+- **NNET Bug Fix**: Discovered that the original authors maintained distinct `AuxsIS.R` files for each algorithm. The unified `AuxsIS.R` we used didn't contain the hardcoded Neural Network workflows. Successfully extracted the 327 lines of custom NNET workflows from the original repo (`R_Code/NNET/AuxsIS.R`), patched `ImpSampRegress` to `WERCSRegress` for legacy compatibility, and appended them to `src/adapted/AuxsIS.R`.
+- **NNET Execution**: Restarted `expsIS_NNET.R` successfully under an interactive R session, currently running securely under `caffeinate` protection.
 ## Phase 4/5: Validation Plan (Pending Execution Completion)
 
 **Objective**: Convert `.Rdata` outputs into a human-readable format, compare against the paper's original tables, and evaluate reproducibility.

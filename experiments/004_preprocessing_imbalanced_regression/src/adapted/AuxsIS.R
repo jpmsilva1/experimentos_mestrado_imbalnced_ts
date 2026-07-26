@@ -107,3 +107,331 @@ eval.stats <- function(trues,preds, stats, thr.rel, method,npts,control.pts,ymin
   
   c(ubaF=ubaF,ubaprec=ubaprec,ubarec=ubarec)
 }
+WFnone_nnet_s1_d0 <- function(form, train, test, learner){ # workflow for using the original data set
+  preds <- do.call(paste('cv', learner, sep='.'),
+                   list(form, train, test, size=1, decay=0,linout=TRUE, skip=TRUE, MaxNWts=10000, trace=FALSE, maxit=100))
+  WFoutput(rownames(test),responseValues(form,test),preds)
+}
+
+WFnone_nnet_s2_d0 <- function(form, train, test, learner){ # workflow for using the original data set
+  preds <- do.call(paste('cv', learner, sep='.'),
+                   list(form, train, test, size=2, decay=0,linout=TRUE, skip=TRUE, MaxNWts=10000, trace=FALSE, maxit=100))
+  WFoutput(rownames(test),responseValues(form,test),preds)
+}
+
+
+WFnone_nnet_s5_d0 <- function(form, train, test, learner){ # workflow for using the original data set
+  preds <- do.call(paste('cv', learner, sep='.'),
+                   list(form, train,test, size=5, decay=0,linout=TRUE, skip=TRUE, MaxNWts=10000, trace=FALSE, maxit=100))
+  WFoutput(rownames(test),responseValues(form,test),preds)
+}
+
+WFnone_nnet_s10_d0 <- function(form, train, test, learner){ # workflow for using the original data set
+  preds <- do.call(paste('cv', learner, sep='.'),
+                   list(form, train,test, size=10, decay=0,linout=TRUE, skip=TRUE, MaxNWts=10000, trace=FALSE, maxit=100))
+  WFoutput(rownames(test),responseValues(form,test),preds)
+}
+
+
+WFnone_nnet_s1_d0.01 <- function(form, train, test, learner){ # workflow for using the original data set
+  preds <- do.call(paste('cv', learner, sep='.'),
+                   list(form, train, test, size=1, decay=0.01,linout=TRUE, skip=TRUE, MaxNWts=10000, trace=FALSE, maxit=100))
+  WFoutput(rownames(test),responseValues(form,test),preds)
+}
+
+WFnone_nnet_s2_d0.01 <- function(form, train, test, learner){ # workflow for using the original data set
+  preds <- do.call(paste('cv', learner, sep='.'),
+                   list(form, train, test, size=2, decay=0.01,linout=TRUE, skip=TRUE, MaxNWts=10000, trace=FALSE, maxit=100))
+  WFoutput(rownames(test),responseValues(form,test),preds)
+}
+
+
+WFnone_nnet_s5_d0.01 <- function(form, train, test, learner){ # workflow for using the original data set
+  preds <- do.call(paste('cv', learner, sep='.'),
+                   list(form, train,test, size=5, decay=0.01,linout=TRUE, skip=TRUE, MaxNWts=10000, trace=FALSE, maxit=100))
+  WFoutput(rownames(test),responseValues(form,test),preds)
+}
+
+WFnone_nnet_s10_d0.01 <- function(form, train, test, learner){ # workflow for using the original data set
+  preds <- do.call(paste('cv', learner, sep='.'),
+                   list(form, train,test, size=10, decay=0.01,linout=TRUE, skip=TRUE, MaxNWts=10000, trace=FALSE, maxit=100))
+  WFoutput(rownames(test),responseValues(form,test),preds)
+}
+
+
+WFRU_nnet_s1_d0 <- function(form, train, test, learner, rel=rel, thr.rel=thr.rel, C.perc=C.perc, ...){
+  # C.p <- as.integer(length(which(train.rel>thr.rel))*0.25)*100/length(which(train.rel<=thr.rel))
+  newtr <- RandUnderRegress(form, train, rel=rel, thr.rel=thr.rel, C.perc=C.perc)
+  preds <- do.call(paste('cv',learner,sep='.'),
+                   list(form,newtr,test, size=1, decay=0,linout=TRUE, skip=TRUE, MaxNWts=10000, trace=FALSE, maxit=100))
+  WFoutput(rownames(test),responseValues(form,test),preds)
+}
+WFRU_nnet_s2_d0 <- function(form, train, test, learner, rel=rel, thr.rel=thr.rel, C.perc=C.perc, ...){
+  # C.p <- as.integer(length(which(train.rel>thr.rel))*0.25)*100/length(which(train.rel<=thr.rel))
+  newtr <- RandUnderRegress(form, train, rel=rel, thr.rel=thr.rel, C.perc=C.perc)
+  preds <- do.call(paste('cv',learner,sep='.'),
+                   list(form,newtr,test, size=2, decay=0,linout=TRUE, skip=TRUE, MaxNWts=10000, trace=FALSE, maxit=100))
+  WFoutput(rownames(test),responseValues(form,test),preds)
+}
+WFRU_nnet_s5_d0 <- function(form, train, test, learner, rel=rel, thr.rel=thr.rel, C.perc=C.perc, ...){
+  # C.p <- as.integer(length(which(train.rel>thr.rel))*0.25)*100/length(which(train.rel<=thr.rel))
+  newtr <- RandUnderRegress(form, train, rel=rel, thr.rel=thr.rel, C.perc=C.perc)
+  preds <- do.call(paste('cv',learner,sep='.'),
+                   list(form,newtr,test, size=5, decay=0,linout=TRUE, skip=TRUE, MaxNWts=10000, trace=FALSE, maxit=100))
+  WFoutput(rownames(test),responseValues(form,test),preds)
+}
+WFRU_nnet_s10_d0 <- function(form, train, test, learner, rel=rel, thr.rel=thr.rel, C.perc=C.perc, ...){
+  # C.p <- as.integer(length(which(train.rel>thr.rel))*0.25)*100/length(which(train.rel<=thr.rel))
+  newtr <- RandUnderRegress(form, train, rel=rel, thr.rel=thr.rel, C.perc=C.perc)
+  preds <- do.call(paste('cv',learner,sep='.'),
+                   list(form,newtr,test, size=10, decay=0,linout=TRUE, skip=TRUE, MaxNWts=10000, trace=FALSE, maxit=100))
+  WFoutput(rownames(test),responseValues(form,test),preds)
+}
+WFRU_nnet_s1_d0.01 <- function(form, train, test, learner, rel=rel, thr.rel=thr.rel, C.perc=C.perc, ...){
+  # C.p <- as.integer(length(which(train.rel>thr.rel))*0.25)*100/length(which(train.rel<=thr.rel))
+  newtr <- RandUnderRegress(form, train, rel=rel, thr.rel=thr.rel, C.perc=C.perc)
+  preds <- do.call(paste('cv',learner,sep='.'),
+                   list(form,newtr,test, size=1, decay=0.01,linout=TRUE, skip=TRUE, MaxNWts=10000, trace=FALSE, maxit=100))
+  WFoutput(rownames(test),responseValues(form,test),preds)
+}
+WFRU_nnet_s2_d0.01 <- function(form, train, test, learner, rel=rel, thr.rel=thr.rel, C.perc=C.perc, ...){
+  # C.p <- as.integer(length(which(train.rel>thr.rel))*0.25)*100/length(which(train.rel<=thr.rel))
+  newtr <- RandUnderRegress(form, train, rel=rel, thr.rel=thr.rel, C.perc=C.perc)
+  preds <- do.call(paste('cv',learner,sep='.'),
+                   list(form,newtr,test, size=2, decay=0.01,linout=TRUE, skip=TRUE, MaxNWts=10000, trace=FALSE, maxit=100))
+  WFoutput(rownames(test),responseValues(form,test),preds)
+}
+WFRU_nnet_s5_d0.01 <- function(form, train, test, learner, rel=rel, thr.rel=thr.rel, C.perc=C.perc, ...){
+  # C.p <- as.integer(length(which(train.rel>thr.rel))*0.25)*100/length(which(train.rel<=thr.rel))
+  newtr <- RandUnderRegress(form, train, rel=rel, thr.rel=thr.rel, C.perc=C.perc)
+  preds <- do.call(paste('cv',learner,sep='.'),
+                   list(form,newtr,test, size=5, decay=0.01,linout=TRUE, skip=TRUE, MaxNWts=10000, trace=FALSE, maxit=100))
+  WFoutput(rownames(test),responseValues(form,test),preds)
+}
+
+WFRU_nnet_s10_d0.01 <- function(form, train, test, learner, rel=rel, thr.rel=thr.rel, C.perc=C.perc, ...){
+ # C.p <- as.integer(length(which(train.rel>thr.rel))*0.25)*100/length(which(train.rel<=thr.rel))
+  newtr <- RandUnderRegress(form, train, rel=rel, thr.rel=thr.rel, C.perc=C.perc)
+  preds <- do.call(paste('cv',learner,sep='.'),
+                   list(form,newtr,test,size=10, decay=0.01,linout=TRUE, skip=TRUE, MaxNWts=10000, trace=FALSE, maxit=100))
+  WFoutput(rownames(test),responseValues(form,test),preds)
+}
+
+
+WFRO_nnet_s1_d0 <- function(form, train, test, learner, rel=rel, thr.rel=thr.rel, C.perc=C.perc, ...){
+  newtr <- RandOverRegress(form, train, rel, thr.rel, C.perc)
+  preds <- do.call(paste('cv',learner,sep='.'),
+                   list(form,newtr,test,size=1, decay=0,linout=TRUE, skip=TRUE, MaxNWts=10000, trace=FALSE, maxit=100))
+  WFoutput(rownames(test),responseValues(form,test),preds)
+}
+
+WFRO_nnet_s2_d0 <- function(form, train, test, learner, rel=rel, thr.rel=thr.rel, C.perc=C.perc, ...){
+  newtr <- RandOverRegress(form, train, rel, thr.rel, C.perc)
+  preds <- do.call(paste('cv',learner,sep='.'),
+                   list(form,newtr,test,size=2, decay=0,linout=TRUE, skip=TRUE, MaxNWts=10000, trace=FALSE, maxit=100))
+  WFoutput(rownames(test),responseValues(form,test),preds)
+}
+WFRO_nnet_s5_d0 <- function(form, train, test, learner, rel=rel, thr.rel=thr.rel, C.perc=C.perc, ...){
+  newtr <- RandOverRegress(form, train, rel, thr.rel, C.perc)
+  preds <- do.call(paste('cv',learner,sep='.'),
+                   list(form,newtr,test,size=5, decay=0,linout=TRUE, skip=TRUE, MaxNWts=10000, trace=FALSE, maxit=100))
+  WFoutput(rownames(test),responseValues(form,test),preds)
+}
+
+WFRO_nnet_s10_d0 <- function(form, train, test, learner, rel=rel, thr.rel=thr.rel, C.perc=C.perc, ...){
+  newtr <- RandOverRegress(form, train, rel, thr.rel, C.perc)
+  preds <- do.call(paste('cv',learner,sep='.'),
+                   list(form,newtr,test,size=10, decay=0,linout=TRUE, skip=TRUE, MaxNWts=10000, trace=FALSE, maxit=100))
+  WFoutput(rownames(test),responseValues(form,test),preds)
+}
+
+WFRO_nnet_s1_d0.01 <- function(form, train, test, learner, rel=rel, thr.rel=thr.rel, C.perc=C.perc, ...){
+  newtr <- RandOverRegress(form, train, rel, thr.rel, C.perc)
+  preds <- do.call(paste('cv',learner,sep='.'),
+                   list(form,newtr,test, size=1, decay=0.01,linout=TRUE, skip=TRUE, MaxNWts=10000, trace=FALSE, maxit=100))
+  WFoutput(rownames(test),responseValues(form,test),preds)
+}
+
+WFRO_nnet_s2_d0.01 <- function(form, train, test, learner, rel=rel, thr.rel=thr.rel, C.perc=C.perc, ...){
+  newtr <- RandOverRegress(form, train, rel, thr.rel, C.perc)
+  preds <- do.call(paste('cv',learner,sep='.'),
+                   list(form,newtr,test, size=2, decay=0.01,linout=TRUE, skip=TRUE, MaxNWts=10000, trace=FALSE, maxit=100))
+  WFoutput(rownames(test),responseValues(form,test),preds)
+}
+
+WFRO_nnet_s5_d0.01 <- function(form, train, test, learner, rel=rel, thr.rel=thr.rel, C.perc=C.perc, ...){
+  newtr <- RandOverRegress(form, train, rel, thr.rel, C.perc)
+  preds <- do.call(paste('cv',learner,sep='.'),
+                   list(form,newtr,test, size=5, decay=0.01,linout=TRUE, skip=TRUE, MaxNWts=10000, trace=FALSE, maxit=100))
+  WFoutput(rownames(test),responseValues(form,test),preds)
+}
+
+WFRO_nnet_s10_d0.01 <- function(form, train, test, learner, rel=rel, thr.rel=thr.rel, C.perc=C.perc, ...){
+  newtr <- RandOverRegress(form, train, rel, thr.rel, C.perc)
+  preds <- do.call(paste('cv',learner,sep='.'),
+                   list(form,newtr,test, size=10, decay=0.01,linout=TRUE, skip=TRUE, MaxNWts=10000, trace=FALSE, maxit=100))
+  WFoutput(rownames(test),responseValues(form,test),preds)
+}
+
+
+WFGN_nnet_s1_d0 <- function(form, train, test, learner, rel, thr.rel, C.perc, pert, ...){
+  newtr <- GaussNoiseRegress(form, train, rel, thr.rel, C.perc, pert)
+  preds <- do.call(paste('cv',learner,sep='.'),
+                   list(form,newtr,test,size=1, decay=0,linout=TRUE, skip=TRUE, MaxNWts=10000, trace=FALSE, maxit=100))
+  WFoutput(rownames(test),responseValues(form,test),preds)
+}
+
+WFGN_nnet_s2_d0 <- function(form, train, test, learner, rel, thr.rel, C.perc, pert, ...){
+  newtr <- GaussNoiseRegress(form, train, rel, thr.rel, C.perc, pert)
+  preds <- do.call(paste('cv',learner,sep='.'),
+                   list(form,newtr,test,size=2, decay=0,linout=TRUE, skip=TRUE, MaxNWts=10000, trace=FALSE, maxit=100))
+  WFoutput(rownames(test),responseValues(form,test),preds)
+}
+WFGN_nnet_s5_d0 <- function(form, train, test, learner, rel, thr.rel, C.perc, pert, ...){
+  newtr <- GaussNoiseRegress(form, train, rel, thr.rel, C.perc, pert)
+  preds <- do.call(paste('cv',learner,sep='.'),
+                   list(form,newtr,test,size=5, decay=0,linout=TRUE, skip=TRUE, MaxNWts=10000, trace=FALSE, maxit=100))
+  WFoutput(rownames(test),responseValues(form,test),preds)
+}
+WFGN_nnet_s10_d0 <- function(form, train, test, learner, rel, thr.rel, C.perc, pert, ...){
+  newtr <- GaussNoiseRegress(form, train, rel, thr.rel, C.perc, pert)
+  preds <- do.call(paste('cv',learner,sep='.'),
+                   list(form,newtr,test,size=10, decay=0,linout=TRUE, skip=TRUE, MaxNWts=10000, trace=FALSE, maxit=100))
+  WFoutput(rownames(test),responseValues(form,test),preds)
+}
+
+WFGN_nnet_s1_d0.01 <- function(form, train, test, learner, rel, thr.rel, C.perc, pert, ...){
+  newtr <- GaussNoiseRegress(form, train, rel, thr.rel, C.perc, pert)
+  preds <- do.call(paste('cv',learner,sep='.'),
+                   list(form,newtr,test,size=1, decay=0.01,linout=TRUE, skip=TRUE, MaxNWts=10000, trace=FALSE, maxit=100))
+  WFoutput(rownames(test),responseValues(form,test),preds)
+}
+
+WFGN_nnet_s2_d0.01 <- function(form, train, test, learner, rel, thr.rel, C.perc, pert, ...){
+  newtr <- GaussNoiseRegress(form, train, rel, thr.rel, C.perc, pert)
+  preds <- do.call(paste('cv',learner,sep='.'),
+                   list(form,newtr,test,size=2, decay=0.01,linout=TRUE, skip=TRUE, MaxNWts=10000, trace=FALSE, maxit=100))
+  WFoutput(rownames(test),responseValues(form,test),preds)
+}
+
+WFGN_nnet_s5_d0.01 <- function(form, train, test, learner, rel, thr.rel, C.perc, pert, ...){
+  newtr <- GaussNoiseRegress(form, train, rel, thr.rel, C.perc, pert)
+  preds <- do.call(paste('cv',learner,sep='.'),
+                   list(form,newtr,test,size=5, decay=0.01,linout=TRUE, skip=TRUE, MaxNWts=10000, trace=FALSE, maxit=100))
+  WFoutput(rownames(test),responseValues(form,test),preds)
+}
+
+WFGN_nnet_s10_d0.01 <- function(form, train, test, learner, rel, thr.rel, C.perc, pert, ...){
+  newtr <- GaussNoiseRegress(form, train, rel, thr.rel, C.perc, pert)
+  preds <- do.call(paste('cv',learner,sep='.'),
+                   list(form,newtr,test,size=10, decay=0.01,linout=TRUE, skip=TRUE, MaxNWts=10000, trace=FALSE, maxit=100))
+  WFoutput(rownames(test),responseValues(form,test),preds)
+}
+
+WFsmote_nnet_s1_d0 <- function(form, train, test, learner, rel, thr.rel, C.perc, k, repl, dist, p, ...){
+  newtr <- SmoteRegress(form, train, rel, thr.rel, C.perc, k, repl, dist, p)
+  preds <- do.call(paste('cv',learner,sep='.'),
+                   list(form,newtr,test,size=1, decay=0,linout=TRUE, skip=TRUE, MaxNWts=10000, trace=FALSE, maxit=100))
+  WFoutput(rownames(test),responseValues(form,test),preds)
+}
+
+WFsmote_nnet_s2_d0 <- function(form, train, test, learner, rel, thr.rel, C.perc, k, repl, dist, p, ...){
+  newtr <- SmoteRegress(form, train, rel, thr.rel, C.perc, k, repl, dist, p)
+  preds <- do.call(paste('cv',learner,sep='.'),
+                   list(form,newtr,test,size=2, decay=0,linout=TRUE, skip=TRUE, MaxNWts=10000, trace=FALSE, maxit=100))
+  WFoutput(rownames(test),responseValues(form,test),preds)
+}
+
+WFsmote_nnet_s5_d0 <- function(form, train, test, learner, rel, thr.rel, C.perc, k, repl, dist, p, ...){
+  newtr <- SmoteRegress(form, train, rel, thr.rel, C.perc, k, repl, dist, p)
+  preds <- do.call(paste('cv',learner,sep='.'),
+                   list(form,newtr,test,size=5, decay=0,linout=TRUE, skip=TRUE, MaxNWts=10000, trace=FALSE, maxit=100))
+  WFoutput(rownames(test),responseValues(form,test),preds)
+}
+
+WFsmote_nnet_s10_d0 <- function(form, train, test, learner, rel, thr.rel, C.perc, k, repl, dist, p, ...){
+  newtr <- SmoteRegress(form, train, rel, thr.rel, C.perc, k, repl, dist, p)
+  preds <- do.call(paste('cv',learner,sep='.'),
+                   list(form,newtr,test,size=10, decay=0,linout=TRUE, skip=TRUE, MaxNWts=10000, trace=FALSE, maxit=100))
+  WFoutput(rownames(test),responseValues(form,test),preds)
+}
+
+WFsmote_nnet_s1_d0.01 <- function(form, train, test, learner, rel, thr.rel, C.perc, k, repl, dist, p, ...){
+  newtr <- SmoteRegress(form, train, rel, thr.rel, C.perc, k, repl, dist, p)
+  preds <- do.call(paste('cv',learner,sep='.'),
+                   list(form,newtr,test,size=1, decay=0.01,linout=TRUE, skip=TRUE, MaxNWts=10000, trace=FALSE, maxit=100))
+  WFoutput(rownames(test),responseValues(form,test),preds)
+}
+
+WFsmote_nnet_s2_d0.01 <- function(form, train, test, learner, rel, thr.rel, C.perc, k, repl, dist, p, ...){
+  newtr <- SmoteRegress(form, train, rel, thr.rel, C.perc, k, repl, dist, p)
+  preds <- do.call(paste('cv',learner,sep='.'),
+                   list(form,newtr,test,size=2, decay=0.01,linout=TRUE, skip=TRUE, MaxNWts=10000, trace=FALSE, maxit=100))
+  WFoutput(rownames(test),responseValues(form,test),preds)
+}
+
+WFsmote_nnet_s5_d0.01 <- function(form, train, test, learner, rel, thr.rel, C.perc, k, repl, dist, p, ...){
+  newtr <- SmoteRegress(form, train, rel, thr.rel, C.perc, k, repl, dist, p)
+  preds <- do.call(paste('cv',learner,sep='.'),
+                   list(form,newtr,test,size=5, decay=0.01,linout=TRUE, skip=TRUE, MaxNWts=10000, trace=FALSE, maxit=100))
+  WFoutput(rownames(test),responseValues(form,test),preds)
+}
+WFsmote_nnet_s10_d0.01 <- function(form, train, test, learner, rel, thr.rel, C.perc, k, repl, dist, p, ...){
+  newtr <- SmoteRegress(form, train, rel, thr.rel, C.perc, k, repl, dist, p)
+  preds <- do.call(paste('cv',learner,sep='.'),
+                   list(form,newtr,test,size=10, decay=0.01,linout=TRUE, skip=TRUE, MaxNWts=10000, trace=FALSE, maxit=100))
+  WFoutput(rownames(test),responseValues(form,test),preds)
+}
+
+WFIS_nnet_s1_d0 <- function(form, train, test, learner, rel, O, U, ...){
+  newtr <- WERCSRegress(form, train, rel=rel, thr.rel=NA, O, U)
+  preds <- do.call(paste('cv',learner,sep='.'),
+                   list(form,newtr,test,size=1, decay=0,linout=TRUE, skip=TRUE, MaxNWts=10000, trace=FALSE, maxit=100))
+  WFoutput(rownames(test),responseValues(form,test),preds)
+}
+
+WFIS_nnet_s2_d0 <- function(form, train, test, learner, rel, O, U, ...){
+  newtr <- WERCSRegress(form, train, rel=rel, thr.rel=NA, O, U)
+  preds <- do.call(paste('cv',learner,sep='.'),
+                   list(form,newtr,test,size=2, decay=0,linout=TRUE, skip=TRUE, MaxNWts=10000, trace=FALSE, maxit=100))
+  WFoutput(rownames(test),responseValues(form,test),preds)
+}
+WFIS_nnet_s5_d0 <- function(form, train, test, learner, rel, O, U, ...){
+  newtr <- WERCSRegress(form, train, rel=rel, thr.rel=NA, O, U)
+  preds <- do.call(paste('cv',learner,sep='.'),
+                   list(form,newtr,test,size=5, decay=0,linout=TRUE, skip=TRUE, MaxNWts=10000, trace=FALSE, maxit=100))
+  WFoutput(rownames(test),responseValues(form,test),preds)
+}
+WFIS_nnet_s10_d0 <- function(form, train, test, learner, rel, O, U, ...){
+  newtr <- WERCSRegress(form, train, rel=rel, thr.rel=NA, O, U)
+  preds <- do.call(paste('cv',learner,sep='.'),
+                   list(form,newtr,test,size=10, decay=0,linout=TRUE, skip=TRUE, MaxNWts=10000, trace=FALSE, maxit=100))
+  WFoutput(rownames(test),responseValues(form,test),preds)
+}
+
+WFIS_nnet_s1_d0.01 <- function(form, train, test, learner, rel, O, U, ...){
+  newtr <- WERCSRegress(form, train, rel=rel, thr.rel=NA, O, U)
+  preds <- do.call(paste('cv',learner,sep='.'),
+                   list(form,newtr,test,size=1, decay=0.01,linout=TRUE, skip=TRUE, MaxNWts=10000, trace=FALSE, maxit=100))
+  WFoutput(rownames(test),responseValues(form,test),preds)
+}
+
+
+WFIS_nnet_s2_d0.01 <- function(form, train, test, learner, rel, O, U, ...){
+  newtr <- WERCSRegress(form, train, rel=rel, thr.rel=NA, O, U)
+  preds <- do.call(paste('cv',learner,sep='.'),
+                   list(form,newtr,test,size=2, decay=0.01,linout=TRUE, skip=TRUE, MaxNWts=10000, trace=FALSE, maxit=100))
+  WFoutput(rownames(test),responseValues(form,test),preds)
+}
+WFIS_nnet_s5_d0.01 <- function(form, train, test, learner, rel, O, U, ...){
+  newtr <- WERCSRegress(form, train, rel=rel, thr.rel=NA, O, U)
+  preds <- do.call(paste('cv',learner,sep='.'),
+                   list(form,newtr,test,size=5, decay=0.01,linout=TRUE, skip=TRUE, MaxNWts=10000, trace=FALSE, maxit=100))
+  WFoutput(rownames(test),responseValues(form,test),preds)
+}
+WFIS_nnet_s10_d0.01 <- function(form, train, test, learner, rel, O, U, ...){
+  newtr <- WERCSRegress(form, train, rel=rel, thr.rel=NA, O, U)
+  preds <- do.call(paste('cv',learner,sep='.'),
+                   list(form,newtr,test,size=10, decay=0.01,linout=TRUE, skip=TRUE, MaxNWts=10000, trace=FALSE, maxit=100))
+  WFoutput(rownames(test),responseValues(form,test),preds)
+}
