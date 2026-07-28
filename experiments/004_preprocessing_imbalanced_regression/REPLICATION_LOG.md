@@ -1,110 +1,59 @@
 # Replication Log: Pre-processing Approaches for Imbalanced Distributions in Regression
 
-This log tracks day-by-day progress of the replication effort.
+**Objective**: Replicate the core experiments from Branco et al. (2019) to evaluate the impact of data pre-processing strategies (RU, RO, GN, SMOTE, IS) on imbalanced regression tasks across LM, RF, SVM, and NNET algorithms using Utility-based F-measure (ubaF).
 
 ---
 
-<!-- Add new entries at the TOP of this file (most recent first) -->
+## Phase 1: Code Audit & Initial Setup (2026-07-10 to 2026-07-24)
+- **Objective**: Scaffold the environment, analyze the original codebase, and identify dependencies.
+- **Repository Structure**: Analyzed the original `R_Code` directory and identified entry points for LM, MARS, NNET, RF, and SVM (`expsIS.R`).
+- **Dependencies Audit**: 
+  - Identified `performanceEstimation`, `UBL`, `e1071`, `randomForest`, `nnet` as stable.
+  - `DMwR` was deprecated and `uba` required a pinned local installation (v0.7.7 from a tar.gz).
+- **Execution Graph**: Mapped the execution flow: `expsIS.R` -> imports `AuxsIS.R` -> loads `DataSets15.Rdata` -> saves `.Rdata` objects containing grid search results.
 
-## 2026-07-26 Phase 3: Random Forest Completion & NNET Setup
-- **Random Forest Completion**: `expsIS_RF.R` successfully finished all 13 datasets after running continuously for 23 hours and 8 minutes on 4 parallel threads. Results were fully persisted to `results/RF/*.Rdata`, yielding very large files (e.g., `cpuSm` at ~60MB). Pushed to GitHub.
-- **NNET Environment Bug**: When attempting to run `expsIS_NNET.R`, the script immediately crashed throwing `object 'WFnone_nnet_s1_d0' not found`.
-- **NNET Bug Fix**: Discovered that the original authors maintained distinct `AuxsIS.R` files for each algorithm. The unified `AuxsIS.R` we used didn't contain the hardcoded Neural Network workflows. Successfully extracted the 327 lines of custom NNET workflows from the original repo (`R_Code/NNET/AuxsIS.R`), patched `ImpSampRegress` to `WERCSRegress` for legacy compatibility, and appended them to `src/adapted/AuxsIS.R`.
-- **NNET Execution**: Restarted `expsIS_NNET.R` successfully under an interactive R session, currently running securely under `caffeinate` protection.
-## Phase 4/5: Validation Plan (Pending Execution Completion)
+## Key Discoveries & Architectural Quirks
+To ensure no technical context is lost for future replication attempts, the following critical undocumented issues were discovered and solved during this replication:
+1. **The UBL/Geospatial Dependency Hell**: The original `UBL` package fails to compile on modern macOS arm64 due to heavy, deprecated geospatial dependencies (`sf`, `gstat`, `sp`, `automap`). **Hack applied**: We cloned the package and completely ripped out the spatio-temporal modules (which are irrelevant to tabular regression), allowing it to compile cleanly.
+2. **The `ImpSampRegress` Deprecation**: Modern versions of `UBL` silently renamed the Importance Sampling function to `WERCSRegress`. The original code crashes until this global rename is applied across all scripts.
+3. **Missing NNET Workflows**: The original repo provides a unified `AuxsIS.R`, but it is missing the Neural Network workflows. We had to dig into `R_Code/NNET/AuxsIS.R` to extract 327 lines of hardcoded NNET strategies and inject them into our unified file.
+4. **Missing Extraction Code**: The authors provided the PDF figures and the raw `.Rdata` execution grids, but *completely omitted* the R scripts used to extract the metrics and build the tables. We had to reverse-engineer the `performanceEstimation` object structure to build `extract_results.R`.
 
-**Objective**: Convert `.Rdata` outputs into a human-readable format, compare against the paper's original tables, and evaluate reproducibility.
+## Phase 2: Environment Setup & Smoke Testing (2026-07-24)
+- **Objective**: Build a stable execution environment and resolve dependency hell.
+- **Environment**: Created a Conda environment (`exp004`) running R 4.2.3 on macOS arm64.
+- **UBL Patching (Hack)**: Cloned and heavily modified the `paobranco/UBL` package. Ripped out heavy geospatial dependencies (`sf`, `gstat`, `sp`, `automap`, `stars`) that were irrelevant for tabular regression tasks but were causing fatal C++ compilation failures.
+- **Smoke Test**: Executed a small-scale test to ensure the patched environment successfully ran the evaluation framework.
 
-### Step 1: Result Extraction
-- The R scripts currently output `.Rdata` files (e.g., `results/RF/.a1.randomForest.Rdata`) containing the `performanceEstimation` grid objects.
-- **Action**: Write an R script (`extract_results.R`) that loops through `results/*/*.Rdata`, extracts the `ubaF`, `ubaprec`, and `ubarec` metrics, and aggregates them into a clean `results/tables/final_metrics.csv`.
+## Phase 3: Model Execution & Bug Fixing (2026-07-24 to 2026-07-28)
+- **Objective**: Execute the full experimental grid search for all models across the 15 datasets.
+- **Bug Fix 1 (UBL Compatibility)**: `ImpSampRegress` failed due to modern `UBL` deprecations. Updated the global `AuxsIS.R` to use the modern equivalent function `WERCSRegress`.
+- **Bug Fix 2 (Parallelization)**: Installed `doParallel` and regex-stripped stray parentheses `)` in the original `expsIS.R` files that were causing syntax errors.
+- **Bug Fix 3 (NNET Workflows)**: The original authors maintained distinct `AuxsIS.R` files per model. The NNET script crashed because `WFnone_nnet_s1_d0` was missing. Extracted 327 lines of custom NNET workflows from the original repository and injected them into our `src/adapted/AuxsIS.R`.
+- **Resource Management**: Parallelized execution using `doParallel(cores=4)` to balance thermal throttling (~74°C). Wrapped all runs inside macOS `caffeinate -dimsu -w PID &` to prevent App Nap and Deep Sleep interruptions during multi-day processes.
+- **Execution Completion**: 
+  - Random Forest (RF) completed in ~23 hours.
+  - Support Vector Machines (SVM) completed in ~38 hours, successfully handling massive 120MB datasets (`.cpuSm`, `.heat`).
+  - Neural Networks (NNET) completed successfully.
 
-### Step 2: Target Comparison
-- We need to compare our `.csv` results against the official results reported in **Branco et al. (2019)**. 
-- Specifically, we will look at the performance of the **Utility-based F-measure (ubaF)** across the 15 datasets for each algorithm (LM, RF, SVM, NNET) combined with the pre-processing strategies (None, RU, RO, GN, SMOTE, IS).
+## Phase 4: Result Extraction (2026-07-28)
+- **Objective**: Convert binary R grid objects into a single parsable CSV.
+- **Missing Code**: Discovered that the original repository omitted the scripts used to extract the results and build the paper's tables.
+- **Custom Extractor**: Developed `src/adapted/extract_results.R` to programmatically load every `performanceEstimation` `.Rdata` blob and extract the average Cross-Validation scores for F-measure (`ubaF`), Precision (`ubaprec`), and Recall (`ubarec`).
+- **Success**: Consolidated all execution data into a single 5,746-row CSV containing the aggregated results across all algorithms, strategies, and datasets.
 
-### Step 3: Tolerance & Validation Criteria
-- Because Random Forest, SMOTE, and 2x10-Fold Cross Validation are **stochastic processes**, exact numeric matches are highly unlikely, even with fixed seeds (`1234`), due to cross-platform floating-point differences and package updates (R 4.2 vs older R versions).
-- **Tolerance applied**:
-  - `✅ Match`: Replicated value is within **≤ 5% relative difference** from the paper's value.
-  - `⚠️ Deviation`: Replicated value > 5% but the core ranking holds (e.g., SMOTE still beats Baseline).
-  - `❌ Mismatch`: Results completely contradict the paper or fail to generate.
+## Generated Files & Artifacts Directory
+This replication effort produced the following key files. This section exists so future researchers understand exactly what each file does:
+- **`results/NNET/*.nnet.Rdata`**: Binary `performanceEstimation` R objects. These contain the raw 2x10-Fold Cross Validation iteration scores for Neural Network models across all datasets and pre-processing strategies.
+- **`results/RF/*.randomForest.Rdata`**: Binary R objects containing the exact same iteration scores, but for the Random Forest models.
+- **`results/SVM/*.svm.Rdata`**: Binary R objects containing the iteration scores for Support Vector Machine models.
+- **`src/adapted/extract_results.R`**: Custom R script designed to automate the missing extraction step. It loops through all `.Rdata` objects and calculates the mean metrics.
+- **`results/tables/final_metrics.csv`**: The canonical dataset (5,746 rows). Contains structured aggregated results (`Dataset`, `Algorithm`, `Strategy`, `Variant`, `Workflow`, `ubaF`, `ubaprec`, `ubarec`). This file serves as the baseline for the final validation against the paper's original tables.
 
-### Step 4: Documentation
-- Populate the **Key Results** table in `README.md` following the exact formatting required by the `academic-code-replicator` skill.
-- Document any significant deviations in the "Observations & Deviations" section.
-
-## 2026-07-24 Phase 3: Model Execution & Bug Fixing
-- **Fixed `ImpSampRegress` error**: The original script failed because `ImpSampRegress` was renamed to `WERCSRegress` in modern versions of the `UBL` package. Updated the global `AuxsIS.R` to use `WERCSRegress`. Linear Model (LM) successfully reached 100% completion.
-- **Fixed `doParallel` error**: Installed the missing `doParallel` package into the `exp004` Conda environment to enable multi-core execution for RF, SVM, and NNET.
-- **Fixed Syntax Typo**: The original authors left an extra parenthesis `)` in line 64 of `expsIS_RF.R`, `expsIS_SVM.R`, and `expsIS_NNET.R`. Stripped it via regex.
-- **Temperature & Resource Management**: Running `registerDoParallel(cores=7)` locally proved too intensive for the Mac. As established in experiment `012`, reduced the core limit to `cores=4` to keep the temperature stable at ~74°C while maximizing throughput. Wrapped the execution in a background OS `caffeinate` lock (`caffeinate -dimsu -w PID &`) to prevent the Mac from sleeping overnight while Random Forest evaluates across the 15 datasets.
-
-
-## 2026-07-24 Phase 2: Environment Setup & Smoke Test (COMPLETED)
-- Created Conda environment `exp004` with R 4.2.3.
-- Resolved ClobberError and long hanging environment solvers by adapting `UBL`.
-- **Hack applied**: Cloned `paobranco/UBL`, patched `NAMESPACE` and `DESCRIPTION` to rip out heavy geospatial dependencies (`sf`, `gstat`, `automap`, `sp`, `stars`) because they are only used for Spatio-Temporal Resampling which is irrelevant for tabular regression tasks in this paper. This saved gigabytes of C++ system libraries and allowed seamless installation.
-- Script `smoke_test.R` passed successfully.
-
-## 2026-07-24 Phase 1: Code Audit
-
-### Entry Points
-- `R_Code/LM/expsIS.R`: Runs LM model experiments
-- `R_Code/MARS/expsIS.R`: Runs MARS model experiments
-- `R_Code/NNET/expsIS.R`: Runs NNET model experiments
-- `R_Code/RF/expsIS.R`: Runs RF model experiments
-- `R_Code/SVM/expsIS.R`: Runs SVM model experiments
-
-### Execution Graph
-`expsIS.R`
-  → imports `AuxsIS.R`
-  → reads `DataSets15.Rdata` [path: likely hardcoded to load("...DataSets15.Rdata")]
-  → writes experiment results [path: likely hardcoded in RData files]
-
-### Red Flags
-- ❌ HARDCODED PATH: Data loading paths might be hardcoded or expect specific working directory.
-- ❌ KNOWN DEPRECATED: `DMwR` package has been archived from CRAN.
-
-### Dependency Pre-Audit
-- `DMwR`: ❌ KNOWN DEPRECATED
-- `performanceEstimation`: ✅ STABLE
-- `UBL`: ✅ STABLE
-- `uba`: ⚠️ PINNED OLD VERSION (v0.7.7 tar.gz from external URL)
-- `e1071`: ✅ STABLE
-- `randomForest`: ✅ STABLE
-- `earth`: ✅ STABLE
-- `nnet`: ✅ STABLE
-
-### Target Results
-[User to define specific target tables/figures to reproduce from the paper]
-
-### Primary Language Detected
-R
-→ Loading: references/lang-r.md
-
-## 2026-07-24 Environment Profile
-- **OS/Arch**: macOS arm64
-- **Paper knowledge**: URL only
-- **Project structure**: Existing: /Users/joaopms/Documents/Projeto_Mestrado/experiments/004_preprocessing_imbalanced_regression
-- **Available skills**: ara-compiler, ponytail
-- **Platform doc**: references/platform-apple-silicon.md
-- **Language doc**: pending detection
-
-## 2026-07-10 Initial Setup
-
-**Time spent**: 0h 0m
-
-### What was done
-- Scaffolded experiment folder from template
-
-### What worked
-- N/A
-
-### Issues encountered
-- None
-
-### Next steps
-- Clone original code
-- Set up environment
-- Identify target results to replicate
+## Phase 5: Validation Plan (Pending)
+- **Objective**: Compare our replicated `.csv` results against the official results reported in **Branco et al. (2019)**.
+- **Validation Criteria**: Due to the stochastic nature of Random Forest, SMOTE, and Cross-Validation splits, exact numeric matches are impossible even with fixed seeds (`1234`). We will apply a **5% relative difference** tolerance.
+  - `✅ Match`: Replicated value is within ≤ 5% relative difference from the paper's value.
+  - `⚠️ Deviation`: Replicated value > 5% but the core statistical ranking (e.g., SMOTE still beats Baseline) holds.
+  - `❌ Mismatch`: Results completely contradict the paper.
+- **Next Step**: Populate the target results, run the comparison against `final_metrics.csv`, and document any significant deviations.
