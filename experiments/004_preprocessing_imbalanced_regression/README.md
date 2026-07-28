@@ -11,7 +11,7 @@
 | **Original Code** | [paobranco/Pre-processingApproachesImbalanceRegression](https://github.com/paobranco/Pre-processingApproachesImbalanceRegression) |
 | **Language** | R |
 
-## Replication Status: 🟡 In Progress
+## Replication Status: 🟢 Done
 
 ---
 
