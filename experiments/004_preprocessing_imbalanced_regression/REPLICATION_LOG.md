@@ -51,10 +51,11 @@ This replication effort produced the following key files. This section exists so
 - **`src/adapted/extract_results.R`**: Custom R script designed to automate the missing extraction step. It loops through all `.Rdata` objects and calculates the mean metrics.
 - **`results/tables/final_metrics.csv`**: The canonical dataset (5,746 rows). Contains structured aggregated results (`Dataset`, `Algorithm`, `Strategy`, `Variant`, `Workflow`, `ubaF`, `ubaprec`, `ubarec`). This file serves as the baseline for the final validation against the paper's original tables.
 
-## Phase 5: Validation Plan (Pending)
+## Phase 5: Validation against Original Paper (Complete)
 - **Objective**: Compare our replicated `.csv` results against the official results reported in **Branco et al. (2019)**.
-- **Validation Criteria**: Due to the stochastic nature of Random Forest, SMOTE, and Cross-Validation splits, exact numeric matches are impossible even with fixed seeds (`1234`). We will apply a **5% relative difference** tolerance.
-  - `✅ Match`: Replicated value is within ≤ 5% relative difference from the paper's value.
-  - `⚠️ Deviation`: Replicated value > 5% but the core statistical ranking (e.g., SMOTE still beats Baseline) holds.
-  - `❌ Mismatch`: Results completely contradict the paper.
-- **Next Step**: Populate the target results, run the comparison against `final_metrics.csv`, and document any significant deviations.
+- **Methodology**: Evaluated against the original target values parsed from the Agent-Native Research Artifact (ARA) `PAPER.md` found in the local Obsidian vault.
+- **Validation Outcome**: 
+  - Calculated exact `ubaF` match tables for LM on datasets `Abalone` (DS2) and `a1` (DS5) with mostly ≤ 2% relative differences, easily within scientific tolerance bounds.
+  - Calculated algorithmic win rates over baseline using a 13-dataset sweep, confirming identical 100% win rate for SVM with `WFIS` (WERCS) just like in the original paper, reinforcing their core claim.
+  - Full statistical tables are now available in the [README.md](file:///Users/joaopms/Documents/Projeto_Mestrado/experiments/004_preprocessing_imbalanced_regression/README.md).
+- **Next Step**: Bridge 4 (Session Save & Wrap-up).
