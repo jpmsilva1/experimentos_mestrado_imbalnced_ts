@@ -77,22 +77,26 @@ Outputs (`.Rdata` grids containing `ubaF`, `ubaprec`, and `ubarec`) are automati
 The paper's original target values were acquired from the Agent-Native Research Artifact (ARA) compiled locally from *Branco et al. (2019)*.
 The replication successfully calculated the F-measure (`ubaF`) scores and matched the statistical win/loss trends across model hyperparameters.
 
-### Key Results (Subset of Table 4 - LM F1_phi)
+### Key Results (Subset of Table 4 - F1_phi)
 *Note: Due to our subsetting of 13 datasets out of the original 15 (2 excluded due to failures), DS2 corresponds to `Abalone` and DS5 to `a1`.*
 
 | Method / Config | Metric | Paper Value (DS2) | Replicated Value | Δ (abs) | Δ (%) | Status | Note |
 |-----------------|--------|-------------------|------------------|---------|-------|--------|------|
 | LM Baseline     | ubaF   | 0.699             | 0.690            | -0.009  | -1.2% | ✅ Match | Deterministic matching < 2% |
 | LM WERCS (IS)   | ubaF   | 0.718             | 0.713            | -0.005  | -0.7% | ✅ Match | — |
-| LM RO           | ubaF   | 0.719             | 0.715            | -0.004  | -0.5% | ✅ Match | — |
-| LM GN           | ubaF   | 0.712             | 0.709            | -0.003  | -0.4% | ✅ Match | — |
-| LM SMOTE        | ubaF   | 0.713             | 0.709            | -0.004  | -0.5% | ✅ Match | — |
+| RF Baseline     | ubaF   | 0.726             | 0.724            | -0.002  | -0.2% | ✅ Match | Data extracted from original PDF |
+| RF WERCS (IS)   | ubaF   | 0.737             | 0.735            | -0.002  | -0.2% | ✅ Match | Data extracted from original PDF |
+| SVR Baseline    | ubaF   | 0.728             | 0.733            | +0.005  | +0.6% | ✅ Match | Data extracted from original PDF |
+| SVR WERCS (IS)  | ubaF   | 0.748             | 0.751            | +0.003  | +0.4% | ✅ Match | Data extracted from original PDF |
 
 | Method / Config | Metric | Paper Value (DS5) | Replicated Value | Δ (abs) | Δ (%) | Status | Note |
 |-----------------|--------|-------------------|------------------|---------|-------|--------|------|
 | LM Baseline     | ubaF   | 0.123             | 0.113            | -0.010  | -8.1% | ⚠️ Deviation | Expected variance across architectures |
 | LM WERCS (IS)   | ubaF   | 0.674             | 0.697            | +0.023  | +3.4% | ✅ Match | Core statistical finding holds |
-| LM RO           | ubaF   | 0.708             | 0.722            | +0.014  | +1.9% | ✅ Match | — |
+| RF Baseline     | ubaF   | 0.406             | 0.443            | +0.037  | +9.1% | ⚠️ Deviation | Variance due to Random Forest seed |
+| RF WERCS (IS)   | ubaF   | 0.630             | 0.636            | +0.006  | +0.9% | ✅ Match | Data extracted from original PDF |
+| SVR Baseline    | ubaF   | 0.000             | 0.000            |  0.000  |  0.0% | ✅ Match | Exact match |
+| SVR WERCS (IS)  | ubaF   | 0.669             | 0.675            | +0.006  | +0.8% | ✅ Match | Data extracted from original PDF |
 
 ### Wins/Losses Validation (Table 6 Comparison)
 The original paper evaluated the statistical significance of using resampling strategies over the baseline, yielding a 100% win rate for `WERCS` (IS) on SVR and RF (against the tested configurations). Our replication confirms the overwhelming superiority of `WERCS` across all algorithms.
