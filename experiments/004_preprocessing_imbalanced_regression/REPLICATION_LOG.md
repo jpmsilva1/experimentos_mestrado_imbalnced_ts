@@ -44,6 +44,7 @@ To ensure no technical context is lost for future replication attempts, the foll
 
 ## Generated Files & Artifacts Directory
 This replication effort produced the following key files. This section exists so future researchers understand exactly what each file does:
+- **`results/LM/*.lm.Rdata`**: Binary `performanceEstimation` R objects containing the iteration scores for Linear Models.
 - **`results/NNET/*.nnet.Rdata`**: Binary `performanceEstimation` R objects. These contain the raw 2x10-Fold Cross Validation iteration scores for Neural Network models across all datasets and pre-processing strategies.
 - **`results/RF/*.randomForest.Rdata`**: Binary R objects containing the exact same iteration scores, but for the Random Forest models.
 - **`results/SVM/*.svm.Rdata`**: Binary R objects containing the iteration scores for Support Vector Machine models.
