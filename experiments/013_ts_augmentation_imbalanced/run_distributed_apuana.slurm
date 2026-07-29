@@ -9,7 +9,8 @@
 #SBATCH --mem=120G
 #SBATCH --time=7-00:00:00
 
-set -e
+# Intentionally NOT using set -e: individual series failures should not abort the entire multi-day job
+set -u
 
 mkdir -p logs
 
@@ -46,7 +47,7 @@ run_with_progress() {
     echo "=========================================================="
     
     # Launch 8 workers in the background
-    seq 1 $SLURM_CPUS_PER_TASK | xargs -n 1 -P $SLURM_CPUS_PER_TASK -I {} python "scripts/run/$SCRIPT_NAME" "$DS" > /dev/null 2>&1 &
+    seq 1 $SLURM_CPUS_PER_TASK | xargs -n 1 -P $SLURM_CPUS_PER_TASK -I {} python "scripts/run/$SCRIPT_NAME" "$DS" > /dev/null &
     WORKER_PID=$!
     
     # Monitor loop: Print progress every 60 seconds

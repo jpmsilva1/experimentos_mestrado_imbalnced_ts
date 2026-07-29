@@ -10,7 +10,7 @@ PARAMETER_SET = \
          lambda_l2=[0, 0.1, 1, 100],
          learning_rate=[0.05, 0.1, 0.2],
          min_child_samples=[15, 30, 50, 100],
-         n_jobs=[7],
+         n_jobs=[1],
          linear_tree=[True, False],
          boosting_type=['gbdt'])
 
@@ -132,7 +132,7 @@ class LightGBMOptim(BaseEstimator, RegressorMixin):
                                             param_distributions=self.parameters,
                                             scoring='neg_mean_squared_error',
                                             n_iter=self.iters,
-                                            n_jobs=7,
+                                            n_jobs=1,
                                             refit=True,
                                             verbose=0,
                                             cv=ShuffleSplit(n_splits=1, test_size=0.3),
