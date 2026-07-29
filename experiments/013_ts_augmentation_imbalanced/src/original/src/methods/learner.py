@@ -112,7 +112,7 @@ class LightGBMOptim(BaseEstimator, RegressorMixin):
     def __init__(self, iters: int = 50, params=None):
         self.model = None
         self.iters = iters
-        self.estimator = lgbm.LGBMRegressor(n_jobs=7)
+        self.estimator = lgbm.LGBMRegressor(n_jobs=1)
         self.params = params
         self.parameters = \
             dict(num_leaves=[5, 10, 15, 30],
@@ -121,7 +121,7 @@ class LightGBMOptim(BaseEstimator, RegressorMixin):
                  lambda_l2=[0, 0.1, 1, 100],
                  learning_rate=[0.05, 0.1, 0.2],
                  min_child_samples=[15, 30, 50, 100],
-                 n_jobs=[7],
+                 n_jobs=[1],
                  linear_tree=[True, False],
                  boosting_type=['gbdt'],
                  num_boost_round=[25, 50, 100])
@@ -140,7 +140,9 @@ class LightGBMOptim(BaseEstimator, RegressorMixin):
 
             self.model.fit(X, y)
         else:
-            self.model = lgbm.LGBMRegressor(**self.params, verbose=-1)
+            safe_params = self.params.copy()
+            safe_params['n_jobs'] = 1
+            self.model = lgbm.LGBMRegressor(**safe_params, verbose=-1)
             self.model.fit(X, y)
 
     def predict(self, X):
