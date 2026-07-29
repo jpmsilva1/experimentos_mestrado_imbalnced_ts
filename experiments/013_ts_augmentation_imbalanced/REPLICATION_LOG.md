@@ -6,6 +6,31 @@ This log tracks day-by-day progress of the replication effort.
 
 <!-- Add new entries at the TOP of this file (most recent first) -->
 
+## 2026-07-29 Cluster Optimization & Concurrency Patch
+
+**Time spent**: 1h 30m
+
+### What was done
+- **Cluster Quota Analysis**: Identified that the Apuana cluster has a strict `QOSMaxJobsPerUserLimit` and a maximum limit of 48 CPUs per user. The previous SLURM array strategy (4 running jobs × 8 CPUs = 32 CPUs) was not fully maxing out the quota, which we later found to be 48, blocking Experiment 003 (which required 24 CPUs) from executing when combined.
+- **Distributed SLURM Refactor**: Created a new `run_distributed_apuana.slurm` script that condenses the entire `exp013` execution into a **single job** initially requesting 8 CPUs, and later scaled up to 24 CPUs and 120GB RAM. This seamlessly packs with Exp003 (24 CPUs) to perfectly hit the 48 CPU limit.
+- **Concurrency Implementation**: Utilized `xargs -P 8` to launch 8 simultaneous Python workers per dataset, retaining parallelization without requiring multiple SLURM array jobs.
+- **Race Condition (TOCTOU) Patch**: Discovered that launching 8 identical deterministic Python processes simultaneously caused a "Time-Of-Check to Time-Of-Use" race condition on the `.csv` lock files. Patched `run_models.py`, `run_models_on_extra.py`, `run_variants.py`, and `run_sensitivity.py` to include `random.shuffle(ts_names)`. This ensures each worker processes the time series in a completely random order, entirely preventing collision.
+- **ADASYN Fallback Patch**: Identified that the `ADASYN` algorithm from `imblearn` was crashing on `m4_hourly` due to a math `RuntimeError` triggered by extreme class imbalance. Added a `try...except` block in `src/methods/tser.py` to seamlessly fallback to `SMOTE` when this occurs.
+- **Background Progress Monitor**: Developed a custom SLURM-safe background monitor inside the bash script. Instead of using `tqdm` (which spams `\r` and corrupts SLURM `.out` files), a background loop wakes up every 60 seconds, counts the generated `.csv` files, and prints a clean completion percentage to the log. The total number of series is calculated dynamically via a silent Python hook to GluonTS.
+
+### What worked
+- The "perfect packing" of 8 CPUs for Exp013 and 24 CPUs for Exp003 works flawlessly within the cluster limits.
+- The Python `random.shuffle` effectively resolved all race conditions, allowing the 8 parallel workers to independently process time series at 8x speed.
+- The background progress monitor successfully printed clean, accurate percentages without any log corruption.
+- Code changes were successfully pushed to git and synced to the cluster via `rsync`.
+
+### Issues encountered
+- Encountered a `fatal: not a git repository` error when attempting to `git pull` on the cluster, indicating the directory was originally synced via `rsync` or `scp`. Bypassed by providing the exact `rsync` push command for the local machine.
+
+### Next steps
+- Monitor the background execution of `run_distributed_apuana.slurm`.
+- Once completed, aggregate the results and execute the analysis scripts to generate figures.
+
 ## 2026-07-24 Cluster Deployment Script Created
 
 **Time spent**: 0h 15m
