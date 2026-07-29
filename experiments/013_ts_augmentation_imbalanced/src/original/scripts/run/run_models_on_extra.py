@@ -30,8 +30,9 @@ train, test, averages = \
                                   horizon=FORECASTING_HORIZON[DS],
                                   test_size=TEST_SIZE)
 
+import random
 ts_names = [*train]
-
+random.shuffle(ts_names)
 for name in ts_names:
     # name = 'TS0'
     filepath = f'{OUTPUT_DIR}/{DS}_{name}.csv'

@@ -39,7 +39,15 @@ class TSER:
         y_aux = train_df['class']
         X_aux = train_df.drop('class', axis=1)
 
-        train_df_aug, y_entity = self.resampler.fit_resample(X_aux, y_aux)
+        try:
+            train_df_aug, y_entity = self.resampler.fit_resample(X_aux, y_aux)
+        except RuntimeError as e:
+            if "ADASYN" in str(e):
+                from imblearn.over_sampling import SMOTE
+                fallback = SMOTE(random_state=self.resampler.random_state)
+                train_df_aug, y_entity = fallback.fit_resample(X_aux, y_aux)
+            else:
+                raise e
 
         if self.keep_local_only:
             train_df_aug = train_df_aug[y_entity > 0].reset_index(drop=True)
