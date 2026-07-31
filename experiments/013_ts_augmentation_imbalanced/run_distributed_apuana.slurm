@@ -90,8 +90,13 @@ except Exception:
 
     run_with_progress "run_models.py" "assets/results/by_series" "$TOTAL"
     run_with_progress "run_models_on_extra.py" "assets/results/extra_by_series" "$TOTAL"
-    run_with_progress "run_variants.py" "assets/results/variants" "$TOTAL"
-    run_with_progress "run_sensitivity.py" "assets/results/sensitivity" "$TOTAL"
+    
+    if [ "$DS" = "nn5_daily_without_missing" ]; then
+        run_with_progress "run_variants.py" "assets/results/variants" "$TOTAL"
+        run_with_progress "run_sensitivity.py" "assets/results/sensitivity" "$TOTAL"
+    else
+        echo "Skipping run_variants.py and run_sensitivity.py for $DS (authors only evaluated these on nn5_daily)"
+    fi
 
     echo "All scripts for $DS finished!"
 done
