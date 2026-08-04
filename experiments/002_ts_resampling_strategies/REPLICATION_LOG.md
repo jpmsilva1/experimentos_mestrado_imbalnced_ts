@@ -6,6 +6,31 @@ This log tracks day-by-day progress of the replication effort.
 
 <!-- Add new entries at the TOP of this file (most recent first) -->
 
+## 2026-08-04 Apuana Cluster Adaptation
+
+**Time spent**: 1h 00m
+
+### What was done
+- Adapted the original evaluation script (`Exps.R`) to run efficiently on the Apuana SLURM cluster.
+- Replaced the single-dataset hardcode with a sequential loop over all 24 datasets to fit within the cluster's hard limit of 4 concurrent jobs per user.
+- Added file existence checks (checkpointing) to automatically resume if the job crashes or hits wall time.
+- Implemented aggressive garbage collection (`gc()`) and object removal (`rm()`) after each dataset to prevent the memory leaks previously observed.
+- Created `run_apuana.slurm` requesting 1 node, 24 CPUs, and 128GB of RAM for the `long-simple` partition.
+- Added `merge_results.R` to combine the individual dataset results into a single object for downstream metric computation.
+- Verified in the `completed_experiments_dossier.tex` that the authors originally ran this on an 8-core AMD Opteron with 32GB RAM.
+
+### What worked
+- Sequential approach guarantees compliance with cluster limits and resolves the R environment duplication issues seen in parallel job array attempts.
+
+### Issues encountered
+- Massive memory explosions in earlier parallel attempts required shifting to a single-job sequential workflow with manual garbage collection.
+
+### Next steps
+- Upload the `src/adapted/` folder and `run_apuana.slurm` to the Apuana cluster.
+- Submit the SLURM job (`sbatch run_apuana.slurm`) when a queue slot is available.
+- After completion, execute `Rscript src/adapted/merge_results.R`.
+- Proceed with `PairedComparisons.R` to generate final evaluation metrics.
+
 ## 2026-07-13 Fix bugs and run experiments
 
 **Time spent**: 1h 30m
