@@ -54,6 +54,9 @@ eval "$(micromamba shell hook --shell bash)"
 
 # PREVENT TMUX CORRUPTION: Disable progress bars which can garble tmux rendering on the cluster
 export MAMBA_NO_PROGRESS=1
+# PREVENT NFS LOCK FREEZES: Disable lockfiles on networked home directory
+export MAMBA_USE_LOCKFILES=false
+export CONDA_USE_LOCKFILES=false
 
 # ==============================================================================
 # STEP 1 — Create conda env with R base + compilers (MUST be first)
