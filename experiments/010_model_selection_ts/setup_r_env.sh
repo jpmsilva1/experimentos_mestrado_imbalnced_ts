@@ -96,7 +96,7 @@ echo "R version: $(Rscript --version 2>&1)"
 
 # ==============================================================================
 # STEP 2 — Install CRAN packages not on conda-forge
-# Done inside R using a reliable mirror.
+# (Includes automatic fallback to GitHub CRAN mirror for archived packages)
 # ==============================================================================
 if [ -f "$R_PKGS_FILE" ]; then
     echo "Installing R packages from $R_PKGS_FILE..."
@@ -112,17 +112,29 @@ if [ -f "$R_PKGS_FILE" ]; then
     if [ -n "$CRAN_PKGS" ]; then
         Rscript -e "
 options(repos = c(CRAN = 'https://cloud.r-project.org/'))
+if (!requireNamespace('remotes', quietly = TRUE)) install.packages('remotes')
 pkgs <- c($CRAN_PKGS)
 installed <- rownames(installed.packages())
 to_install <- pkgs[!pkgs %in% installed]
 if (length(to_install) > 0) {
   cat('Installing CRAN packages:', paste(to_install, collapse=', '), '\n')
-  install.packages(to_install, dependencies = TRUE)
+  for (pkg in to_install) {
+    tryCatch({
+      install.packages(pkg, dependencies = TRUE)
+    }, error = function(e) {
+      cat('CRAN install failed for', pkg, '- attempting GitHub fallback (cran/', pkg, ')...\n', sep='')
+      tryCatch({
+        remotes::install_github(paste0('cran/', pkg), upgrade = 'never')
+      }, error = function(e2) {
+        cat('WARNING: Failed to install', pkg, 'from CRAN and GitHub.\n')
+      })
+    })
+  }
 } else {
-  cat('All CRAN packages already installed.\n')
+  cat('All requested CRAN packages are already installed.\n')
 }
 "
-        echo "✅ CRAN packages installed."
+        echo "✅ CRAN packages step complete."
     fi
 fi
 
@@ -148,18 +160,22 @@ for (repo in repos) {
   pkg_name <- basename(repo)
   if (!requireNamespace(pkg_name, quietly = TRUE)) {
     cat('Installing from GitHub:', repo, '\n')
-    remotes::install_github(repo, upgrade = 'never')
+    tryCatch({
+      remotes::install_github(repo, upgrade = 'never')
+    }, error = function(e) {
+      cat('ERROR installing', repo, ':', conditionMessage(e), '\n')
+    })
   } else {
     cat('Already installed:', pkg_name, '\n')
   }
 }
 "
-        echo "✅ GitHub packages installed."
+        echo "✅ GitHub packages step complete."
     fi
 fi
 
 # ==============================================================================
-# SANITY CHECK
+# SANITY CHECK — Dynamic package verification
 # ==============================================================================
 echo ""
 echo "--- Sanity Check ---"
@@ -167,13 +183,32 @@ Rscript -e "
 cat('R version:', R.version\$major, '.', R.version\$minor, '\n', sep='')
 cat('Library path:', .libPaths()[1], '\n')
 
-# Check a common package that needs C compilation
-tryCatch({
-  library(ranger)
-  cat('ranger: OK (C compilation works)\n')
-}, error = function(e) {
-  cat('ranger: FAILED -', conditionMessage(e), '\n')
-})
+check_pkg <- function(pkg) {
+  if (requireNamespace(pkg, quietly = TRUE)) {
+    cat('  [OK] ', pkg, '\n', sep='')
+  } else {
+    cat('  [FAILED] ', pkg, ' (not found)\n', sep='')
+  }
+}
+
+cat('Checking environment packages:\n')
+pkgs_to_check <- c('base', 'compiler')
+if (file.exists('$CONDA_PKGS_FILE')) {
+  lines <- readLines('$CONDA_PKGS_FILE')
+  for (l in lines) {
+    if (grepl('^r-', l)) pkgs_to_check <- c(pkgs_to_check, gsub('^r-', '', l))
+  }
+}
+if (file.exists('$R_PKGS_FILE')) {
+  lines <- readLines('$R_PKGS_FILE')
+  for (l in lines) {
+    if (nchar(trimws(l)) == 0 || grepl('^#', l)) next
+    pkg <- gsub('^github:[^/]+/', '', l)
+    pkgs_to_check <- c(pkgs_to_check, pkg)
+  }
+}
+pkgs_to_check <- unique(pkgs_to_check[!pkgs_to_check %in% c('gcc_linux-64', 'gxx_linux-64', 'zlib')])
+for (p in pkgs_to_check) check_pkg(p)
 "
 
 echo ""
