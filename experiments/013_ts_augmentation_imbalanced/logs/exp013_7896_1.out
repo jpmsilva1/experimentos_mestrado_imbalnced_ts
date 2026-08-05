@@ -1,0 +1,3432 @@
+========================================
+Starting runs for dataset: solar-energy (Task ID: 1)
+========================================
+Running run_models.py for solar-energy...
+MODELLING SERIES: TS0
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           1.152106
+Local            1.487567
+TSER(SMOTE)      1.150775
+TSER(ADASYN)     1.104243
+TSER(BSMOTE)     1.093021
+TSER(NM)         1.298593
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS1
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.896873
+Local            1.016411
+TSER(SMOTE)      0.894986
+TSER(ADASYN)     0.894184
+TSER(BSMOTE)     0.886877
+TSER(NM)         1.019205
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS2
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.980801
+Local            1.197921
+TSER(SMOTE)      1.009775
+TSER(ADASYN)     1.006260
+TSER(BSMOTE)     1.004531
+TSER(NM)         1.219978
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS3
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.920432
+Local            1.029283
+TSER(SMOTE)      0.914580
+TSER(ADASYN)     0.918057
+TSER(BSMOTE)     0.929923
+TSER(NM)         1.038151
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS4
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           1.113790
+Local            1.219288
+TSER(SMOTE)      1.039457
+TSER(ADASYN)     1.035426
+TSER(BSMOTE)     1.057950
+TSER(NM)         1.309584
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS5
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.909987
+Local            1.036969
+TSER(SMOTE)      0.905726
+TSER(ADASYN)     0.906169
+TSER(BSMOTE)     0.908671
+TSER(NM)         1.072534
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS6
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.871279
+Local            0.973330
+TSER(SMOTE)      0.847904
+TSER(ADASYN)     0.852043
+TSER(BSMOTE)     0.849693
+TSER(NM)         0.991030
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS7
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.944022
+Local            1.052571
+TSER(SMOTE)      0.957328
+TSER(ADASYN)     0.956583
+TSER(BSMOTE)     0.941650
+TSER(NM)         1.089715
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS8
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.927504
+Local            1.062350
+TSER(SMOTE)      0.924780
+TSER(ADASYN)     0.924372
+TSER(BSMOTE)     0.939182
+TSER(NM)         1.047875
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS9
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.912652
+Local            1.069161
+TSER(SMOTE)      0.932968
+TSER(ADASYN)     0.932826
+TSER(BSMOTE)     0.942220
+TSER(NM)         1.069043
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS10
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.945211
+Local            1.118903
+TSER(SMOTE)      0.960042
+TSER(ADASYN)     0.960884
+TSER(BSMOTE)     0.990807
+TSER(NM)         1.150561
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS11
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.876523
+Local            0.926713
+TSER(SMOTE)      0.856103
+TSER(ADASYN)     0.855949
+TSER(BSMOTE)     0.843774
+TSER(NM)         0.931229
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS12
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.884426
+Local            1.336650
+TSER(SMOTE)      0.897990
+TSER(ADASYN)     0.897230
+TSER(BSMOTE)     0.902828
+TSER(NM)         1.065363
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS13
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.913148
+Local            1.063295
+TSER(SMOTE)      0.929020
+TSER(ADASYN)     0.926678
+TSER(BSMOTE)     0.980357
+TSER(NM)         1.073462
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS14
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.947695
+Local            1.072469
+TSER(SMOTE)      0.943923
+TSER(ADASYN)     0.944315
+TSER(BSMOTE)     0.934792
+TSER(NM)         1.079265
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS15
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           1.123732
+Local            1.153245
+TSER(SMOTE)      1.045773
+TSER(ADASYN)     1.043916
+TSER(BSMOTE)     1.060540
+TSER(NM)         1.231466
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS16
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.936968
+Local            1.070866
+TSER(SMOTE)      0.943684
+TSER(ADASYN)     0.944040
+TSER(BSMOTE)     0.966342
+TSER(NM)         1.055288
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS17
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.936395
+Local            1.103710
+TSER(SMOTE)      0.943070
+TSER(ADASYN)     0.946435
+TSER(BSMOTE)     0.937900
+TSER(NM)         1.105793
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS18
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.945317
+Local            1.083896
+TSER(SMOTE)      0.966737
+TSER(ADASYN)     0.965499
+TSER(BSMOTE)     1.654512
+TSER(NM)         1.101325
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS19
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.929329
+Local            1.080467
+TSER(SMOTE)      0.957294
+TSER(ADASYN)     0.955129
+TSER(BSMOTE)     0.971248
+TSER(NM)         1.092821
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS20
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.897276
+Local            1.002461
+TSER(SMOTE)      0.892504
+TSER(ADASYN)     0.890733
+TSER(BSMOTE)     0.927646
+TSER(NM)         1.005222
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS21
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.917366
+Local            1.023704
+TSER(SMOTE)      0.923736
+TSER(ADASYN)     0.923993
+TSER(BSMOTE)     0.947643
+TSER(NM)         1.050103
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS22
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           1.153003
+Local            1.254706
+TSER(SMOTE)      1.154330
+TSER(ADASYN)     1.102369
+TSER(BSMOTE)     1.082419
+TSER(NM)         1.328280
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS23
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.868642
+Local            1.234552
+TSER(SMOTE)      0.847566
+TSER(ADASYN)     0.848580
+TSER(BSMOTE)     0.863690
+TSER(NM)         0.959837
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS24
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.927939
+Local            1.053198
+TSER(SMOTE)      0.937143
+TSER(ADASYN)     0.934920
+TSER(BSMOTE)     0.956142
+TSER(NM)         1.077582
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS25
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.947313
+Local            1.126053
+TSER(SMOTE)      0.966522
+TSER(ADASYN)     0.968907
+TSER(BSMOTE)     0.975357
+TSER(NM)         1.097150
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS26
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.920152
+Local            1.083341
+TSER(SMOTE)      0.933121
+TSER(ADASYN)     0.933081
+TSER(BSMOTE)     0.946520
+TSER(NM)         1.058372
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS27
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.901964
+Local            0.987053
+TSER(SMOTE)      0.890172
+TSER(ADASYN)     0.890418
+TSER(BSMOTE)     0.881826
+TSER(NM)         1.139273
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS28
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.898848
+Local            1.015825
+TSER(SMOTE)      0.873930
+TSER(ADASYN)     0.872761
+TSER(BSMOTE)     0.870932
+TSER(NM)         1.238039
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS29
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.970867
+Local            1.154832
+TSER(SMOTE)      1.001519
+TSER(ADASYN)     1.001083
+TSER(BSMOTE)     1.004374
+TSER(NM)         1.371193
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS30
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           1.177055
+Local            1.347866
+TSER(SMOTE)      1.135969
+TSER(ADASYN)     1.136747
+TSER(BSMOTE)     1.138236
+TSER(NM)         1.339573
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS31
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.885159
+Local            0.998615
+TSER(SMOTE)      0.863380
+TSER(ADASYN)     0.864538
+TSER(BSMOTE)     0.857684
+TSER(NM)         0.996257
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS32
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.895672
+Local            1.027617
+TSER(SMOTE)      0.900370
+TSER(ADASYN)     0.900547
+TSER(BSMOTE)     0.921850
+TSER(NM)         1.032907
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS33
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.915673
+Local            1.046972
+TSER(SMOTE)      0.927081
+TSER(ADASYN)     0.926521
+TSER(BSMOTE)     0.912082
+TSER(NM)         1.056561
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS34
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.940400
+Local            1.100413
+TSER(SMOTE)      0.957491
+TSER(ADASYN)     0.956910
+TSER(BSMOTE)     0.961722
+TSER(NM)         1.099867
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS35
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.876467
+Local            0.956708
+TSER(SMOTE)      0.851548
+TSER(ADASYN)     0.851468
+TSER(BSMOTE)     0.853296
+TSER(NM)         1.039089
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS36
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.914774
+Local            1.020084
+TSER(SMOTE)      0.926427
+TSER(ADASYN)     0.928438
+TSER(BSMOTE)     0.935088
+TSER(NM)         1.084205
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS37
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.939504
+Local            1.058483
+TSER(SMOTE)      0.950452
+TSER(ADASYN)     0.950644
+TSER(BSMOTE)     0.956800
+TSER(NM)         1.044897
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS38
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.933892
+Local            1.054442
+TSER(SMOTE)      0.941414
+TSER(ADASYN)     0.938825
+TSER(BSMOTE)     0.958378
+TSER(NM)         1.077531
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS39
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.933321
+Local            1.078225
+TSER(SMOTE)      0.940952
+TSER(ADASYN)     0.941647
+TSER(BSMOTE)     0.923845
+TSER(NM)         1.092342
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS40
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.929252
+Local            1.071580
+TSER(SMOTE)      0.936275
+TSER(ADASYN)     0.934942
+TSER(BSMOTE)     0.931684
+TSER(NM)         1.108136
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS41
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.964452
+Local            1.133594
+TSER(SMOTE)      0.977987
+TSER(ADASYN)     0.977973
+TSER(BSMOTE)     0.991680
+TSER(NM)         1.137372
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS42
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.846421
+Local            0.967934
+TSER(SMOTE)      0.849996
+TSER(ADASYN)     0.851330
+TSER(BSMOTE)     0.847159
+TSER(NM)         0.976472
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS43
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.927132
+Local            1.116564
+TSER(SMOTE)      0.942021
+TSER(ADASYN)     0.941075
+TSER(BSMOTE)     0.973308
+TSER(NM)         1.090297
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS44
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           1.168848
+Local            1.233835
+TSER(SMOTE)      1.084520
+TSER(ADASYN)     1.083366
+TSER(BSMOTE)     1.106827
+TSER(NM)         1.276079
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS45
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           1.105999
+Local            1.163383
+TSER(SMOTE)      1.045432
+TSER(ADASYN)     1.045711
+TSER(BSMOTE)     1.044485
+TSER(NM)         1.252364
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS46
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.948212
+Local            1.045095
+TSER(SMOTE)      0.946333
+TSER(ADASYN)     0.945291
+TSER(BSMOTE)     0.977934
+TSER(NM)         1.104582
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS47
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.934452
+Local            1.067883
+TSER(SMOTE)      0.935966
+TSER(ADASYN)     0.935551
+TSER(BSMOTE)     0.929835
+TSER(NM)         1.039906
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS48
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.883812
+Local            0.951680
+TSER(SMOTE)      0.871446
+TSER(ADASYN)     0.871053
+TSER(BSMOTE)     0.886083
+TSER(NM)         0.979564
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS49
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.953770
+Local            1.099117
+TSER(SMOTE)      0.970952
+TSER(ADASYN)     0.969882
+TSER(BSMOTE)     0.968942
+TSER(NM)         1.117118
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS50
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.910352
+Local            1.068169
+TSER(SMOTE)      0.930687
+TSER(ADASYN)     0.929561
+TSER(BSMOTE)     0.932663
+TSER(NM)         1.078761
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS51
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.927823
+Local            1.108901
+TSER(SMOTE)      0.933832
+TSER(ADASYN)     0.932566
+TSER(BSMOTE)     0.938445
+TSER(NM)         1.111844
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS52
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.886445
+Local            0.963963
+TSER(SMOTE)      0.861376
+TSER(ADASYN)     0.862820
+TSER(BSMOTE)     0.848000
+TSER(NM)         1.027671
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS53
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.919568
+Local            1.028360
+TSER(SMOTE)      0.917226
+TSER(ADASYN)     0.916850
+TSER(BSMOTE)     0.928845
+TSER(NM)         1.033497
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS54
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.874402
+Local            0.957386
+TSER(SMOTE)      0.848382
+TSER(ADASYN)     0.849120
+TSER(BSMOTE)     0.847331
+TSER(NM)         1.056323
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS55
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.926199
+Local            1.124866
+TSER(SMOTE)      0.915926
+TSER(ADASYN)     0.915768
+TSER(BSMOTE)     0.925087
+TSER(NM)         1.098651
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS56
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.938435
+Local            1.066912
+TSER(SMOTE)      0.954096
+TSER(ADASYN)     0.951504
+TSER(BSMOTE)     0.958109
+TSER(NM)         1.067743
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS57
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.902237
+Local            1.021744
+TSER(SMOTE)      0.903192
+TSER(ADASYN)     0.904177
+TSER(BSMOTE)     0.887644
+TSER(NM)         1.025383
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS58
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.936893
+Local            1.136075
+TSER(SMOTE)      0.927434
+TSER(ADASYN)     0.926255
+TSER(BSMOTE)     0.945864
+TSER(NM)         1.128684
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS59
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.940439
+Local            1.088109
+TSER(SMOTE)      0.951856
+TSER(ADASYN)     0.953330
+TSER(BSMOTE)     0.937090
+TSER(NM)         1.127093
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS60
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.941563
+Local            1.066720
+TSER(SMOTE)      0.939210
+TSER(ADASYN)     0.936577
+TSER(BSMOTE)     0.970954
+TSER(NM)         1.094431
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS61
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.865536
+Local            1.007505
+TSER(SMOTE)      0.874109
+TSER(ADASYN)     0.871443
+TSER(BSMOTE)     0.906785
+TSER(NM)         1.042082
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS62
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.935260
+Local            1.103447
+TSER(SMOTE)      0.948941
+TSER(ADASYN)     0.949467
+TSER(BSMOTE)     0.943483
+TSER(NM)         1.106818
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS63
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.918134
+Local            1.141796
+TSER(SMOTE)      0.933868
+TSER(ADASYN)     0.934661
+TSER(BSMOTE)     0.920463
+TSER(NM)         1.171223
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS64
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.937308
+Local            1.008688
+TSER(SMOTE)      0.912203
+TSER(ADASYN)     0.912207
+TSER(BSMOTE)     0.915486
+TSER(NM)         1.456612
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS65
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.953273
+Local            1.056837
+TSER(SMOTE)      0.963819
+TSER(ADASYN)     0.963112
+TSER(BSMOTE)     0.953314
+TSER(NM)         1.067002
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS66
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.884228
+Local            0.975268
+TSER(SMOTE)      0.871121
+TSER(ADASYN)     0.870454
+TSER(BSMOTE)     0.895135
+TSER(NM)         0.974310
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS67
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.899175
+Local            1.010861
+TSER(SMOTE)      0.886444
+TSER(ADASYN)     0.890171
+TSER(BSMOTE)     0.885451
+TSER(NM)         1.024462
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS68
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           1.199053
+Local            1.357777
+TSER(SMOTE)      1.183953
+TSER(ADASYN)     1.184199
+TSER(BSMOTE)     1.194198
+TSER(NM)         1.491450
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS69
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.853335
+Local            0.922465
+TSER(SMOTE)      0.845126
+TSER(ADASYN)     0.846618
+TSER(BSMOTE)     0.840692
+TSER(NM)         0.978175
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS70
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.893738
+Local            0.990936
+TSER(SMOTE)      0.879476
+TSER(ADASYN)     0.881842
+TSER(BSMOTE)     0.866470
+TSER(NM)         1.048277
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS71
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.873154
+Local            0.985647
+TSER(SMOTE)      0.892111
+TSER(ADASYN)     0.891573
+TSER(BSMOTE)     0.885685
+TSER(NM)         1.004367
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS72
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.912955
+Local            0.984046
+TSER(SMOTE)      0.911022
+TSER(ADASYN)     0.911701
+TSER(BSMOTE)     0.904855
+TSER(NM)         1.036394
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS73
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           1.108700
+Local            1.154415
+TSER(SMOTE)      1.022395
+TSER(ADASYN)     1.024179
+TSER(BSMOTE)     1.041251
+TSER(NM)         1.218704
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS74
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.924139
+Local            1.036059
+TSER(SMOTE)      0.916372
+TSER(ADASYN)     0.916893
+TSER(BSMOTE)     0.920536
+TSER(NM)         1.047845
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS75
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.935268
+Local            1.048072
+TSER(SMOTE)      0.935830
+TSER(ADASYN)     0.935638
+TSER(BSMOTE)     0.971342
+TSER(NM)         1.087856
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS76
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.926429
+Local            1.015437
+TSER(SMOTE)      0.926737
+TSER(ADASYN)     0.927714
+TSER(BSMOTE)     0.922306
+TSER(NM)         1.045304
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS77
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.921571
+Local            1.065742
+TSER(SMOTE)      0.935256
+TSER(ADASYN)     0.936603
+TSER(BSMOTE)     0.942113
+TSER(NM)         1.079125
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS78
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.857910
+Local            0.973595
+TSER(SMOTE)      0.865463
+TSER(ADASYN)     0.866893
+TSER(BSMOTE)     0.864531
+TSER(NM)         0.975845
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS79
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.930361
+Local            1.072077
+TSER(SMOTE)      0.915337
+TSER(ADASYN)     0.917568
+TSER(BSMOTE)     0.897145
+TSER(NM)         1.142751
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS80
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.935230
+Local            1.024726
+TSER(SMOTE)      0.929655
+TSER(ADASYN)     0.931476
+TSER(BSMOTE)     0.929782
+TSER(NM)         1.095153
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS81
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.955403
+Local            1.101397
+TSER(SMOTE)      0.970742
+TSER(ADASYN)     0.971283
+TSER(BSMOTE)     1.001506
+TSER(NM)         1.118924
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS82
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.851230
+Local            0.936499
+TSER(SMOTE)      0.828051
+TSER(ADASYN)     0.828193
+TSER(BSMOTE)     0.823732
+TSER(NM)         0.947030
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS83
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.936786
+Local            1.062045
+TSER(SMOTE)      0.949554
+TSER(ADASYN)     0.948647
+TSER(BSMOTE)     0.991868
+TSER(NM)         1.077322
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS84
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.951501
+Local            1.089226
+TSER(SMOTE)      0.960398
+TSER(ADASYN)     0.962828
+TSER(BSMOTE)     0.961313
+TSER(NM)         1.095867
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS85
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.928676
+Local            1.108381
+TSER(SMOTE)      0.938833
+TSER(ADASYN)     0.939547
+TSER(BSMOTE)     0.938161
+TSER(NM)         1.084298
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS86
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.912142
+Local            1.054746
+TSER(SMOTE)      0.924911
+TSER(ADASYN)     0.926045
+TSER(BSMOTE)     0.921099
+TSER(NM)         1.063274
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS87
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.933934
+Local            1.021267
+TSER(SMOTE)      0.929006
+TSER(ADASYN)     0.930294
+TSER(BSMOTE)     0.938000
+TSER(NM)         1.059531
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS88
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.931287
+Local            1.156114
+TSER(SMOTE)      0.941033
+TSER(ADASYN)     0.942448
+TSER(BSMOTE)     0.954555
+TSER(NM)         1.114913
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS89
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.905657
+Local            1.028654
+TSER(SMOTE)      0.910699
+TSER(ADASYN)     0.909118
+TSER(BSMOTE)     0.908637
+TSER(NM)         1.089034
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS90
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.898367
+Local            1.028049
+TSER(SMOTE)      0.909098
+TSER(ADASYN)     0.909547
+TSER(BSMOTE)     0.908772
+TSER(NM)         1.041903
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS91
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.917508
+Local            1.041961
+TSER(SMOTE)      0.925371
+TSER(ADASYN)     0.923644
+TSER(BSMOTE)     0.915366
+TSER(NM)         1.059656
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS92
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.930930
+Local            1.054938
+TSER(SMOTE)      0.939682
+TSER(ADASYN)     0.940599
+TSER(BSMOTE)     0.961844
+TSER(NM)         1.057040
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS93
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.924941
+Local            1.063608
+TSER(SMOTE)      0.931584
+TSER(ADASYN)     0.929873
+TSER(BSMOTE)     0.923088
+TSER(NM)         1.110441
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS94
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.964958
+Local            1.098961
+TSER(SMOTE)      0.971177
+TSER(ADASYN)     0.973355
+TSER(BSMOTE)     0.961099
+TSER(NM)         1.112744
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS95
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.930925
+Local            1.255481
+TSER(SMOTE)      0.915437
+TSER(ADASYN)     0.926310
+TSER(BSMOTE)     0.917921
+TSER(NM)         1.076799
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS96
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           1.207370
+Local            1.274748
+TSER(SMOTE)      1.151024
+TSER(ADASYN)     1.151226
+TSER(BSMOTE)     1.163612
+TSER(NM)         1.383391
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS97
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.929075
+Local            1.076242
+TSER(SMOTE)      0.936632
+TSER(ADASYN)     0.936573
+TSER(BSMOTE)     0.947666
+TSER(NM)         1.079013
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS98
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.975798
+Local            1.136746
+TSER(SMOTE)      0.996131
+TSER(ADASYN)     0.994197
+TSER(BSMOTE)     0.998821
+TSER(NM)         1.140820
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS99
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.835516
+Local            0.890589
+TSER(SMOTE)      0.819359
+TSER(ADASYN)     0.820231
+TSER(BSMOTE)     0.805695
+TSER(NM)         0.902356
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS100
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.920813
+Local            1.053719
+TSER(SMOTE)      0.917099
+TSER(ADASYN)     0.917940
+TSER(BSMOTE)     0.940937
+TSER(NM)         1.103307
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS101
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.927793
+Local            1.052929
+TSER(SMOTE)      0.937981
+TSER(ADASYN)     0.937684
+TSER(BSMOTE)     0.934713
+TSER(NM)         1.086645
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS102
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.912357
+Local            1.045139
+TSER(SMOTE)      0.922493
+TSER(ADASYN)     0.923056
+TSER(BSMOTE)     0.899019
+TSER(NM)         1.061775
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS103
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.940481
+Local            1.117499
+TSER(SMOTE)      0.959204
+TSER(ADASYN)     0.957083
+TSER(BSMOTE)     0.953580
+TSER(NM)         1.099540
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS104
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.953978
+Local            1.026010
+TSER(SMOTE)      0.944373
+TSER(ADASYN)     0.944918
+TSER(BSMOTE)     0.934909
+TSER(NM)         1.058709
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS105
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.876021
+Local            0.953020
+TSER(SMOTE)      0.856282
+TSER(ADASYN)     0.857986
+TSER(BSMOTE)     0.850344
+TSER(NM)         0.955432
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS106
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.953981
+Local            1.085391
+TSER(SMOTE)      0.964482
+TSER(ADASYN)     0.963585
+TSER(BSMOTE)     0.985381
+TSER(NM)         1.092776
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS107
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.922163
+Local            1.046001
+TSER(SMOTE)      0.921858
+TSER(ADASYN)     0.921878
+TSER(BSMOTE)     0.931535
+TSER(NM)         1.046395
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS108
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.924221
+Local            1.048630
+TSER(SMOTE)      0.928553
+TSER(ADASYN)     0.928010
+TSER(BSMOTE)     0.952285
+TSER(NM)         1.081424
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS109
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.896535
+Local            1.018465
+TSER(SMOTE)      0.896103
+TSER(ADASYN)     0.895743
+TSER(BSMOTE)     0.882700
+TSER(NM)         1.017410
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS110
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.979590
+Local            1.197834
+TSER(SMOTE)      0.983276
+TSER(ADASYN)     0.983842
+TSER(BSMOTE)     0.985067
+TSER(NM)         1.243444
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS111
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.859174
+Local            0.966525
+TSER(SMOTE)      0.855762
+TSER(ADASYN)     0.857336
+TSER(BSMOTE)     0.869430
+TSER(NM)         0.981788
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS112
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.891392
+Local            0.964770
+TSER(SMOTE)      0.876396
+TSER(ADASYN)     0.890178
+TSER(BSMOTE)     0.875971
+TSER(NM)         0.998283
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS113
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.930343
+Local            1.046552
+TSER(SMOTE)      0.936882
+TSER(ADASYN)     0.936572
+TSER(BSMOTE)     0.953862
+TSER(NM)         1.044602
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS114
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.890487
+Local            1.004855
+TSER(SMOTE)      0.878303
+TSER(ADASYN)     0.877874
+TSER(BSMOTE)     0.869901
+TSER(NM)         1.038975
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS115
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.933122
+Local            0.996300
+TSER(SMOTE)      0.920264
+TSER(ADASYN)     0.922302
+TSER(BSMOTE)     0.910850
+TSER(NM)         1.020727
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS116
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.872411
+Local            1.061191
+TSER(SMOTE)      0.876318
+TSER(ADASYN)     0.877043
+TSER(BSMOTE)     0.880230
+TSER(NM)         1.063782
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS117
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.875953
+Local            0.966833
+TSER(SMOTE)      0.862459
+TSER(ADASYN)     0.861758
+TSER(BSMOTE)     0.844678
+TSER(NM)         0.989343
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS118
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.915848
+Local            1.065153
+TSER(SMOTE)      0.926500
+TSER(ADASYN)     0.928240
+TSER(BSMOTE)     0.942904
+TSER(NM)         1.050903
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS119
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.889245
+Local            1.036858
+TSER(SMOTE)      0.895144
+TSER(ADASYN)     0.896432
+TSER(BSMOTE)     0.897860
+TSER(NM)         1.065275
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS120
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.899541
+Local            1.010739
+TSER(SMOTE)      0.900382
+TSER(ADASYN)     0.902958
+TSER(BSMOTE)     0.929998
+TSER(NM)         1.011296
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS121
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           1.170301
+Local            1.636550
+TSER(SMOTE)      1.122043
+TSER(ADASYN)     1.123243
+TSER(BSMOTE)     1.134004
+TSER(NM)         1.883732
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS122
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.862483
+Local            0.969605
+TSER(SMOTE)      0.862089
+TSER(ADASYN)     0.863000
+TSER(BSMOTE)     0.865950
+TSER(NM)         0.976015
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS123
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.947835
+Local            1.063682
+TSER(SMOTE)      0.951310
+TSER(ADASYN)     0.951472
+TSER(BSMOTE)     0.940989
+TSER(NM)         1.079703
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS124
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.840975
+Local            0.954521
+TSER(SMOTE)      0.839864
+TSER(ADASYN)     0.840746
+TSER(BSMOTE)     0.831826
+TSER(NM)         1.033374
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS125
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.941752
+Local            0.966770
+TSER(SMOTE)      0.902622
+TSER(ADASYN)     0.899583
+TSER(BSMOTE)     0.915973
+TSER(NM)         1.022925
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS126
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.946932
+Local            1.028110
+TSER(SMOTE)      0.931739
+TSER(ADASYN)     0.933319
+TSER(BSMOTE)     0.939890
+TSER(NM)         1.053090
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS127
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.921012
+Local            0.986872
+TSER(SMOTE)      0.903695
+TSER(ADASYN)     0.904683
+TSER(BSMOTE)     0.902462
+TSER(NM)         1.058485
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS128
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.887406
+Local            1.001113
+TSER(SMOTE)      0.894698
+TSER(ADASYN)     0.892641
+TSER(BSMOTE)     0.903370
+TSER(NM)         1.029448
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS129
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.905575
+Local            0.942566
+TSER(SMOTE)      0.876135
+TSER(ADASYN)     0.878558
+TSER(BSMOTE)     0.905249
+TSER(NM)         0.987050
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS130
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.930160
+Local            1.027752
+TSER(SMOTE)      0.908986
+TSER(ADASYN)     0.911200
+TSER(BSMOTE)     0.906629
+TSER(NM)         1.088146
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS131
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.974792
+Local            1.130970
+TSER(SMOTE)      0.986318
+TSER(ADASYN)     0.985306
+TSER(BSMOTE)     0.999432
+TSER(NM)         1.153870
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS132
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.927502
+Local            1.111983
+TSER(SMOTE)      0.949883
+TSER(ADASYN)     0.951630
+TSER(BSMOTE)     0.958066
+TSER(NM)         1.097276
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS133
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.907398
+Local            0.959106
+TSER(SMOTE)      0.885200
+TSER(ADASYN)     0.885165
+TSER(BSMOTE)     0.894461
+TSER(NM)         0.991998
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS134
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.927192
+Local            1.028197
+TSER(SMOTE)      0.934756
+TSER(ADASYN)     0.933438
+TSER(BSMOTE)     0.944409
+TSER(NM)         1.043046
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS135
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           1.145156
+Local            1.181114
+TSER(SMOTE)      1.060890
+TSER(ADASYN)     1.064076
+TSER(BSMOTE)     1.069681
+TSER(NM)         1.223599
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS136
+Global
+Local
+TSER(SMOTE)
+TSER(ADASYN)
+TSER(BSMOTE)
+TSER(NM)
+Global           0.934140
+Local            1.028869
+TSER(SMOTE)      0.928402
+TSER(ADASYN)     0.927542
+TSER(BSMOTE)     0.924876
+TSER(NM)         1.046143
+Horizon         12.500000
+dtype: float64
+Running run_models_on_extra.py for solar-energy...
+MODELLING SERIES: TS0
+Global           0.936183
+Local            1.756812
+TSER(SMOTE)      0.993388
+TSER(ADASYN)     0.993383
+TSER(BSMOTE)     0.989427
+TSER(NM)         1.759964
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS1
+Global           0.938060
+Local            1.121712
+TSER(SMOTE)      0.933318
+TSER(ADASYN)     0.933833
+TSER(BSMOTE)     0.930488
+TSER(NM)         1.084712
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS2
+Global           0.937443
+Local            1.197312
+TSER(SMOTE)      0.959981
+TSER(ADASYN)     0.960019
+TSER(BSMOTE)     0.955493
+TSER(NM)         1.159905
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS3
+Global           0.937887
+Local            1.094100
+TSER(SMOTE)      0.941460
+TSER(ADASYN)     0.940035
+TSER(BSMOTE)     0.955596
+TSER(NM)         1.098213
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS4
+Global           0.936465
+Local            1.553315
+TSER(SMOTE)      0.996229
+TSER(ADASYN)     1.005108
+TSER(BSMOTE)     1.002629
+TSER(NM)         1.798625
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS5
+Global           0.937963
+Local            1.124672
+TSER(SMOTE)      0.944358
+TSER(ADASYN)     0.944419
+TSER(BSMOTE)     0.933084
+TSER(NM)         1.158380
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS6
+Global           0.938248
+Local            1.041011
+TSER(SMOTE)      0.926981
+TSER(ADASYN)     0.927720
+TSER(BSMOTE)     0.910236
+TSER(NM)         1.062656
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS7
+Global           0.937713
+Local            1.101285
+TSER(SMOTE)      0.957162
+TSER(ADASYN)     0.957398
+TSER(BSMOTE)     0.951319
+TSER(NM)         1.158767
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS8
+Global           0.937835
+Local            1.088881
+TSER(SMOTE)      0.939654
+TSER(ADASYN)     0.941153
+TSER(BSMOTE)     0.953906
+TSER(NM)         1.137357
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS9
+Global           0.937944
+Local            1.112429
+TSER(SMOTE)      0.958373
+TSER(ADASYN)     0.955425
+TSER(BSMOTE)     1.001113
+TSER(NM)         1.124403
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS10
+Global           0.937704
+Local            1.135439
+TSER(SMOTE)      0.962111
+TSER(ADASYN)     0.960315
+TSER(BSMOTE)     1.007493
+TSER(NM)         1.177700
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS11
+Global           0.938209
+Local            1.043177
+TSER(SMOTE)      0.927321
+TSER(ADASYN)     0.928676
+TSER(BSMOTE)     0.909305
+TSER(NM)         1.037481
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS12
+Global           0.938151
+Local            2.643699
+TSER(SMOTE)      0.958972
+TSER(ADASYN)     0.959304
+TSER(BSMOTE)     0.959669
+TSER(NM)         1.186974
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS13
+Global           0.937940
+Local            1.148554
+TSER(SMOTE)      0.958287
+TSER(ADASYN)     0.958328
+TSER(BSMOTE)     1.012208
+TSER(NM)         1.336901
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS14
+Global           0.937686
+Local            1.086445
+TSER(SMOTE)      0.943364
+TSER(ADASYN)     0.942647
+TSER(BSMOTE)     0.927916
+TSER(NM)         1.108876
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS15
+Global           0.936392
+Local            1.565079
+TSER(SMOTE)      0.996858
+TSER(ADASYN)     0.997697
+TSER(BSMOTE)     1.000063
+TSER(NM)         1.680883
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS16
+Global           0.937765
+Local            1.097298
+TSER(SMOTE)      0.950789
+TSER(ADASYN)     0.951038
+TSER(BSMOTE)     0.969444
+TSER(NM)         1.100115
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS17
+Global           0.937769
+Local            1.114311
+TSER(SMOTE)      0.951119
+TSER(ADASYN)     0.952270
+TSER(BSMOTE)     0.942857
+TSER(NM)         1.137074
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS18
+Global           0.937704
+Local            1.098139
+TSER(SMOTE)      0.965090
+TSER(ADASYN)     0.956066
+TSER(BSMOTE)     0.968565
+TSER(NM)         1.155459
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS19
+Global           0.937821
+Local            1.100342
+TSER(SMOTE)      0.958914
+TSER(ADASYN)     0.958090
+TSER(BSMOTE)     0.984431
+TSER(NM)         1.170928
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS20
+Global           0.938057
+Local            1.089115
+TSER(SMOTE)      0.939549
+TSER(ADASYN)     0.940067
+TSER(BSMOTE)     0.964840
+TSER(NM)         1.126772
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS21
+Global           0.937909
+Local            1.096733
+TSER(SMOTE)      0.951910
+TSER(ADASYN)     0.953576
+TSER(BSMOTE)     0.972037
+TSER(NM)         1.123745
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS22
+Global           0.936176
+Local            1.579730
+TSER(SMOTE)      1.010815
+TSER(ADASYN)     1.011068
+TSER(BSMOTE)     1.015743
+TSER(NM)         1.664305
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS23
+Global           0.938267
+Local            1.101077
+TSER(SMOTE)      0.928560
+TSER(ADASYN)     0.928066
+TSER(BSMOTE)     1.086360
+TSER(NM)         1.204352
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS24
+Global           0.937831
+Local            1.260156
+TSER(SMOTE)      0.949807
+TSER(ADASYN)     0.949022
+TSER(BSMOTE)     0.970098
+TSER(NM)         1.215155
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS25
+Global           0.937689
+Local            1.144045
+TSER(SMOTE)      0.957005
+TSER(ADASYN)     0.957075
+TSER(BSMOTE)     0.965402
+TSER(NM)         1.123673
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS26
+Global           0.937889
+Local            1.152540
+TSER(SMOTE)      0.953747
+TSER(ADASYN)     0.952829
+TSER(BSMOTE)     0.965675
+TSER(NM)         1.134878
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS27
+Global           0.938022
+Local            1.101412
+TSER(SMOTE)      0.928035
+TSER(ADASYN)     0.928308
+TSER(BSMOTE)     0.925220
+TSER(NM)         1.109330
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS28
+Global           0.938045
+Local            1.158149
+TSER(SMOTE)      0.926022
+TSER(ADASYN)     0.925612
+TSER(BSMOTE)     0.922721
+TSER(NM)         1.182639
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS29
+Global           0.937516
+Local            1.124050
+TSER(SMOTE)      0.961408
+TSER(ADASYN)     0.962371
+TSER(BSMOTE)     0.968301
+TSER(NM)         1.160059
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS30
+Global           0.936000
+Local            1.472525
+TSER(SMOTE)      1.002388
+TSER(ADASYN)     1.001235
+TSER(BSMOTE)     1.001757
+TSER(NM)         1.548920
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS31
+Global           0.938146
+Local            1.051645
+TSER(SMOTE)      0.926398
+TSER(ADASYN)     0.929580
+TSER(BSMOTE)     0.925049
+TSER(NM)         1.081757
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS32
+Global           0.938069
+Local            1.130033
+TSER(SMOTE)      0.951450
+TSER(ADASYN)     0.951714
+TSER(BSMOTE)     0.960035
+TSER(NM)         1.202710
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS33
+Global           0.937922
+Local            1.090220
+TSER(SMOTE)      0.947657
+TSER(ADASYN)     0.948512
+TSER(BSMOTE)     0.959049
+TSER(NM)         1.129789
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS34
+Global           0.937740
+Local            1.111377
+TSER(SMOTE)      0.956839
+TSER(ADASYN)     0.961099
+TSER(BSMOTE)     0.958953
+TSER(NM)         1.139329
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS35
+Global           0.938210
+Local            1.047785
+TSER(SMOTE)      0.931292
+TSER(ADASYN)     0.931421
+TSER(BSMOTE)     0.922353
+TSER(NM)         1.077518
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS36
+Global           0.937928
+Local            1.090352
+TSER(SMOTE)      0.958745
+TSER(ADASYN)     0.956918
+TSER(BSMOTE)     0.963891
+TSER(NM)         1.151103
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS37
+Global           0.937746
+Local            1.111868
+TSER(SMOTE)      0.954240
+TSER(ADASYN)     0.953965
+TSER(BSMOTE)     0.955010
+TSER(NM)         1.114058
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS38
+Global           0.937788
+Local            1.110797
+TSER(SMOTE)      0.948293
+TSER(ADASYN)     0.948417
+TSER(BSMOTE)     0.962405
+TSER(NM)         1.145781
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS39
+Global           0.937792
+Local            1.105489
+TSER(SMOTE)      0.949759
+TSER(ADASYN)     0.950432
+TSER(BSMOTE)     0.940445
+TSER(NM)         1.162266
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS40
+Global           0.937822
+Local            1.089013
+TSER(SMOTE)      0.947423
+TSER(ADASYN)     0.948883
+TSER(BSMOTE)     0.942133
+TSER(NM)         1.138016
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS41
+Global           0.937563
+Local            1.143213
+TSER(SMOTE)      0.955142
+TSER(ADASYN)     0.954377
+TSER(BSMOTE)     0.960140
+TSER(NM)         1.140376
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS42
+Global           0.938431
+Local            1.106725
+TSER(SMOTE)      0.944923
+TSER(ADASYN)     0.944493
+TSER(BSMOTE)     0.938095
+TSER(NM)         1.108102
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS43
+Global           0.937837
+Local            1.113676
+TSER(SMOTE)      0.953072
+TSER(ADASYN)     0.952902
+TSER(BSMOTE)     0.991807
+TSER(NM)         1.173307
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS44
+Global           0.936060
+Local            1.617965
+TSER(SMOTE)      0.997240
+TSER(ADASYN)     0.998696
+TSER(BSMOTE)     0.996176
+TSER(NM)         1.579898
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS45
+Global           0.936522
+Local            1.530050
+TSER(SMOTE)      1.005552
+TSER(ADASYN)     1.005363
+TSER(BSMOTE)     1.006687
+TSER(NM)         1.603257
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS46
+Global           0.937682
+Local            1.077194
+TSER(SMOTE)      0.945914
+TSER(ADASYN)     0.945829
+TSER(BSMOTE)     0.973252
+TSER(NM)         1.147327
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS47
+Global           0.937783
+Local            1.104366
+TSER(SMOTE)      0.956236
+TSER(ADASYN)     0.956504
+TSER(BSMOTE)     0.945554
+TSER(NM)         1.116898
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS48
+Global           0.938156
+Local            1.157708
+TSER(SMOTE)      0.931893
+TSER(ADASYN)     0.932043
+TSER(BSMOTE)     0.939431
+TSER(NM)         1.123372
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS49
+Global           0.937641
+Local            1.120553
+TSER(SMOTE)      0.953720
+TSER(ADASYN)     0.955578
+TSER(BSMOTE)     0.954339
+TSER(NM)         1.170192
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS50
+Global           0.937961
+Local            1.123284
+TSER(SMOTE)      0.956317
+TSER(ADASYN)     0.959653
+TSER(BSMOTE)     0.954818
+TSER(NM)         1.166548
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS51
+Global           0.937832
+Local            1.129793
+TSER(SMOTE)      0.954873
+TSER(ADASYN)     0.955313
+TSER(BSMOTE)     0.961780
+TSER(NM)         1.208222
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS52
+Global           0.938136
+Local            1.056751
+TSER(SMOTE)      0.925636
+TSER(ADASYN)     0.926251
+TSER(BSMOTE)     0.924645
+TSER(NM)         1.073042
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS53
+Global           0.937893
+Local            1.090753
+TSER(SMOTE)      0.947173
+TSER(ADASYN)     0.948536
+TSER(BSMOTE)     0.945385
+TSER(NM)         1.138152
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS54
+Global           0.938225
+Local            1.164248
+TSER(SMOTE)      0.928360
+TSER(ADASYN)     0.928887
+TSER(BSMOTE)     0.908111
+TSER(NM)         1.128517
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS55
+Global           0.937844
+Local            1.101709
+TSER(SMOTE)      0.935675
+TSER(ADASYN)     0.935255
+TSER(BSMOTE)     0.949732
+TSER(NM)         1.147114
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS56
+Global           0.937754
+Local            1.121742
+TSER(SMOTE)      0.952671
+TSER(ADASYN)     0.951649
+TSER(BSMOTE)     0.957410
+TSER(NM)         1.100537
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS57
+Global           0.938020
+Local            1.138016
+TSER(SMOTE)      0.950386
+TSER(ADASYN)     0.951061
+TSER(BSMOTE)     0.942137
+TSER(NM)         1.140217
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS58
+Global           0.937766
+Local            1.102856
+TSER(SMOTE)      0.946062
+TSER(ADASYN)     0.945896
+TSER(BSMOTE)     0.956453
+TSER(NM)         1.115968
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS59
+Global           0.937739
+Local            1.113856
+TSER(SMOTE)      0.955577
+TSER(ADASYN)     0.955524
+TSER(BSMOTE)     0.957840
+TSER(NM)         1.188486
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS60
+Global           0.937731
+Local            1.111251
+TSER(SMOTE)      0.951683
+TSER(ADASYN)     0.951891
+TSER(BSMOTE)     0.974839
+TSER(NM)         1.156503
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS61
+Global           0.938290
+Local            1.136689
+TSER(SMOTE)      0.949829
+TSER(ADASYN)     0.948318
+TSER(BSMOTE)     0.988655
+TSER(NM)         1.151953
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS62
+Global           0.937778
+Local            1.130563
+TSER(SMOTE)      0.954426
+TSER(ADASYN)     0.956486
+TSER(BSMOTE)     0.957159
+TSER(NM)         1.157502
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS63
+Global           0.937903
+Local            1.143386
+TSER(SMOTE)      0.953409
+TSER(ADASYN)     0.953138
+TSER(BSMOTE)     0.937340
+TSER(NM)         1.157773
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS64
+Global           0.937762
+Local            1.093749
+TSER(SMOTE)      0.931386
+TSER(ADASYN)     0.925940
+TSER(BSMOTE)     0.922478
+TSER(NM)         1.096778
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS65
+Global           0.937645
+Local            1.096688
+TSER(SMOTE)      0.955122
+TSER(ADASYN)     0.956438
+TSER(BSMOTE)     0.944322
+TSER(NM)         1.130567
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS66
+Global           0.938153
+Local            1.070148
+TSER(SMOTE)      0.933743
+TSER(ADASYN)     0.933756
+TSER(BSMOTE)     0.947044
+TSER(NM)         1.098702
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS67
+Global           0.938043
+Local            1.063232
+TSER(SMOTE)      0.930193
+TSER(ADASYN)     0.930144
+TSER(BSMOTE)     0.927272
+TSER(NM)         1.067384
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS68
+Global           0.935838
+Local            1.457509
+TSER(SMOTE)      1.017794
+TSER(ADASYN)     1.017962
+TSER(BSMOTE)     1.020783
+TSER(NM)         1.629706
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS69
+Global           0.938380
+Local            1.071504
+TSER(SMOTE)      0.928213
+TSER(ADASYN)     0.924591
+TSER(BSMOTE)     0.922719
+TSER(NM)         1.098467
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS70
+Global           0.938083
+Local            1.074372
+TSER(SMOTE)      0.930468
+TSER(ADASYN)     0.937790
+TSER(BSMOTE)     0.916468
+TSER(NM)         1.093846
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS71
+Global           0.938234
+Local            1.101305
+TSER(SMOTE)      0.954065
+TSER(ADASYN)     0.951688
+TSER(BSMOTE)     0.956081
+TSER(NM)         1.101817
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS72
+Global           0.937942
+Local            1.052244
+TSER(SMOTE)      0.931672
+TSER(ADASYN)     0.932037
+TSER(BSMOTE)     0.929931
+TSER(NM)         1.096991
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS73
+Global           0.936502
+Local            1.523432
+TSER(SMOTE)      0.995679
+TSER(ADASYN)     0.996334
+TSER(BSMOTE)     1.000598
+TSER(NM)         1.634651
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS74
+Global           0.937859
+Local            1.104131
+TSER(SMOTE)      0.935658
+TSER(ADASYN)     0.937180
+TSER(BSMOTE)     0.940759
+TSER(NM)         1.134296
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS75
+Global           0.937777
+Local            1.082559
+TSER(SMOTE)      0.946817
+TSER(ADASYN)     0.946699
+TSER(BSMOTE)     0.982298
+TSER(NM)         1.141751
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS76
+Global           0.937842
+Local            1.124442
+TSER(SMOTE)      0.943806
+TSER(ADASYN)     0.943559
+TSER(BSMOTE)     0.951544
+TSER(NM)         1.135921
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS77
+Global           0.937878
+Local            1.125232
+TSER(SMOTE)      0.958543
+TSER(ADASYN)     0.959365
+TSER(BSMOTE)     0.983192
+TSER(NM)         1.167903
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS78
+Global           0.938346
+Local            1.085376
+TSER(SMOTE)      0.942816
+TSER(ADASYN)     0.943115
+TSER(BSMOTE)     0.942615
+TSER(NM)         1.112168
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS79
+Global           0.937814
+Local            1.084217
+TSER(SMOTE)      0.931798
+TSER(ADASYN)     0.930482
+TSER(BSMOTE)     0.923177
+TSER(NM)         1.112246
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS80
+Global           0.937778
+Local            1.073991
+TSER(SMOTE)      0.944671
+TSER(ADASYN)     0.946340
+TSER(BSMOTE)     0.934669
+TSER(NM)         1.104069
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS81
+Global           0.937629
+Local            1.115568
+TSER(SMOTE)      0.956762
+TSER(ADASYN)     0.956959
+TSER(BSMOTE)     0.987954
+TSER(NM)         1.163989
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS82
+Global           0.938395
+Local            1.109760
+TSER(SMOTE)      0.927720
+TSER(ADASYN)     0.928200
+TSER(BSMOTE)     0.909244
+TSER(NM)         1.060266
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS83
+Global           0.937766
+Local            1.107148
+TSER(SMOTE)      0.954875
+TSER(ADASYN)     0.955916
+TSER(BSMOTE)     1.000147
+TSER(NM)         1.148695
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS84
+Global           0.937658
+Local            1.117157
+TSER(SMOTE)      0.952464
+TSER(ADASYN)     0.951379
+TSER(BSMOTE)     0.953919
+TSER(NM)         1.142148
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS85
+Global           0.937826
+Local            1.140226
+TSER(SMOTE)      0.946016
+TSER(ADASYN)     0.945740
+TSER(BSMOTE)     0.952045
+TSER(NM)         1.116358
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS86
+Global           0.937948
+Local            1.117421
+TSER(SMOTE)      0.951408
+TSER(ADASYN)     0.951523
+TSER(BSMOTE)     0.943658
+TSER(NM)         1.098060
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS87
+Global           0.937787
+Local            1.086617
+TSER(SMOTE)      0.942372
+TSER(ADASYN)     0.942940
+TSER(BSMOTE)     0.941882
+TSER(NM)         1.119443
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS88
+Global           0.937807
+Local            1.168168
+TSER(SMOTE)      0.959921
+TSER(ADASYN)     0.960674
+TSER(BSMOTE)     0.977304
+TSER(NM)         1.167381
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS89
+Global           0.937995
+Local            1.086649
+TSER(SMOTE)      0.945135
+TSER(ADASYN)     0.945347
+TSER(BSMOTE)     0.938351
+TSER(NM)         1.133813
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS90
+Global           0.938049
+Local            1.108559
+TSER(SMOTE)      0.949669
+TSER(ADASYN)     0.951145
+TSER(BSMOTE)     0.948056
+TSER(NM)         1.112731
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS91
+Global           0.937908
+Local            1.092696
+TSER(SMOTE)      0.956212
+TSER(ADASYN)     0.956688
+TSER(BSMOTE)     0.951896
+TSER(NM)         1.114630
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS92
+Global           0.937809
+Local            1.095679
+TSER(SMOTE)      0.949967
+TSER(ADASYN)     0.950402
+TSER(BSMOTE)     0.971340
+TSER(NM)         1.135929
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS93
+Global           0.937853
+Local            1.110734
+TSER(SMOTE)      0.962539
+TSER(ADASYN)     0.962623
+TSER(BSMOTE)     0.948582
+TSER(NM)         1.450587
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS94
+Global           0.937559
+Local            1.115732
+TSER(SMOTE)      0.960242
+TSER(ADASYN)     0.960951
+TSER(BSMOTE)     0.947770
+TSER(NM)         1.141225
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS95
+Global           0.937809
+Local            1.100178
+TSER(SMOTE)      0.927035
+TSER(ADASYN)     0.927129
+TSER(BSMOTE)     0.927668
+TSER(NM)         1.097358
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS96
+Global           0.935777
+Local            1.621658
+TSER(SMOTE)      1.012010
+TSER(ADASYN)     1.013533
+TSER(BSMOTE)     1.017364
+TSER(NM)         1.638332
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS97
+Global           0.937823
+Local            1.124614
+TSER(SMOTE)      0.951389
+TSER(ADASYN)     0.950716
+TSER(BSMOTE)     0.967020
+TSER(NM)         1.143385
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS98
+Global           0.937479
+Local            1.150203
+TSER(SMOTE)      0.967315
+TSER(ADASYN)     0.967765
+TSER(BSMOTE)     0.977183
+TSER(NM)         1.165956
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS99
+Global           0.938511
+Local            1.084109
+TSER(SMOTE)      0.933779
+TSER(ADASYN)     0.933251
+TSER(BSMOTE)     0.922704
+TSER(NM)         1.067552
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS100
+Global           0.937884
+Local            1.117253
+TSER(SMOTE)      0.952757
+TSER(ADASYN)     0.953209
+TSER(BSMOTE)     0.975558
+TSER(NM)         1.225794
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS101
+Global           0.937832
+Local            1.089764
+TSER(SMOTE)      0.950859
+TSER(ADASYN)     0.948284
+TSER(BSMOTE)     0.945471
+TSER(NM)         1.143437
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS102
+Global           0.937946
+Local            1.096660
+TSER(SMOTE)      0.950573
+TSER(ADASYN)     0.950121
+TSER(BSMOTE)     0.937290
+TSER(NM)         1.138536
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS103
+Global           0.937739
+Local            1.136305
+TSER(SMOTE)      0.957833
+TSER(ADASYN)     0.957304
+TSER(BSMOTE)     0.961819
+TSER(NM)         1.197802
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS104
+Global           0.937640
+Local            1.090588
+TSER(SMOTE)      0.938894
+TSER(ADASYN)     0.938698
+TSER(BSMOTE)     0.935388
+TSER(NM)         1.117053
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS105
+Global           0.938213
+Local            1.049561
+TSER(SMOTE)      0.930002
+TSER(ADASYN)     0.934838
+TSER(BSMOTE)     0.931558
+TSER(NM)         1.088802
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS106
+Global           0.937640
+Local            1.119377
+TSER(SMOTE)      0.954581
+TSER(ADASYN)     0.953681
+TSER(BSMOTE)     0.997622
+TSER(NM)         1.139115
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS107
+Global           0.937874
+Local            1.117543
+TSER(SMOTE)      0.944965
+TSER(ADASYN)     0.944601
+TSER(BSMOTE)     0.949022
+TSER(NM)         1.108330
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS108
+Global           0.937859
+Local            1.104253
+TSER(SMOTE)      0.943785
+TSER(ADASYN)     0.944429
+TSER(BSMOTE)     0.981632
+TSER(NM)         1.165439
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS109
+Global           0.938062
+Local            1.087694
+TSER(SMOTE)      0.939349
+TSER(ADASYN)     0.939993
+TSER(BSMOTE)     0.933928
+TSER(NM)         1.111310
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS110
+Global           0.937452
+Local            1.193673
+TSER(SMOTE)      0.953898
+TSER(ADASYN)     0.953354
+TSER(BSMOTE)     1.011336
+TSER(NM)         1.192353
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS111
+Global           0.938337
+Local            1.087916
+TSER(SMOTE)      0.942345
+TSER(ADASYN)     0.940775
+TSER(BSMOTE)     0.941975
+TSER(NM)         1.085648
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS112
+Global           0.938100
+Local            1.034305
+TSER(SMOTE)      1.016060
+TSER(ADASYN)     0.927261
+TSER(BSMOTE)     0.914413
+TSER(NM)         1.054344
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS113
+Global           0.937814
+Local            1.080508
+TSER(SMOTE)      0.946122
+TSER(ADASYN)     0.946973
+TSER(BSMOTE)     0.964078
+TSER(NM)         1.103850
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS114
+Global           0.938107
+Local            1.070506
+TSER(SMOTE)      0.934251
+TSER(ADASYN)     0.932952
+TSER(BSMOTE)     0.921625
+TSER(NM)         1.084014
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS115
+Global           0.937793
+Local            1.036558
+TSER(SMOTE)      0.933681
+TSER(ADASYN)     0.936062
+TSER(BSMOTE)     0.924325
+TSER(NM)         1.064488
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS116
+Global           0.938240
+Local            1.154268
+TSER(SMOTE)      0.942650
+TSER(ADASYN)     0.942521
+TSER(BSMOTE)     0.954507
+TSER(NM)         1.175512
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS117
+Global           0.938214
+Local            1.068198
+TSER(SMOTE)      0.931131
+TSER(ADASYN)     0.936470
+TSER(BSMOTE)     0.929505
+TSER(NM)         1.084791
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS118
+Global           0.937920
+Local            1.108411
+TSER(SMOTE)      0.955279
+TSER(ADASYN)     0.954762
+TSER(BSMOTE)     0.972436
+TSER(NM)         1.097513
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS119
+Global           0.938116
+Local            1.091084
+TSER(SMOTE)      0.950419
+TSER(ADASYN)     0.951148
+TSER(BSMOTE)     0.943826
+TSER(NM)         1.121034
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS120
+Global           0.938040
+Local            1.074031
+TSER(SMOTE)      0.949783
+TSER(ADASYN)     0.946857
+TSER(BSMOTE)     0.975531
+TSER(NM)         1.092567
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS121
+Global           0.936049
+Local            1.704688
+TSER(SMOTE)      1.015769
+TSER(ADASYN)     1.018489
+TSER(BSMOTE)     1.023936
+TSER(NM)         1.617003
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS122
+Global           0.938313
+Local            1.118350
+TSER(SMOTE)      0.943559
+TSER(ADASYN)     0.943073
+TSER(BSMOTE)     0.942846
+TSER(NM)         1.081600
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS123
+Global           0.937685
+Local            1.081216
+TSER(SMOTE)      0.947966
+TSER(ADASYN)     0.947858
+TSER(BSMOTE)     0.952833
+TSER(NM)         1.116464
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS124
+Global           0.938471
+Local            1.091009
+TSER(SMOTE)      0.936341
+TSER(ADASYN)     0.937325
+TSER(BSMOTE)     0.928990
+TSER(NM)         1.155932
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS125
+Global           0.937730
+Local            1.026942
+TSER(SMOTE)      0.921084
+TSER(ADASYN)     0.922142
+TSER(BSMOTE)     0.923212
+TSER(NM)         1.091888
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS126
+Global           0.937692
+Local            1.076926
+TSER(SMOTE)      0.945935
+TSER(ADASYN)     0.946311
+TSER(BSMOTE)     0.944977
+TSER(NM)         1.137755
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS127
+Global           0.937882
+Local            1.033166
+TSER(SMOTE)      0.928993
+TSER(ADASYN)     0.928641
+TSER(BSMOTE)     0.926009
+TSER(NM)         1.093965
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS128
+Global           0.938129
+Local            1.093408
+TSER(SMOTE)      0.949462
+TSER(ADASYN)     0.949446
+TSER(BSMOTE)     0.967783
+TSER(NM)         1.119034
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS129
+Global           0.937996
+Local            1.017956
+TSER(SMOTE)      0.919560
+TSER(ADASYN)     0.919221
+TSER(BSMOTE)     0.925305
+TSER(NM)         1.060115
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS130
+Global           0.937815
+Local            1.047988
+TSER(SMOTE)      0.929214
+TSER(ADASYN)     0.929745
+TSER(BSMOTE)     0.923906
+TSER(NM)         1.100085
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS131
+Global           0.937487
+Local            1.182397
+TSER(SMOTE)      0.957514
+TSER(ADASYN)     0.956465
+TSER(BSMOTE)     0.967960
+TSER(NM)         1.188949
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS132
+Global           0.937835
+Local            1.163132
+TSER(SMOTE)      0.964923
+TSER(ADASYN)     0.965096
+TSER(BSMOTE)     0.970211
+TSER(NM)         1.147275
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS133
+Global           0.937982
+Local            1.040328
+TSER(SMOTE)      0.926392
+TSER(ADASYN)     0.927164
+TSER(BSMOTE)     0.925455
+TSER(NM)         1.067115
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS134
+Global           0.937837
+Local            1.116957
+TSER(SMOTE)      0.949155
+TSER(ADASYN)     0.948304
+TSER(BSMOTE)     0.953721
+TSER(NM)         1.143216
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS135
+Global           0.936234
+Local            1.488366
+TSER(SMOTE)      0.995198
+TSER(ADASYN)     0.996382
+TSER(BSMOTE)     1.001349
+TSER(NM)         1.520334
+Horizon         12.500000
+dtype: float64
+MODELLING SERIES: TS136
+Global           0.937786
+Local            1.104012
+TSER(SMOTE)      0.952399
+TSER(ADASYN)     0.951597
+TSER(BSMOTE)     0.943097
+TSER(NM)         1.150153
+Horizon         12.500000
+dtype: float64
+Running run_variants.py for solar-energy...
+MODELLING SERIES: TS0
+MODELLING SERIES: TS1
+MODELLING SERIES: TS2
+MODELLING SERIES: TS3
+MODELLING SERIES: TS4
+MODELLING SERIES: TS5
+MODELLING SERIES: TS6
+MODELLING SERIES: TS7
+MODELLING SERIES: TS8
+MODELLING SERIES: TS9
+MODELLING SERIES: TS10
+MODELLING SERIES: TS11
+MODELLING SERIES: TS12
+MODELLING SERIES: TS13
+MODELLING SERIES: TS14
+MODELLING SERIES: TS15
+MODELLING SERIES: TS16
+MODELLING SERIES: TS17
+MODELLING SERIES: TS18
+MODELLING SERIES: TS19
+MODELLING SERIES: TS20
+MODELLING SERIES: TS21
+MODELLING SERIES: TS22
+MODELLING SERIES: TS23
+MODELLING SERIES: TS24
+MODELLING SERIES: TS25
+MODELLING SERIES: TS26
+MODELLING SERIES: TS27
+MODELLING SERIES: TS28
+MODELLING SERIES: TS29
+MODELLING SERIES: TS30
+MODELLING SERIES: TS31
+MODELLING SERIES: TS32
+MODELLING SERIES: TS33
+MODELLING SERIES: TS34
+MODELLING SERIES: TS35
+MODELLING SERIES: TS36
+MODELLING SERIES: TS37
+MODELLING SERIES: TS38
+MODELLING SERIES: TS39
+MODELLING SERIES: TS40
+MODELLING SERIES: TS41
+MODELLING SERIES: TS42
+MODELLING SERIES: TS43
+MODELLING SERIES: TS44
+MODELLING SERIES: TS45
+MODELLING SERIES: TS46
+MODELLING SERIES: TS47
+MODELLING SERIES: TS48
+MODELLING SERIES: TS49
+MODELLING SERIES: TS50
+MODELLING SERIES: TS51
+MODELLING SERIES: TS52
+MODELLING SERIES: TS53
+MODELLING SERIES: TS54
+MODELLING SERIES: TS55
+MODELLING SERIES: TS56
+MODELLING SERIES: TS57
+MODELLING SERIES: TS58
+MODELLING SERIES: TS59
+MODELLING SERIES: TS60
+MODELLING SERIES: TS61
+MODELLING SERIES: TS62
+MODELLING SERIES: TS63
+MODELLING SERIES: TS64
+MODELLING SERIES: TS65
+MODELLING SERIES: TS66
+MODELLING SERIES: TS67
+MODELLING SERIES: TS68
+MODELLING SERIES: TS69
+MODELLING SERIES: TS70
+MODELLING SERIES: TS71
+MODELLING SERIES: TS72
+MODELLING SERIES: TS73
+MODELLING SERIES: TS74
+MODELLING SERIES: TS75
+MODELLING SERIES: TS76
+MODELLING SERIES: TS77
+MODELLING SERIES: TS78
+MODELLING SERIES: TS79
+MODELLING SERIES: TS80
+MODELLING SERIES: TS81
+MODELLING SERIES: TS82
+MODELLING SERIES: TS83
+MODELLING SERIES: TS84
+MODELLING SERIES: TS85
+MODELLING SERIES: TS86
+MODELLING SERIES: TS87
+MODELLING SERIES: TS88
+MODELLING SERIES: TS89
+MODELLING SERIES: TS90
+MODELLING SERIES: TS91
+MODELLING SERIES: TS92
+MODELLING SERIES: TS93
+MODELLING SERIES: TS94
+MODELLING SERIES: TS95
+MODELLING SERIES: TS96
+MODELLING SERIES: TS97
+MODELLING SERIES: TS98
+MODELLING SERIES: TS99
+MODELLING SERIES: TS100
+MODELLING SERIES: TS101
+MODELLING SERIES: TS102
+MODELLING SERIES: TS103
+MODELLING SERIES: TS104
+MODELLING SERIES: TS105
+MODELLING SERIES: TS106
+MODELLING SERIES: TS107
+MODELLING SERIES: TS108
+MODELLING SERIES: TS109
+MODELLING SERIES: TS110
+MODELLING SERIES: TS111
+MODELLING SERIES: TS112
+MODELLING SERIES: TS113
+MODELLING SERIES: TS114
+MODELLING SERIES: TS115
+MODELLING SERIES: TS116
+MODELLING SERIES: TS117
+MODELLING SERIES: TS118
+MODELLING SERIES: TS119
+MODELLING SERIES: TS120
+MODELLING SERIES: TS121
+MODELLING SERIES: TS122
+MODELLING SERIES: TS123
+MODELLING SERIES: TS124
+MODELLING SERIES: TS125
+MODELLING SERIES: TS126
+MODELLING SERIES: TS127
+MODELLING SERIES: TS128
+MODELLING SERIES: TS129
+MODELLING SERIES: TS130
+MODELLING SERIES: TS131
+MODELLING SERIES: TS132
+MODELLING SERIES: TS133
+MODELLING SERIES: TS134
+MODELLING SERIES: TS135
+MODELLING SERIES: TS136
+Running run_sensitivity.py for solar-energy...

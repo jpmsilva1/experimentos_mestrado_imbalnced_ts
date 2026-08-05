@@ -6,14 +6,14 @@
 
 | Status | Count |
 |--------|-------|
-| 🟢 Done | 4 |
+| 🟢 Done | 5 |
 | 🟡 In Progress | 2 |
 | 🔵 Setup | 0 |
-| ⚪ Pending | 11 |
+| ⚪ Pending | 10 |
 | 🔴 Blocked | 0 |
 | **Total** | **17** |
 
-**Last updated**: 2026-07-28
+**Last updated**: 2026-08-05
 
 ---
 
@@ -30,7 +30,7 @@
 | 007 | A Case Study Comparing ML with Statistical Methods for TS Forecasting | 2022 | Cerqueira, Torgo, Soares | ⚪ Pending | [GitHub](https://github.com/vcerqueira/experiments-sizematters) | [→](experiments/007_ml_vs_statistical_ts/) |
 | 008 | Gaussian Processes for Hierarchical Time Series Forecasting | 2022 | Roque, Torgo, Soares | ⚪ Pending | [GitHub](https://github.com/luisroque/hierarchical_gp_forecaster) | [→](experiments/008_gp_hierarchical_ts/) |
 | 009 | Minority Oversampling for Imbalanced Time Series Classification (OHIT) | 2022 | Zhu, Luo, Zhang, Li, Ren, Zeng | ⚪ Pending | [GitHub](https://github.com/zhutuanfei/OHIT) | [→](experiments/009_ohit_minority_oversampling/) |
-| 010 | Model Selection for TS Forecasting: Empirical Analysis | 2023 | Cerqueira, Torgo, Soares | ⚪ Pending | [GitHub](https://github.com/vcerqueira/experiments-cv_selection) | [→](experiments/010_model_selection_ts/) |
+| 010 | Model Selection for TS Forecasting: Empirical Analysis | 2023 | Cerqueira, Torgo, Soares | 🟢 Done | [GitHub](https://github.com/vcerqueira/experiments-cv_selection) | [→](experiments/010_model_selection_ts/) |
 | 011 | Early Anomaly Detection: Hierarchical Approach for Critical Health Episodes | 2023 | Cerqueira, Torgo, Soares | ⚪ Pending | [GitHub](https://github.com/vcerqueira/experiments-layered_learning) | [→](experiments/011_early_anomaly_hierarchical/) |
 | 012 | A Framework for Imbalanced Time-Series Forecasting | 2023 | Silvestrin, Pantiskas, Brunton | 🟢 Done | [GitLab](https://gitlab.com/lpsilvestrin/imbalanced-time-series-forecast) | [→](experiments/012_framework_imbalanced_ts/) |
 | 013 | Time Series Data Augmentation as an Imbalanced Learning Problem | 2024 | Cerqueira, Torgo | 🟡 In Progress | [GitHub](https://github.com/vcerqueira/experiments-tser) | [→](experiments/013_ts_augmentation_imbalanced/) |

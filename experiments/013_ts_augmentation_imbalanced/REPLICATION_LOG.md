@@ -8,10 +8,12 @@ This log tracks day-by-day progress of the replication effort.
 
 ## 2026-07-31 Sensitivity Analysis Combinatorial Stall (Exp013)
 
-**Time spent**: 0h 45m
+**Time spent**: 1h 0m
 
 ### Executive Summary
 The cluster job appeared to stall indefinitely (15+ hours) on the `solar-energy` dataset during the execution of `run_sensitivity.py`. A deep dive into the original paper's methodology and the persistent memory vault revealed that the authors **intentionally restricted sensitivity analysis strictly to the small `nn5_daily_without_missing` dataset**. Attempting to run a 20-ratio SMOTE grid search up to a 1:1 balance across the entirety of massive datasets like `solar-energy` causes a mathematical explosion of synthetic data generation that locks up the CPUs. We patched the SLURM orchestration script to match the paper's original constraints.
+
+Additionally, a re-read of the original PDF confirmed the exact E01 evaluation scope: E01 was evaluated on **7 datasets**, not 9 (we erroneously attempted to run `electricity_nips` and `m4_daily` which the authors never published results for). The PDF also explicitly stated they used `k_neighbors=10` (which perfectly matches our codebase, correcting a flawed ARA entry of 5), and 200 random search iterations for LightGBM optimization.
 
 ### 1. Diagnosing the Infinite Stall
 - **Bottleneck:** `run_sensitivity.py` was hanging at `[90%] 124 / 137 completed` for `solar-energy` for 15+ hours.
@@ -19,7 +21,7 @@ The cluster job appeared to stall indefinitely (15+ hours) on the `solar-energy`
 
 ### 2. Proposed Exclusion Patch
 - **Proposed Solution:** Kill the stuck job (`10936`). Update the SLURM bash script to enforce the paper's original constraint where sensitivity analysis (E02 and E03) is ONLY performed on `nn5_daily_without_missing`.
-- **Implementation:** Added an `if [ "$DS" = "nn5_daily_without_missing" ]; then ...` conditional block in `run_distributed_apuana.slurm` around `run_variants.py` and `run_sensitivity.py`. For all other datasets, it gracefully prints a skip message and moves on.
+- **Implementation:** Added an `if [ "$DS" = "nn5_daily_without_missing" ]; then ...` conditional block in `run_distributed_apuana.slurm` around `run_variants.py` and `run_sensitivity.py`. For all other datasets, it gracefully prints a skip message and moves on. We will also remove the 2 extra datasets from our orchestration arrays to perfectly match Table 1 of the paper.
 - **Next Steps:** Resubmit the patched script. The pre-existing `.csv` lock-file logic will instantly bypass the 137 completed models and allow the job to seamlessly continue to the next datasets without losing any progress.
 
 ## 2026-07-29 Cluster Optimization & Concurrency Patch

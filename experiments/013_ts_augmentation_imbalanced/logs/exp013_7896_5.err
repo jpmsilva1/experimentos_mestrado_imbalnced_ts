@@ -1,0 +1,5 @@
+/home/CIN/jpms5/micromamba/envs/exp013_tser/lib/python3.10/site-packages/gluonts/json.py:101: UserWarning: Using `json`-module for json-handling. Consider installing one of `orjson`, `ujson` to speed up serialization and deserialization.
+  warnings.warn(
+Download rideshare_dataset_without_missing_values.zip:: 0.00B [00:00, ?B/s]Download rideshare_dataset_without_missing_values.zip:: 1.03MB [00:03, 356kB/s]
+creating json files:   0%|          | 0/2304 [00:00<?, ?it/s]creating json files: 100%|██████████| 2304/2304 [00:00<00:00, 177425.85it/s]
+slurmstepd: error: *** JOB 7911 ON cluster-node7 CANCELLED AT 2026-07-25T14:39:13 ***

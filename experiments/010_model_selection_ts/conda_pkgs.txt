@@ -1,0 +1,8 @@
+r-data.table
+r-ranger
+r-softimpute
+r-optimx
+r-glmnet
+r-gbm
+r-xgboost
+zlib

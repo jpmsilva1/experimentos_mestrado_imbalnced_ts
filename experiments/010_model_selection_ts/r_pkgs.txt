@@ -1,0 +1,6 @@
+reshape2
+ggplot2
+forecast
+urca
+tsensembler
+tseriesChaos

@@ -1,0 +1,18 @@
+/home/CIN/jpms5/micromamba/envs/exp013_tser/lib/python3.10/site-packages/gluonts/json.py:101: UserWarning: Using `json`-module for json-handling. Consider installing one of `orjson`, `ujson` to speed up serialization and deserialization.
+  warnings.warn(
+Traceback (most recent call last):
+  File "/home/CIN/jpms5/013_ts_augmentation_imbalanced/src/original/scripts/run/run_models.py", line 66, in <module>
+    ModellingWorkflow.performance_estimation(algorithm=mod,
+  File "/home/CIN/jpms5/013_ts_augmentation_imbalanced/src/original/src/workflows/modeling.py", line 117, in performance_estimation
+    model.fit(train_)
+  File "/home/CIN/jpms5/013_ts_augmentation_imbalanced/src/original/src/methods/tser.py", line 68, in fit
+    train_df = self.resample(train)
+  File "/home/CIN/jpms5/013_ts_augmentation_imbalanced/src/original/src/methods/tser.py", line 42, in resample
+    train_df_aug, y_entity = self.resampler.fit_resample(X_aux, y_aux)
+  File "/home/CIN/jpms5/micromamba/envs/exp013_tser/lib/python3.10/site-packages/imblearn/base.py", line 208, in fit_resample
+    return super().fit_resample(X, y)
+  File "/home/CIN/jpms5/micromamba/envs/exp013_tser/lib/python3.10/site-packages/imblearn/base.py", line 112, in fit_resample
+    output = self._fit_resample(X, y)
+  File "/home/CIN/jpms5/micromamba/envs/exp013_tser/lib/python3.10/site-packages/imblearn/over_sampling/_adasyn.py", line 183, in _fit_resample
+    raise RuntimeError(
+RuntimeError: Not any neigbours belong to the majority class. This case will induce a NaN case with a division by zero. ADASYN is not suited for this specific dataset. Use SMOTE instead.
