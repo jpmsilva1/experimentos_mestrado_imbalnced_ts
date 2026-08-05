@@ -1,6 +1,5 @@
 r-base
 r-devtools
-r-performanceestimation
 r-lubridate
 r-xts
 r-randomforest
