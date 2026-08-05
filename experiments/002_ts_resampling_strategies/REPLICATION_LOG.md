@@ -25,10 +25,44 @@ This log tracks day-by-day progress of the replication effort.
 ### Issues encountered
 - Massive memory explosions in earlier parallel attempts required shifting to a single-job sequential workflow with manual garbage collection.
 
-### Next steps
-- Upload the `src/adapted/` folder and `run_apuana.slurm` to the Apuana cluster.
-- Submit the SLURM job (`sbatch run_apuana.slurm`) when a queue slot is available.
-- After completion, execute `Rscript src/adapted/merge_results.R`.
+### Next steps (Where we left off)
+Currently, the cluster environment setup failed because `r-performanceestimation` was in `conda_pkgs.txt` but doesn't exist on conda-forge. We fixed the configuration files locally but need to deploy them to the cluster and rebuild the environment.
+
+When returning, follow this EXACT sequence:
+
+#### 1. Push fixed config to cluster (Run on MAC terminal)
+```bash
+rsync -avz /Users/joaopms/Documents/Projeto_Mestrado/experiments/002_ts_resampling_strategies/conda_pkgs.txt jpms5@slurm-client1.cin.ufpe.br:~/Projeto_Mestrado/experiments/002_ts_resampling_strategies/
+rsync -avz /Users/joaopms/Documents/Projeto_Mestrado/experiments/002_ts_resampling_strategies/r_pkgs.txt jpms5@slurm-client1.cin.ufpe.br:~/Projeto_Mestrado/experiments/002_ts_resampling_strategies/
+```
+
+#### 2. Clean broken environment and rebuild (Run on CLUSTER terminal)
+```bash
+# 1. Connect
+ssh jpms5@slurm-client1.cin.ufpe.br
+
+# 2. Start a fresh tmux session
+tmux new -s env_setup
+
+# 3. Wipe the corrupted partial environment
+rm -rf ~/micromamba/envs/exp002_env
+
+# 4. Run the setup script again
+bash ~/Projeto_Mestrado/experiments/010_model_selection_ts/setup_r_env.sh exp002_env ~/Projeto_Mestrado/experiments/002_ts_resampling_strategies/conda_pkgs.txt ~/Projeto_Mestrado/experiments/002_ts_resampling_strategies/r_pkgs.txt
+```
+
+*Note: You can safely detach from tmux using `Ctrl+B`, release, then `D`.*
+*To reattach later and check progress, run: `tmux attach -t env_setup`*
+
+#### 3. Submit Job (Run on CLUSTER terminal)
+Once the environment finishes building successfully:
+```bash
+cd ~/Projeto_Mestrado/experiments/002_ts_resampling_strategies
+sbatch run_apuana.slurm
+tail -f logs/exp002_*.out
+```
+
+- After completion, execute `Rscript src/adapted/merge_results.R` locally in the activated environment.
 - Proceed with `PairedComparisons.R` to generate final evaluation metrics.
 
 ## 2026-07-13 Fix bugs and run experiments
