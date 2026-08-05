@@ -1,4 +1,5 @@
-setwd("/Users/joaopms/Documents/Projeto_Mestrado/experiments/002_ts_resampling_strategies/src/original")
+# Working directory is set by the SLURM script (cd $SLURM_SUBMIT_DIR).
+# All paths below are relative to the experiment root directory.
 
 library(lubridate)
 library(xts)
@@ -2494,20 +2495,29 @@ smote.exsRegressTPhi <- function(data, tgt, N, k, dist, p, pc)
 
 #DEFINITION OF VARIABLES FOR RESAMPLING
 
-load("Data/data_NM_PB_LT_DSAA2016.Rdata")
+# Load data relative to experiment root (SLURM_SUBMIT_DIR, set by run_apuana.slurm)
+load("src/original/R_Code/Data/data_NM_PB_LT_DSAA2016.Rdata")
 
-dir.create("results/data", recursive = TRUE, showWarnings = FALSE)
-n_threads <- as.integer(Sys.getenv("SLURM_CPUS_PER_TASK", unset = parallel::detectCores() - 1))
+RESULTS_DIR <- "src/adapted/results/data"
+dir.create(RESULTS_DIR, recursive = TRUE, showWarnings = FALSE)
+
+TOTAL_DS <- length(data)
+cat(sprintf("\n[%s] Starting sequential evaluation: %d datasets to process\n",
+            format(Sys.time(), "%H:%M:%S"), TOTAL_DS))
 
 for (i in seq_along(data)) {
-  output_file <- sprintf("results/data/results_dataset_%d.Rdata", i)
+  output_file <- file.path(RESULTS_DIR, sprintf("results_dataset_%d.Rdata", i))
   
   if (file.exists(output_file)) {
-    cat(sprintf("Dataset %d already processed. Skipping.\n", i))
+    completed_so_far <- length(list.files(RESULTS_DIR, pattern = "results_dataset_.*\\.Rdata$"))
+    cat(sprintf("[%s] Dataset %d/%d already processed. Skipping. (%d/%d done)\n",
+                format(Sys.time(), "%H:%M:%S"), i, TOTAL_DS, completed_so_far, TOTAL_DS))
     next
   }
-  
-  cat(sprintf("Processing dataset %d...\n", i))
+
+  t_start <- proc.time()
+  cat(sprintf("[%s] >>> Starting dataset %d/%d ...\n",
+              format(Sys.time(), "%H:%M:%S"), i, TOTAL_DS))
   
   ds <- create.data(data[[i]], 10) #Create the embed
   #ds <- knnImputation(ds)
@@ -2587,4 +2597,23 @@ for (i in seq_along(data)) {
   save(exp, file = output_file)
   rm(exp, ds)
   gc()
+
+  elapsed <- (proc.time() - t_start)["elapsed"]
+  completed_so_far <- length(list.files(RESULTS_DIR, pattern = "results_dataset_.*\\.Rdata$"))
+  cat(sprintf("[%s] <<< Finished dataset %d/%d in %.1f min. (%d/%d done)\n",
+              format(Sys.time(), "%H:%M:%S"), i, TOTAL_DS, elapsed / 60,
+              completed_so_far, TOTAL_DS))
+}
+
+# Final summary
+final_count <- length(list.files(RESULTS_DIR, pattern = "results_dataset_.*\\.Rdata$"))
+cat(sprintf("\n[%s] === DONE === %d/%d datasets completed.\n",
+            format(Sys.time(), "%H:%M:%S"), final_count, TOTAL_DS))
+if (final_count < TOTAL_DS) {
+  missing <- setdiff(
+    seq_len(TOTAL_DS),
+    as.integer(gsub(".*results_dataset_([0-9]+)\\.Rdata", "\\1",
+                    list.files(RESULTS_DIR, pattern = "results_dataset_.*\\.Rdata$")))
+  )
+  cat(sprintf("MISSING dataset indices: %s\n", paste(missing, collapse = ", ")))
 }

@@ -1,7 +1,7 @@
 #!/bin/bash
-#SBATCH --job-name=exp002
-#SBATCH --output=logs/%x_%j.out
-#SBATCH --error=logs/%x_%j.err
+#SBATCH --job-name=exp002_ts_resampling
+#SBATCH --output=logs/exp002_%j.out
+#SBATCH --error=logs/exp002_%j.err
 #SBATCH --partition=long-simple
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
@@ -10,26 +10,36 @@
 #SBATCH --time=7-00:00:00
 #SBATCH --requeue
 
-# 1. Ensure logs directory exists (run this before submitting via sbatch if submitting from outside)
+# Navigate to experiment root (safe regardless of where sbatch was called from)
+cd $SLURM_SUBMIT_DIR
+
+# Ensure output directories exist
 mkdir -p logs
-mkdir -p results/data
+mkdir -p src/adapted/results/data
 
-# 2. Activate environment
+# Activate micromamba R environment
+export PATH="$HOME/.local/bin:$PATH"
 eval "$(micromamba shell hook --shell bash)"
-# Check for a specific env or default to something sensible for the user to replace
-if micromamba env list | grep -q "exp002"; then
-    micromamba activate exp002
-else
-    micromamba activate base
-    echo "Warning: exp002 env not found, using base."
-fi
+micromamba activate exp002_env  # Change if your env has a different name
 
-# 3. Export CPUs for R
-export SLURM_CPUS_PER_TASK=$SLURM_CPUS_PER_TASK
+TOTAL=24
 
-echo "Starting sequential evaluation on dataset loop..."
+echo "=========================================================="
+echo "Exp002: TS Resampling Strategies (Sequential, $TOTAL datasets)"
+echo "Submission dir: $SLURM_SUBMIT_DIR"
+echo "CPUs allocated: $SLURM_CPUS_PER_TASK"
+echo "=========================================================="
 
-# 4. Run the adapted R script
+# Run the adapted R script
 Rscript src/adapted/Exps.R
 
-echo "Done."
+echo "=========================================================="
+echo "Exp002 R script finished. Checking completeness..."
+COMPLETED=$(ls src/adapted/results/data/results_dataset_*.Rdata 2>/dev/null | wc -l)
+echo "Datasets completed: $COMPLETED / $TOTAL"
+if [ "$COMPLETED" -eq "$TOTAL" ]; then
+    echo "All $TOTAL datasets done. Run merge_results.R to consolidate."
+else
+    echo "WARNING: Only $COMPLETED/$TOTAL datasets completed. Resubmit to resume from checkpoint."
+fi
+echo "=========================================================="

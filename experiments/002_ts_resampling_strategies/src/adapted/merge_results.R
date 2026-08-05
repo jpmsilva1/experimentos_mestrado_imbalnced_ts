@@ -1,7 +1,7 @@
 library(performanceEstimation)
 
-# Directory containing the individual dataset Rdata files
-results_dir <- "results/data"
+# Run from the experiment root directory (002_ts_resampling_strategies/)
+results_dir <- "src/adapted/results/data"
 file_pattern <- "results_dataset_[0-9]+\\.Rdata$"
 files <- list.files(path = results_dir, pattern = file_pattern, full.names = TRUE)
 
