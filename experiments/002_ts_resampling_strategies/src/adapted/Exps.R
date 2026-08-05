@@ -2496,7 +2496,7 @@ smote.exsRegressTPhi <- function(data, tgt, N, k, dist, p, pc)
 #DEFINITION OF VARIABLES FOR RESAMPLING
 
 # Load data relative to experiment root (SLURM_SUBMIT_DIR, set by run_apuana.slurm)
-load("src/original/R_Code/Data/data_NM_PB_LT_DSAA2016.Rdata")
+load("src/original/Data/data_NM_PB_LT_DSAA2016.Rdata")
 
 RESULTS_DIR <- "src/adapted/results/data"
 dir.create(RESULTS_DIR, recursive = TRUE, showWarnings = FALSE)
