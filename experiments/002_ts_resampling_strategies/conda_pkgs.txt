@@ -1,0 +1,11 @@
+r-base
+r-devtools
+r-performanceestimation
+r-lubridate
+r-xts
+r-randomforest
+r-e1071
+r-earth
+gxx_linux-64
+gcc_linux-64
+zlib
