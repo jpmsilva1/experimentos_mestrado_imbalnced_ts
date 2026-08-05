@@ -5,6 +5,9 @@ r-xts
 r-randomforest
 r-e1071
 r-earth
+r-ranger
+r-sf
+r-lwgeom
 gxx_linux-64
 gcc_linux-64
 zlib
