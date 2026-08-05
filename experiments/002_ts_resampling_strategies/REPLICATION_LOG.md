@@ -6,7 +6,71 @@ This log tracks day-by-day progress of the replication effort.
 
 <!-- Add new entries at the TOP of this file (most recent first) -->
 
-## 2026-08-04 Apuana Cluster Adaptation
+## 2026-08-05 Cluster Environment Resolution & Successful Execution
+
+**Time spent**: 2h 30m
+
+### What was done
+- **Environment & Dependency Resolution**:
+  - Diagnosed `performanceEstimation` CRAN archival issue: updated `r_pkgs.txt` to install directly from `github:cran/performanceEstimation`.
+  - Solved `UBL` compilation failures caused by missing geospatial C++ system libraries (GDAL, GEOS, PROJ) by adding `r-sf`, `r-lwgeom`, and `r-ranger` to `conda_pkgs.txt` for binary installation via `micromamba`.
+  - Patched `setup_r_env.sh` with `export MAMBA_USE_LOCKFILES=false` and `export CONDA_USE_LOCKFILES=false` to eliminate NFS network drive lockfile hangs in `micromamba`.
+- **SLURM Quota Tuning**:
+  - Resolved `QOSMaxMemoryPerUser` pending block by tuning memory allocation from 128G down to 64G while keeping 48 CPUs (`#SBATCH --cpus-per-task=48`, `#SBATCH --mem=64G`).
+- **R Code & Path Fixes**:
+  - Fixed path typo in `Exps.R` line 2499 from `src/original/R_Code/Data/data_NM_PB_LT_DSAA2016.Rdata` to `src/original/Data/data_NM_PB_LT_DSAA2016.Rdata`.
+  - Removed invalid `, evaluator.pars=list(keepTrain=FALSE)` from `EstimationTask("totTime", ...)` in `Exps.R` which caused `regressionMetrics` to crash after 50 repetitions.
+- **Execution Verification**:
+  - Confirmed batch job submission and verified live execution running smoothly across all 24 datasets.
+
+### What worked
+- Setting `MAMBA_USE_LOCKFILES=false` completely eliminated cluster NFS freezes.
+- Pre-installing `r-sf` via `conda-forge` resolved all C++ spatial dependency compilation errors for `UBL`.
+- 48 CPUs with 64GB RAM fit perfectly within the cluster QOS memory quota.
+
+### Exact Execution Sequence Used
+
+#### 1. Mac Terminal (Sync Code & Data)
+```bash
+rsync -avz /Users/joaopms/Documents/Projeto_Mestrado/experiments/002_ts_resampling_strategies/ jpms5@slurm-client1.cin.ufpe.br:~/Projeto_Mestrado/experiments/002_ts_resampling_strategies/
+```
+
+#### 2. Cluster Terminal (Environment Build & Job Submission)
+```bash
+# Connect to cluster
+ssh jpms5@slurm-client1.cin.ufpe.br
+
+# Start interactive tmux session for safety
+tmux new -s env_setup
+
+# Build environment (if not already built)
+bash ~/Projeto_Mestrado/experiments/010_model_selection_ts/setup_r_env.sh exp002_env ~/Projeto_Mestrado/experiments/002_ts_resampling_strategies/conda_pkgs.txt ~/Projeto_Mestrado/experiments/002_ts_resampling_strategies/r_pkgs.txt
+
+# Install archived performanceEstimation package
+eval "$(micromamba shell hook --shell bash)"
+micromamba activate exp002_env
+Rscript -e 'if (!requireNamespace("remotes", quietly = TRUE)) install.packages("remotes", repos="https://cloud.r-project.org/"); remotes::install_github("cran/performanceEstimation", upgrade="never")'
+
+# Navigate to experiment and submit SLURM job
+cd ~/Projeto_Mestrado/experiments/002_ts_resampling_strategies
+mkdir -p logs
+sbatch run_apuana.slurm
+```
+
+#### 3. Monitoring
+```bash
+# Stream live execution output
+tail -f logs/exp002_*.out
+
+# Track completed dataset count (out of 24)
+ls src/adapted/results/data/results_dataset_*.Rdata 2>/dev/null | wc -l
+```
+
+### Next steps
+- Monitor job until all 24 datasets complete.
+- Execute `Rscript src/adapted/merge_results.R` to consolidate `.Rdata` outputs.
+- Run `PairedComparisons.R` to extract final performance rankings and metrics.
+
 
 **Time spent**: 1h 00m
 
