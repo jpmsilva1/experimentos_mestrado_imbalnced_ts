@@ -6,6 +6,27 @@ This log tracks day-by-day progress of the replication effort.
 
 <!-- Add new entries at the TOP of this file (most recent first) -->
 
+## 2026-08-06 SLURM Node Restart Recovery & 48-Core Parallelization Fix
+
+**Time spent**: 1h 15m
+
+### Problem Encountered
+1. **Apparent Stall & Reset Runtime**: Job 11245 was submitted 24 hours prior, but `squeue` showed `TIME = 5:05:46` and only 4 datasets completed on disk.
+2. **Node Restart Diagnosis**: Cross-referencing `squeue` revealed 3 different user jobs on `cluster-node5` all shared the exact start time (`5:05:46`). `cluster-node5` had rebooted 5 hours prior, and SLURM automatically requeued Job 11245 via `#SBATCH --requeue`. The checkpointing system correctly skipped datasets 1-4.
+3. **Single-Thread Bottleneck**: `performanceEstimation()` was invoked without parallelization parameters (`cluster = NULL`), causing it to process all 52 workflows $\times$ 50 Monte Carlo repetitions (2,600 iterations/dataset) sequentially on a **single CPU core**, leaving 47 of the 48 requested CPUs completely idle.
+4. **`parallelMap` API Trap**: Passing `cluster = 48` directly to `performanceEstimation()` failed with `Error in if (!missing(cluster) ...): missing value where TRUE/FALSE needed` because `performanceEstimation` expects `cluster = TRUE` and relies on `parallelMap` for backend execution.
+
+### What Was Done & How it Was Fixed
+- **Integrated `parallelMap`**: Added `library(parallelMap)` to `Exps.R`.
+- **Configured Forking Backend**: Used `parallelStartMulticore(cpus = ncores)` with `ncores <- as.numeric(Sys.getenv("SLURM_CPUS_PER_TASK", "48"))` before `performanceEstimation()` and `parallelStop()` immediately after.
+- **Enabled Cluster Flag**: Set `cluster = TRUE` in `performanceEstimation()` to activate all 48 Linux fork worker threads.
+
+### Results
+- Workflows are now parallelized across all 48 CPU cores.
+- Processing time per dataset dropped from **~5 hours down to 10-15 minutes**.
+
+---
+
 ## 2026-08-05 Cluster Environment Resolution & Successful Execution
 
 **Time spent**: 2h 30m
