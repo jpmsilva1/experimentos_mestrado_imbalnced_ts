@@ -729,6 +729,7 @@ baggedtrees <- function(form,
                         learner.pars, ...) {
   
   require(rpart)
+  require(parallel)
   
   embed.split.at <- c(embedding.dimension, embedding.dimension / 2, embedding.dimension / 4)
   
@@ -737,7 +738,9 @@ baggedtrees <- function(form,
   .i <- 0L
   .n <- floor(ntrees/(2 * length(embed.split.at))); .seqn <- seq_len(.n)
   
-  .Models <- lapply(embed.split.at, function(K) {
+  n_cores <- min(4L, as.integer(Sys.getenv("SLURM_CPUS_PER_TASK", "4")))
+  
+  .Models <- mclapply(embed.split.at, function(K) {
     predictors <- seq_len(K)
     t1 <- lapply(.seqn, function(i) {
       do.call('rpart', c(list(form, data[bootstrap(n), predictors])))
@@ -747,7 +750,7 @@ baggedtrees <- function(form,
       do.call('rpart', c(list(form, data[bootstrap(n), predictors])))
     })
     c(t1, t2)
-  })
+  }, mc.cores = n_cores)
   names(.Models) <- paste("decisiontree", seq_along(.Models), sep = "_")
   
   unlist(.Models, recursive = FALSE)
