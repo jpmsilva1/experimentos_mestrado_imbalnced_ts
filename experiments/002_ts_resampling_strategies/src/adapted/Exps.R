@@ -2592,7 +2592,7 @@ for (i in seq_along(data)) {
                                  Workflow("mc.arima"),
                                  Workflow("mc.BDES")),
                                EstimationTask("totTime",method=MonteCarlo(nReps=50,szTrain=.5,szTest=.25)),
-                               cluster = 24
+                               cluster = as.numeric(Sys.getenv("SLURM_CPUS_PER_TASK", "48"))
   )
   
   save(exp, file = output_file)
