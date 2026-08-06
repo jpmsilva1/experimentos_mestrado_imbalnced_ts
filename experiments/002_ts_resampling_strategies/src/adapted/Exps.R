@@ -2591,7 +2591,8 @@ for (i in seq_along(data)) {
                                  Workflow("mc.rpart_SMOTETPhi",minsplit=minsplit,cp=cp),
                                  Workflow("mc.arima"),
                                  Workflow("mc.BDES")),
-                               EstimationTask("totTime",method=MonteCarlo(nReps=50,szTrain=.5,szTest=.25))
+                               EstimationTask("totTime",method=MonteCarlo(nReps=50,szTrain=.5,szTest=.25)),
+                               cluster = 24
   )
   
   save(exp, file = output_file)
