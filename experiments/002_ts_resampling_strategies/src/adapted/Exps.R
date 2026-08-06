@@ -4,7 +4,6 @@
 library(lubridate)
 library(xts)
 library(performanceEstimation)
-library(parallelMap)
 library(uba)
 library(UBL) # only for distance functions
 library(DMwR)
@@ -2539,9 +2538,6 @@ for (i in seq_along(data)) {
   minsplit <- 10
   cp <- 0.001
   
-  ncores <- as.numeric(Sys.getenv("SLURM_CPUS_PER_TASK", "48"))
-  parallelStartMulticore(cpus = ncores)
-  
   exp <- performanceEstimation(PredTask(form,ds),
                                c(Workflow("mc.lm"),
                                  Workflow("mc.lm_UNDERB"),
@@ -2595,11 +2591,8 @@ for (i in seq_along(data)) {
                                  Workflow("mc.rpart_SMOTETPhi",minsplit=minsplit,cp=cp),
                                  Workflow("mc.arima"),
                                  Workflow("mc.BDES")),
-                               EstimationTask("totTime",method=MonteCarlo(nReps=50,szTrain=.5,szTest=.25)),
-                               cluster = TRUE
-  )
-  
-  parallelStop()
+                               EstimationTask("totTime",method=MonteCarlo(nReps=50,szTrain=.5,szTest=.25))
+   )
   
   save(exp, file = output_file)
   rm(exp, ds)
