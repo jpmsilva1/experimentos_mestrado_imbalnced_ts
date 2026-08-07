@@ -2520,8 +2520,7 @@ for (i in seq_along(data)) {
               format(Sys.time(), "%H:%M:%S"), i, TOTAL_DS))
   
   ds <- create.data(data[[i]], 10) #Create the embed
-  #ds <- knnImputation(ds)
-  #ds <- ds[complete.cases(ds),]
+  ds <- ds[complete.cases(ds), ] #Ensure no NA values in embedded dataset
   form <- as.formula(V10 ~ .) #Define the formula for performanceEstimation
   
   #EXAMPLE PARAMETRIZATION
