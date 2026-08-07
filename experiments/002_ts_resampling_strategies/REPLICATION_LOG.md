@@ -6,6 +6,20 @@ This log tracks day-by-day progress of the replication effort.
 
 <!-- Add new entries at the TOP of this file (most recent first) -->
 
+## 2026-08-07 Dataset 12 NA Value Crash & `complete.cases` Resolution
+
+**Time spent**: 45m
+
+### Problem Encountered
+- **Dataset 12 Crash**: Execution halted after completing 11 out of 24 datasets with error: `Error in if (!(ymax - ymin > 0)) { : missing value where TRUE/FALSE needed` across all 50 Monte Carlo folds.
+- **Root Cause**: Dataset 12 contains missing (`NA`) values in its embedded time-series matrix. Because `#ds <- ds[complete.cases(ds),]` was commented out in `Exps.R`, target vector `y` passed to `uba::phi.control()` contained `NA`s. `min(y)` and `max(y)` evaluated to `NA`, causing `ymax - ymin` to yield `NA` and crashing `if (!(NA > 0))`.
+
+### What Was Done & How it Was Fixed
+- **Cleaned Embedded Matrices**: Uncommented `ds <- ds[complete.cases(ds), ]` in `Exps.R` (line 2524) to strip any rows containing `NA` values after dataset embedding creation.
+- **Execution Verification**: Re-submitted job on Apuana cluster. Verified that job seamlessly skipped completed datasets 1–11 via disk checkpointing and resumed processing dataset 12 onwards without errors.
+
+---
+
 ## 2026-08-06 SLURM Node Restart Recovery & 48-Core Parallelization Fix
 
 **Time spent**: 1h 15m
