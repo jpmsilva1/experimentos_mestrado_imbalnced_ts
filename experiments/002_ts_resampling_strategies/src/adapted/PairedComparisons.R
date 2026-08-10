@@ -16,52 +16,55 @@ cat("==========================================================\n")
 cat(sprintf("Loaded merged results for %d dataset tasks across %d workflows.\n", 
             length(tasks), length(workflows)))
 
-# Dynamically inspect metrics column names
-sample_obj <- final_exp[[tasks[1]]][[workflows[1]]]
-if (is.matrix(sample_obj@iterationsScores) || is.data.frame(sample_obj@iterationsScores)) {
-  metric_cols <- colnames(sample_obj@iterationsScores)
-} else {
-  metric_cols <- names(sample_obj@iterationsScores)
+# Extract metric names safely
+metrics <- tryCatch(getMetricsNames(final_exp), error = function(e) NULL)
+if (is.null(metrics) || length(metrics) == 0) {
+  metrics <- c("prec", "rec", "F1")
 }
 
-cat("Available metrics:", paste(metric_cols, collapse = ", "), "\n")
+cat("Available metrics:", paste(metrics, collapse = ", "), "\n")
 
 target_metric <- "F1"
-if (!target_metric %in% metric_cols) {
-  f1_match <- grep("F1", metric_cols, value = TRUE, ignore.case = TRUE)
-  if (length(f1_match) > 0) {
-    target_metric <- f1_match[1]
-  } else {
-    target_metric <- metric_cols[1]
-  }
+if (target_metric %in% metrics) {
+  target_idx <- which(metrics == target_metric)
+} else {
+  target_idx <- length(metrics) # Default to 3rd column (F1)
+  target_metric <- metrics[target_idx]
 }
 
-cat(sprintf("Using target metric: '%s'\n", target_metric))
+cat(sprintf("Target Metric for Evaluation: '%s' (Column index %d)\n", target_metric, target_idx))
 cat("==========================================================\n\n")
 
+# Helper function to extract iteration score vector for a given workflow and task
+get_scores_vec <- function(res, task, wf, m_idx, m_name) {
+  obj <- res[[task]][[wf]]@iterationsScores
+  if (is.matrix(obj) || is.data.frame(obj)) {
+    if (m_name %in% colnames(obj)) {
+      return(obj[, m_name])
+    } else if (ncol(obj) >= m_idx) {
+      return(obj[, m_idx])
+    } else {
+      return(obj[, 1])
+    }
+  } else if (is.numeric(obj)) {
+    return(obj)
+  }
+  return(rep(NA, 50))
+}
+
 # Function to compute Win/Loss/Tie matrix safely
-compute_WL <- function(res, base_wf, measure, sig = 0.05) {
+compute_WL <- function(res, base_wf, m_idx, m_name, sig = 0.05) {
   other_wfs <- setdiff(workflowNames(res), base_wf)
   WL <- matrix(0, ncol = 5, nrow = length(other_wfs))
   colnames(WL) <- c("Win", "sigWin", "Loss", "SigLoss", "Tie")
   rownames(WL) <- other_wfs
   
   for (t in taskNames(res)) {
-    base_scores <- res[[t]][[base_wf]]@iterationsScores
-    if (is.matrix(base_scores) || is.data.frame(base_scores)) {
-      base_vec <- base_scores[, measure]
-    } else {
-      base_vec <- base_scores
-    }
+    base_vec <- get_scores_vec(res, t, base_wf, m_idx, m_name)
     base_mean <- mean(base_vec, na.rm = TRUE)
     
     for (wf in other_wfs) {
-      wf_scores <- res[[t]][[wf]]@iterationsScores
-      if (is.matrix(wf_scores) || is.data.frame(wf_scores)) {
-        wf_vec <- wf_scores[, measure]
-      } else {
-        wf_vec <- wf_scores
-      }
+      wf_vec <- get_scores_vec(res, t, wf, m_idx, m_name)
       wf_mean <- mean(wf_vec, na.rm = TRUE)
       
       diff <- wf_mean - base_mean
@@ -90,7 +93,7 @@ baselines <- c("mc.lm", "mc.svm", "mc.mars", "mc.rf", "mc.rpart")
 for (b in baselines) {
   if (b %in% workflows) {
     cat(sprintf("\n>>> Baseline Model: %s (Metric: %s) <<<\n", b, target_metric))
-    wl_matrix <- compute_WL(final_exp, b, measure = target_metric, sig = 0.05)
+    wl_matrix <- compute_WL(final_exp, b, target_idx, target_metric, sig = 0.05)
     print(wl_matrix)
   }
 }
@@ -102,8 +105,7 @@ cat("==========================================================\n")
 
 mean_scores <- sapply(workflows, function(wf) {
   scores <- sapply(tasks, function(t) {
-    obj <- final_exp[[t]][[wf]]@iterationsScores
-    vec <- if (is.matrix(obj) || is.data.frame(obj)) obj[, target_metric] else obj
+    vec <- get_scores_vec(final_exp, t, wf, target_idx, target_metric)
     mean(vec, na.rm = TRUE)
   })
   mean(scores, na.rm = TRUE)
@@ -117,7 +119,7 @@ print(head(rank_df, 20))
 # Save summary tables to disk
 results_dir <- "results"
 dir.create(results_dir, showWarnings = FALSE, recursive = TRUE)
-write.csv(rank_df, file.path(results_dir, "workflow_rankings.csv"), row.names = FALSE)
-cat(sprintf("\nRankings saved to %s/workflow_rankings.csv\n", results_dir))
+write.csv(rank_df, file.path(results_dir, "workflow_f1_rankings.csv"), row.names = FALSE)
+cat(sprintf("\nRankings saved to %s/workflow_f1_rankings.csv\n", results_dir))
 
 cat("\nEvaluation Complete!\n")
