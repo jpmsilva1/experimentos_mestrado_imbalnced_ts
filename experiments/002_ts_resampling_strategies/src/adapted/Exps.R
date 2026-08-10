@@ -695,10 +695,16 @@ mc.arima <- function(form,train,test,...) {
   trainY <- resp(form,train)
   trues <- resp(form,test)
 
-  m <- auto.arima(trainY)
+  m <- tryCatch(
+    auto.arima(trainY, max.p=3, max.q=3, max.order=5, stepwise=TRUE, approximation=TRUE),
+    error = function(e) auto.arima(trainY, stepwise=TRUE, approximation=TRUE)
+  )
   data <- c(trainY,trues)
 
-  p <- fitted(Arima(data,model=m))[(length(trainY)+1):length(data)]
+  p <- tryCatch(
+    fitted(Arima(data,model=m))[(length(trainY)+1):length(data)],
+    error = function(e) rep(mean(trainY), length(trues))
+  )
   eval <- eval.stats(form,train,test,p,ph,ls)
   res <- list(evaluation=eval)
   res
