@@ -1,125 +1,116 @@
 library(performanceEstimation)
 
-# Load merged results from results/merged_results.Rdata
+# Load merged results
 merged_file <- "results/merged_results.Rdata"
 if (!file.exists(merged_file)) {
-  stop("Merged results file not found at ", merged_file, ". Please run merge_results.R first.")
+  stop("Merged results file not found. Please run merge_results.R first.")
 }
 
-load(merged_file)
-# Object loaded is 'final_exp'
+load(merged_file)  # loads 'final_exp'
 
 tasks <- taskNames(final_exp)
 workflows <- workflowNames(final_exp)
 
 cat("==========================================================\n")
-cat(sprintf("Loaded merged results for %d dataset tasks across %d workflows.\n", 
-            length(tasks), length(workflows)))
-
-# Extract metric names safely
-metrics <- tryCatch(getMetricsNames(final_exp), error = function(e) NULL)
-if (is.null(metrics) || length(metrics) == 0) {
-  metrics <- c("prec", "rec", "F1")
-}
-
-cat("Available metrics:", paste(metrics, collapse = ", "), "\n")
-
-target_metric <- "F1"
-if (target_metric %in% metrics) {
-  target_idx <- which(metrics == target_metric)
-} else {
-  target_idx <- length(metrics) # Default to 3rd column (F1)
-  target_metric <- metrics[target_idx]
-}
-
-cat(sprintf("Target Metric for Evaluation: '%s' (Column index %d)\n", target_metric, target_idx))
+cat(sprintf("Loaded merged results: %d tasks x %d workflows\n", length(tasks), length(workflows)))
 cat("==========================================================\n\n")
 
-# Helper function to extract iteration score vector for a given workflow and task
-get_scores_vec <- function(res, task, wf, m_idx, m_name) {
-  obj <- res[[task]][[wf]]@iterationsScores
-  if (is.matrix(obj) || is.data.frame(obj)) {
-    if (m_name %in% colnames(obj)) {
-      return(obj[, m_name])
-    } else if (ncol(obj) >= m_idx) {
-      return(obj[, m_idx])
-    } else {
-      return(obj[, 1])
+# Extract a vector of F1 scores across 50 Monte Carlo iterations
+# Metrics are stored in @iterationsInfo[[i]]$evaluation, NOT @iterationsScores
+get_metric_vec <- function(obj, metric = "F1") {
+  info <- obj@iterationsInfo
+  vals <- sapply(info, function(x) {
+    ev <- x$evaluation
+    if (!is.null(ev) && metric %in% names(ev)) {
+      return(as.numeric(ev[metric]))
     }
-  } else if (is.numeric(obj)) {
-    return(obj)
-  }
-  return(rep(NA, 50))
+    return(NA_real_)
+  })
+  as.numeric(vals)
 }
 
-# Function to compute Win/Loss/Tie matrix safely
-compute_WL <- function(res, base_wf, m_idx, m_name, sig = 0.05) {
+# Verify the extraction works on the first object
+cat("--- Verification: First task/workflow F1 scores (first 6 iterations) ---\n")
+sample_vec <- get_metric_vec(final_exp[[tasks[1]]][[workflows[1]]], "F1")
+cat("Mean F1 for", tasks[1], "/", workflows[1], ":", round(mean(sample_vec, na.rm=TRUE), 4), "\n")
+cat("Sample:", round(head(sample_vec), 6), "\n\n")
+
+# --------------------------------------------------------------------------
+# Win/Loss/Tie computation (paired Wilcoxon across 50 MC iterations per task)
+# --------------------------------------------------------------------------
+compute_WL <- function(res, base_wf, metric = "F1", sig = 0.05) {
   other_wfs <- setdiff(workflowNames(res), base_wf)
-  WL <- matrix(0, ncol = 5, nrow = length(other_wfs))
-  colnames(WL) <- c("Win", "sigWin", "Loss", "SigLoss", "Tie")
-  rownames(WL) <- other_wfs
-  
+  WL <- matrix(0, ncol = 5, nrow = length(other_wfs),
+               dimnames = list(other_wfs, c("Win", "sigWin", "Loss", "SigLoss", "Tie")))
+
   for (t in taskNames(res)) {
-    base_vec <- get_scores_vec(res, t, base_wf, m_idx, m_name)
+    base_vec <- get_metric_vec(res[[t]][[base_wf]], metric)
     base_mean <- mean(base_vec, na.rm = TRUE)
-    
+
     for (wf in other_wfs) {
-      wf_vec <- get_scores_vec(res, t, wf, m_idx, m_name)
+      wf_vec  <- get_metric_vec(res[[t]][[wf]], metric)
       wf_mean <- mean(wf_vec, na.rm = TRUE)
-      
-      diff <- wf_mean - base_mean
-      
+      diff    <- wf_mean - base_mean
+
       p_val <- tryCatch({
-        wt <- wilcox.test(wf_vec, base_vec, paired = TRUE, exact = FALSE)
-        wt$p.value
+        wilcox.test(wf_vec, base_vec, paired = TRUE, exact = FALSE)$p.value
       }, error = function(e) 1.0)
-      
+      if (is.na(p_val)) p_val <- 1.0
+
       if (is.na(diff) || abs(diff) < 1e-9) {
         WL[wf, "Tie"] <- WL[wf, "Tie"] + 1
       } else if (diff > 0) {
         WL[wf, "Win"] <- WL[wf, "Win"] + 1
-        if (!is.na(p_val) && p_val < sig) WL[wf, "sigWin"] <- WL[wf, "sigWin"] + 1
+        if (p_val < sig) WL[wf, "sigWin"] <- WL[wf, "sigWin"] + 1
       } else {
         WL[wf, "Loss"] <- WL[wf, "Loss"] + 1
-        if (!is.na(p_val) && p_val < sig) WL[wf, "SigLoss"] <- WL[wf, "SigLoss"] + 1
+        if (p_val < sig) WL[wf, "SigLoss"] <- WL[wf, "SigLoss"] + 1
       }
     }
   }
   WL
 }
 
-baselines <- c("mc.lm", "mc.svm", "mc.mars", "mc.rf", "mc.rpart")
+# --------------------------------------------------------------------------
+# Print Win/Loss/Tie vs each baseline
+# --------------------------------------------------------------------------
+cat("==========================================================\n")
+cat("Win / sigWin / Loss / SigLoss / Tie  (Metric: F1, alpha=0.05)\n")
+cat("==========================================================\n")
 
+baselines <- c("mc.lm", "mc.svm", "mc.mars", "mc.rf", "mc.rpart")
 for (b in baselines) {
   if (b %in% workflows) {
-    cat(sprintf("\n>>> Baseline Model: %s (Metric: %s) <<<\n", b, target_metric))
-    wl_matrix <- compute_WL(final_exp, b, target_idx, target_metric, sig = 0.05)
-    print(wl_matrix)
+    cat(sprintf("\n>>> Baseline: %s <<<\n", b))
+    print(compute_WL(final_exp, b, metric = "F1", sig = 0.05))
   }
 }
 
-# Average target metric score per Workflow across completed tasks
+# --------------------------------------------------------------------------
+# Average F1 per workflow across all 20 datasets — ranked table
+# --------------------------------------------------------------------------
 cat("\n==========================================================\n")
-cat(sprintf("Average %s Score per Workflow Across %d Completed Datasets:\n", target_metric, length(tasks)))
+cat(sprintf("Average F1 Score per Workflow (%d Datasets)\n", length(tasks)))
 cat("==========================================================\n")
 
-mean_scores <- sapply(workflows, function(wf) {
-  scores <- sapply(tasks, function(t) {
-    vec <- get_scores_vec(final_exp, t, wf, target_idx, target_metric)
-    mean(vec, na.rm = TRUE)
+mean_f1 <- sapply(workflows, function(wf) {
+  per_task <- sapply(tasks, function(t) {
+    mean(get_metric_vec(final_exp[[t]][[wf]], "F1"), na.rm = TRUE)
   })
-  mean(scores, na.rm = TRUE)
+  mean(per_task, na.rm = TRUE)
 })
 
-rank_df <- data.frame(Workflow = names(mean_scores), Avg_Score = round(mean_scores, 4))
-rank_df <- rank_df[order(-rank_df$Avg_Score), ]
+rank_df <- data.frame(Workflow  = names(mean_f1),
+                      Avg_F1    = round(mean_f1, 4),
+                      stringsAsFactors = FALSE)
+rank_df <- rank_df[order(-rank_df$Avg_F1), ]
 rownames(rank_df) <- NULL
-print(head(rank_df, 20))
+print(head(rank_df, 30))
 
-# Save summary tables to disk
+# Save
 results_dir <- "results"
 dir.create(results_dir, showWarnings = FALSE, recursive = TRUE)
-write.csv(rank_df, file.path(results_dir, "workflow_f1_rankings.csv"), row.names = FALSE)
-cat(sprintf("\nRankings saved to %s/workflow_f1_rankings.csv\n", results_dir))
-
-cat("\nEvaluation Complete!\n")
+out_path <- file.path(results_dir, "workflow_f1_rankings.csv")
+write.csv(rank_df, out_path, row.names = FALSE)
+cat(sprintf("\nRankings saved to %s\n", out_path))
+cat("Evaluation Complete!\n")
