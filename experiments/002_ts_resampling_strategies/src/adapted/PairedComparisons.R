@@ -14,89 +14,82 @@ cat(sprintf("Loaded merged results for %d dataset tasks across %d workflows.\n",
             length(taskNames(final_exp)), length(workflowNames(final_exp))))
 cat("==========================================================\n\n")
 
-# 1. Print Overall Summary Metrics
-cat("--- 1. OVERALL ESTIMATION SUMMARY ---\n")
-tryCatch({
-  summ <- estimationSummary(final_exp)
-  print(summ)
-}, error = function(e) {
-  cat("Could not compute estimationSummary:", e$message, "\n")
-})
+# Extract mean metrics summary table
+tasks <- taskNames(final_exp)
+workflows <- workflowNames(final_exp)
 
-# 2. Print Top Performers per Task
-cat("\n--- 2. TOP PERFORMING WORKFLOWS PER TASK ---\n")
-tryCatch({
-  top_table <- topPerformers(final_exp)
-  print(top_table)
-}, error = function(e) {
-  cat("Could not compute topPerformers:", e$message, "\n")
-})
-
-# 3. Print Ranked Workflows
-cat("\n--- 3. RANKED WORKFLOWS ACROSS ALL DATASETS ---\n")
-tryCatch({
-  ranks <- rankWorkflows(final_exp)
-  print(ranks)
-}, error = function(e) {
-  cat("Could not compute rankWorkflows:", e$message, "\n")
-})
-
-# 4. Safe Paired Comparisons Function
-cat("\n--- 4. PAIRED COMPARISONS (Wilcoxon Signed-Rank Test) ---\n")
-
-WLdef <- function(res, base, measure = "F1", sig = 0.05) {
-  pres <- tryCatch(
-    pairedComparisons(res, base, p.value = sig),
-    error = function(e) NULL
-  )
-  
-  if (is.null(pres)) {
-    cat(sprintf("Could not compute pairedComparisons for base '%s'\n", base))
-    return(NULL)
-  }
-  
-  wf_names <- setdiff(workflowNames(res), base)
-  WL <- matrix(0, ncol = 5, nrow = length(wf_names))
+# Function to compute Win/Loss/Tie matrix safely
+compute_WL <- function(res, base_wf, measure = "F1", sig = 0.05) {
+  other_wfs <- setdiff(workflowNames(res), base_wf)
+  WL <- matrix(0, ncol = 5, nrow = length(other_wfs))
   colnames(WL) <- c("Win", "sigWin", "Loss", "SigLoss", "Tie")
-  rownames(WL) <- wf_names
+  rownames(WL) <- other_wfs
   
-  w_test <- pres[[measure]]$WilcoxonSignedRank.test
-  
-  for (e in seq_along(taskNames(res))) {
-    for (nm in wf_names) {
-      if (!is.null(w_test) && nm %in% rownames(w_test)) {
-        diff_val <- tryCatch(w_test[nm, 2, e], error = function(err) NA)
-        p_val <- tryCatch(w_test[nm, 3, e], error = function(err) NA)
-        
-        if (!is.na(diff_val) && length(diff_val) == 1) {
-          if (diff_val < 0) {
-            WL[nm, "Win"] <- WL[nm, "Win"] + 1
-            if (!is.na(p_val) && p_val < sig) WL[nm, "sigWin"] <- WL[nm, "sigWin"] + 1
-          } else if (diff_val == 0) {
-            WL[nm, "Tie"] <- WL[nm, "Tie"] + 1
-          } else {
-            WL[nm, "Loss"] <- WL[nm, "Loss"] + 1
-            if (!is.na(p_val) && p_val < sig) WL[nm, "SigLoss"] <- WL[nm, "SigLoss"] + 1
-          }
-        }
+  for (t in taskNames(res)) {
+    base_scores <- res[[t]][[base_wf]]@iterationsScores[, measure]
+    base_mean <- mean(base_scores, na.rm = TRUE)
+    
+    for (wf in other_wfs) {
+      wf_scores <- res[[t]][[wf]]@iterationsScores[, measure]
+      wf_mean <- mean(wf_scores, na.rm = TRUE)
+      
+      diff <- wf_mean - base_mean
+      
+      # Wilcoxon test across the 50 Monte Carlo folds
+      p_val <- tryCatch({
+        wt <- wilcox.test(wf_scores, base_scores, paired = TRUE, exact = FALSE)
+        wt$p.value
+      }, error = function(e) 1.0)
+      
+      if (is.na(diff) || abs(diff) < 1e-9) {
+        WL[wf, "Tie"] <- WL[wf, "Tie"] + 1
+      } else if (diff > 0) {
+        WL[wf, "Win"] <- WL[wf, "Win"] + 1
+        if (!is.na(p_val) && p_val < sig) WL[wf, "sigWin"] <- WL[wf, "sigWin"] + 1
+      } else {
+        WL[wf, "Loss"] <- WL[wf, "Loss"] + 1
+        if (!is.na(p_val) && p_val < sig) WL[wf, "SigLoss"] <- WL[wf, "SigLoss"] + 1
       }
     }
   }
   WL
 }
 
+cat("==========================================================\n")
+cat("Paired Comparisons Matrix (Win / sigWin / Loss / SigLoss / Tie)\n")
+cat("==========================================================\n")
+
 baselines <- c("mc.lm", "mc.svm", "mc.mars", "mc.rf", "mc.rpart")
 
 for (b in baselines) {
   if (b %in% workflowNames(final_exp)) {
-    cat(sprintf("\nBaseline Comparison vs '%s':\n", b))
-    wl_res <- WLdef(final_exp, b, "F1", 0.05)
-    if (!is.null(wl_res)) {
-      print(head(wl_res, 10))
-    }
+    cat(sprintf("\n>>> Baseline Model: %s (Metric: F1 Score) <<<\n", b))
+    wl_matrix <- compute_WL(final_exp, b, measure = "F1", sig = 0.05)
+    print(wl_matrix)
   }
 }
 
+# Average F1 Score per Workflow across completed tasks
 cat("\n==========================================================\n")
-cat("Evaluation Complete!\n")
+cat("Average F1 Score per Workflow Across All Completed Datasets:\n")
 cat("==========================================================\n")
+
+mean_f1 <- sapply(workflows, function(wf) {
+  scores <- sapply(tasks, function(t) {
+    mean(final_exp[[t]][[wf]]@iterationsScores[, "F1"], na.rm = TRUE)
+  })
+  mean(scores, na.rm = TRUE)
+})
+
+f1_df <- data.frame(Workflow = names(mean_f1), Avg_F1 = round(mean_f1, 4))
+f1_df <- f1_df[order(-f1_df$Avg_F1), ]
+rownames(f1_df) <- NULL
+print(head(f1_df, 20))
+
+# Save summary tables to disk
+results_dir <- "results"
+dir.create(results_dir, showWarnings = FALSE, recursive = TRUE)
+write.csv(f1_df, file.path(results_dir, "workflow_f1_rankings.csv"), row.names = FALSE)
+cat(sprintf("\nRankings saved to %s/workflow_f1_rankings.csv\n", results_dir))
+
+cat("\nEvaluation Complete!\n")
