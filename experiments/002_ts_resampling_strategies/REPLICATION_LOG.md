@@ -6,6 +6,32 @@ This log tracks day-by-day progress of the replication effort.
 
 <!-- Add new entries at the TOP of this file (most recent first) -->
 
+## 2026-08-14 `mc.arima` CSS Fix & Zero-Relevance Resampling Crash Fix (Dataset 21 Retry)
+
+**Time spent**: 1h 00m
+
+### Problem Encountered
+- Resubmitted job to process Dataset 21 (Australian Electricity Load, half-hourly) using the 2026-08-10 `approximation=TRUE` patch. The run reached 20/24 datasets, started Dataset 21, then halted with:
+  ```
+  Error in randUnderRegressB(form, train, rel = "auto", thr.rel = 0.9, C.perc = "balance", ...) :
+    All the points have relevance 0. Please, redefine your relevance function!
+  Execution halted
+  ```
+- This was **not** the previously-documented arima hang — the process crashed outright rather than looping. The `uba::phi.control(y, method="extremes")` relevance function evaluated to 0 for every point in one CV fold of Dataset 21 (no detectable extremes in that fold), and `randUnderRegressB` (and its 8 near-identical siblings) hard-`stop()`s in that case with no surrounding `tryCatch`. Because `performanceEstimation()` runs uncaught, this single fold's error killed the entire multi-day job instead of failing just that one workflow/fold.
+
+### What Was Done & How It Was Fixed
+1. **Replaced approximated MLE with CSS estimation in `mc.arima()`**: Superseded the 2026-08-10 `approximation=TRUE` + bounded-order patch. The primary path now uses `auto.arima(trainY, method="CSS", stepwise=TRUE)` (unrestricted order search, conditional sum-of-squares estimation instead of full MLE), which avoids the C-level MLE optimizer hang without capping the model search space. The old bounded-order + `approximation=TRUE` call is retained only as an error fallback. The refit step also uses `method="CSS"` for consistency, with a fallback chain (`forecast(m, h=...)$mean` → `rep(mean(trainY), ...)`) if refitting fails.
+2. **Fixed zero-relevance crash across all 9 duplicated resampling helpers**: In `randUnderRegressB/T/TPhi`, `randOverRegressB/T/TPhi`, `smoteRegressB/T/TPhi`, replaced the `stop("All the points have relevance 0/1. Please, redefine your relevance function!")` guards with graceful `return(data)` / `return(dat)` no-ops. When a fold has no relevance imbalance to act on, the function now returns the training data unresampled for that fold instead of crashing the whole run. Fixed once in the shared function bodies rather than patched per `mc.*` wrapper (all ~50 `mc.<model>_<STRATEGY>` workflow wrappers route through these same 9 functions).
+
+### ⚠️ Updated Methodological Note
+> [!IMPORTANT]
+> Supersedes the 2026-08-10 note. Datasets 21–24 (half-hourly series) now use `method="CSS"` in `mc.arima` instead of `approximation=TRUE` MLE — a smaller methodological deviation (full order search preserved, only the estimation method changes) than the previous bounded-order+approximation patch. Additionally, **any** dataset/fold across all 24 datasets could in principle hit a zero-relevance CV fold in the resampling workflows (`UNDERB/T/TPhi`, `OVERB/T/TPhi`, `SMOTEB/T/TPhi`); those folds now silently fall back to unresampled training data rather than crashing. This should be a rare edge case (imbalanced-target folds), but worth noting when interpreting resampling workflow scores on any dataset going forward.
+
+### Status
+- Fixes verified via `Rscript -e 'parse("Exps.R")'` (parses cleanly). Not yet re-run on the cluster — pending resubmission from the Dataset 21 checkpoint.
+
+---
+
 ## 2026-08-10 Results Compilation & Paired Comparisons Evaluation (20 Datasets)
 
 **Time spent**: 1h 30m

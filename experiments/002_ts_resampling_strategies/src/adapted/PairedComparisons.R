@@ -87,7 +87,7 @@ for (b in baselines) {
 }
 
 # --------------------------------------------------------------------------
-# Average F1 per workflow across all 20 datasets — ranked table
+# Average F1 per workflow across all datasets — ranked table
 # --------------------------------------------------------------------------
 cat("\n==========================================================\n")
 cat(sprintf("Average F1 Score per Workflow (%d Datasets)\n", length(tasks)))
